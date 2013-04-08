@@ -1,5 +1,6 @@
 #include "abstractcameramanager.h"
 
+
 AbstractCameraManager::AbstractCameraManager(bool first)
     : cameraTree() , newCameraList("Detected Cameras") {
     if(first) return;

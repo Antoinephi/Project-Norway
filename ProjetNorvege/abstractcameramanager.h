@@ -13,13 +13,15 @@ enum MyRoles {
 class AbstractCameraManager
 {
     public:
-        AbstractCameraManager(bool first=false);
+        // Pure virtual
+        virtual void detectNewCameras() = 0;
+        virtual void getCamerasPropertiesList() const = 0;
+        virtual std::string getName() const = 0;
+        //do not reimplement
         QModelIndex addGroup();
-        void detectNewCameras();
-        //virtual void getCamerasPropertiesList() const = 0;
-        virtual std::string getName() = 0;
         QStandardItemModel* getModel();
     protected:
+        AbstractCameraManager(bool first=false);
         bool addNewCamera(std::string name, AbstractCamera *camera);
     private:
         QStandardItemModel cameraTree;

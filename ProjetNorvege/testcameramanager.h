@@ -6,7 +6,9 @@
 class TestCameraManager : public AbstractCameraManager {
     public:
         TestCameraManager();
-        virtual std::string getName();
+        virtual void detectNewCameras();
+        virtual void getCamerasPropertiesList() const;
+        virtual std::string getName() const;
 };
 
 #endif // TESTCAMERAMANAGER_H

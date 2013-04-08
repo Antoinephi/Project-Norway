@@ -8,6 +8,15 @@ TestCameraManager::TestCameraManager()
     addNewCamera("Camera3", new TestCamera());
 }
 
-std::string TestCameraManager::getName(){
+void TestCameraManager::detectNewCameras(){
+    //Nothing here
+}
+void TestCameraManager::getCamerasPropertiesList() const{
+    //Nothing here
+}
+
+std::string TestCameraManager::getName() const{
     return "TestManager";
 }
+
+
