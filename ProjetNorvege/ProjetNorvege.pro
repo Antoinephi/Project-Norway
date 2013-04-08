@@ -12,6 +12,8 @@ TARGET = ProjetNorvege
 TEMPLATE = app
 
 
+
+
 SOURCES += main.cpp\
         mainwindow.cpp \
     abstractcameramanager.cpp \

@@ -1,6 +1,9 @@
+#include <QMessageBox>
+#include <QStandardItem>
+#include <QDebug>
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QMessageBox>
 #include "testcameramanager.h"
 #include "emptycameramanager.h"
 
@@ -15,9 +18,13 @@ MainWindow::MainWindow(QWidget *parent)
     cameraManagers.push_back(new TestCameraManager());
     for (unsigned int i=0 ; i < cameraManagers.size(); ++i){
         ui->SelectCameras->addItem(cameraManagers.at(i)->getName().c_str());
+        connect(cameraManagers.at(i)->getModel(), SIGNAL(itemChanged(QStandardItem*)),
+                this, SLOT(on_CameraTree_itemChanged(QStandardItem*)));
     }
-    connect(ui->CameraTree, SIGNAL(clicked(const QModelIndex &)), this, SLOT(on_CameraTree_itemClicked(const QModelIndex &)));
-    connect(addGroup, SIGNAL(triggered()), this, SLOT(on_createGroup_triggered()));
+    connect(ui->CameraTree, SIGNAL(clicked(const QModelIndex &)),
+            this, SLOT(on_CameraTree_itemClicked(const QModelIndex &)));
+    connect(addGroup, SIGNAL(triggered()),
+            this, SLOT(on_createGroup_triggered()));
 }
 MainWindow::~MainWindow()
 {
@@ -65,3 +72,17 @@ void MainWindow::on_SelectCameras_currentIndexChanged(int index)
 void MainWindow::on_CameraTree_itemClicked(const QModelIndex & index){
     ui->label->setText(cameraManagers.at(selectedCameraManager)->getModel()->itemFromIndex(index)->text());
 }
+
+void MainWindow::on_CameraTree_itemChanged(QStandardItem* item){
+    cameraTree_recursive(item);
+}
+void MainWindow::cameraTree_recursive(QStandardItem* parent){
+    Qt::CheckState checkState = parent->checkState();
+    //qDebug() << "Number of childs for " << parent->text()<< ": " << parent->rowCount();
+    for(int i=0; i<parent->rowCount(); ++i){
+        parent->child(i)->setCheckState(checkState);
+        cameraTree_recursive(parent->child(i));
+    }
+}
+
+
