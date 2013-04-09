@@ -1,11 +1,14 @@
 #include <QMessageBox>
 #include <QStandardItem>
 #include <QDebug>
+#include <QMdiArea>
+#include <QMdiSubWindow>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "testcameramanager.h"
 #include "emptycameramanager.h"
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -17,9 +20,9 @@ MainWindow::MainWindow(QWidget *parent)
     cameraManagers.push_back(new EmptyCameraManager());
     cameraManagers.push_back(new TestCameraManager());
     for (unsigned int i=0 ; i < cameraManagers.size(); ++i){
-        ui->SelectCameras->addItem(cameraManagers.at(i)->getName().c_str());
-        connect(cameraManagers.at(i)->getModel(), SIGNAL(itemChanged(QStandardItem*)),
-                this, SLOT(on_CameraTree_itemChanged(QStandardItem*)));
+        AbstractCameraManager* manager = cameraManagers.at(i);
+        manager->setMainWindow(this);
+        ui->SelectCameras->addItem(manager->getName().c_str());
     }
     connect(ui->CameraTree, SIGNAL(clicked(const QModelIndex &)),
             this, SLOT(on_CameraTree_itemClicked(const QModelIndex &)));
@@ -29,6 +32,16 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::modifySubWindow(QMdiSubWindow* in, bool add){
+    qDebug() << "modifySubWindow( " << in << ", " << add << ")";
+    if(add){
+        (ui->centralwidget->addSubWindow(in))->show();
+    }else{
+
+        ui->centralwidget->removeSubWindow(in);
+    }
 }
 
 void MainWindow::on_actionQuitter_triggered()
@@ -43,7 +56,7 @@ void MainWindow::on_Detect_clicked()
 }
 void MainWindow::on_actionMosaic_triggered()
 {
-    QMessageBox::critical(this, "Error", "Not implemented");
+    ui->centralwidget->tileSubWindows();
 }
 
 void MainWindow::on_CameraTree_customContextMenuRequested(const QPoint &pos)
@@ -73,16 +86,6 @@ void MainWindow::on_CameraTree_itemClicked(const QModelIndex & index){
     ui->label->setText(cameraManagers.at(selectedCameraManager)->getModel()->itemFromIndex(index)->text());
 }
 
-void MainWindow::on_CameraTree_itemChanged(QStandardItem* item){
-    cameraTree_recursive(item);
-}
-void MainWindow::cameraTree_recursive(QStandardItem* parent){
-    Qt::CheckState checkState = parent->checkState();
-    //qDebug() << "Number of childs for " << parent->text()<< ": " << parent->rowCount();
-    for(int i=0; i<parent->rowCount(); ++i){
-        parent->child(i)->setCheckState(checkState);
-        cameraTree_recursive(parent->child(i));
-    }
-}
+
 
 
