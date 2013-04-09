@@ -2,14 +2,15 @@
 #include "testcamera.h"
 
 TestCameraManager::TestCameraManager()
-    : AbstractCameraManager::AbstractCameraManager() {
-    addNewCamera("Camera1", new TestCamera());
-    addNewCamera("Camera2", new TestCamera());
-    addNewCamera("Camera3", new TestCamera());
+    : AbstractCameraManager::AbstractCameraManager(), foundCameras() {
+    foundCameras.push_back(FoundCamera(new TestCamera(), "Camera1"));
+    foundCameras.push_back(FoundCamera(new TestCamera(), "Camera2"));
+    foundCameras.push_back(FoundCamera(new TestCamera(), "Camera3"));
 }
 
 void TestCameraManager::detectNewCameras(){
-    //Nothing here
+    for(int i=0; i<foundCameras.size(); i++)
+        addNewCamera(foundCameras.at(i).name, foundCameras.at(i).camera);
 }
 void TestCameraManager::getCamerasPropertiesList() const{
     //Nothing here

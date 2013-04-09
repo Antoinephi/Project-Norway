@@ -26,6 +26,7 @@ class AbstractCameraManager : public QObject
         virtual void getCamerasPropertiesList() const = 0;
         virtual std::string getName() const = 0;
         //do not reimplement
+        QModelIndex detectNewCamerasAndExpand();
         QModelIndex addGroup();
         void activateCamera(AbstractCamera* camera, QStandardItem* item, bool active);
         QStandardItemModel* getModel();
@@ -44,6 +45,7 @@ class AbstractCameraManager : public QObject
             activeCameraEntry(AbstractCamera *c, QStandardItem* i)
                 : camera(c), window(new QMdiSubWindow()), treeItem(i){
                 window->setAttribute(Qt::WA_DeleteOnClose);
+                window->setWindowFlags(window->windowFlags() & ~Qt::WindowMaximizeButtonHint & ~Qt::WindowMinimizeButtonHint);
             }
             //~activeCameraEntry(){ delete window; }
             AbstractCamera* camera;
@@ -51,7 +53,8 @@ class AbstractCameraManager : public QObject
             QMdiSubWindow* window;
         };
         std::vector<activeCameraEntry> activeCameras;
-        void cameraTree_recursive(QStandardItem* parent, Qt::CheckState checked);
+        void cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked);
+        bool cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera);
 
 };
 

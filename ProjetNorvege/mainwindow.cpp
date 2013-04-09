@@ -51,8 +51,7 @@ void MainWindow::on_actionQuitter_triggered()
 
 void MainWindow::on_Detect_clicked()
 {
-    QMessageBox::critical(this, "Error", "Not implemented");
-    //then expend Detected Cameras...
+    ui->CameraTree->setExpanded(cameraManagers.at(selectedCameraManager)->detectNewCamerasAndExpand(), true);
 }
 void MainWindow::on_actionMosaic_triggered()
 {

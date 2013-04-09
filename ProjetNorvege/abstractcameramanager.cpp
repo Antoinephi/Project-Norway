@@ -20,6 +20,10 @@ AbstractCameraManager::AbstractCameraManager(bool empty)
 void AbstractCameraManager::setMainWindow(MainWindow* window){
     mainWindow = window;
 }
+QModelIndex AbstractCameraManager::detectNewCamerasAndExpand(){
+    detectNewCameras();
+    return newCameraList.index();
+}
 QModelIndex AbstractCameraManager::addGroup(){
     QStandardItem *newGroup = new QStandardItem("new Group");
     newGroup->setCheckable(true);
@@ -28,12 +32,15 @@ QModelIndex AbstractCameraManager::addGroup(){
 }
 
 bool AbstractCameraManager::addNewCamera(std::string name, AbstractCamera *camera){
-    //To add: check if already in cameraTree
+    //check if already detected
+    if(cameraTree_recursiveSearch(cameraTree.invisibleRootItem(), camera)) return false;
+
+    //adding
     QStandardItem *item = new QStandardItem(name.c_str());
     item->setData(QVariant::fromValue(camera), CameraRole);
     //qDebug() << "setData " << camera << " data " << item->data(CameraRole).value<AbstractCamera *>();
     item->setCheckable(true);
-    item->setCheckState(Qt::Checked);
+    item->setCheckState(Qt::Unchecked);
     item->setDropEnabled(false);
     newCameraList.appendRow(item);
     return true;
@@ -44,19 +51,22 @@ void AbstractCameraManager::activateCamera(AbstractCamera* camera, QStandardItem
     int i = activeCameras.size()-1;
     while(i>=0 && activeCameras.at(i).camera != camera) --i;
 
-    if(i >= 0){
-        if(!active){
+    if(i >= 0){ //trouve
+        if(!active){ // desactivation
             qDebug() << "desactivating Camera";
             activeCameraEntry* entry = &activeCameras.at(i);
             mainWindow->modifySubWindow(entry->window, false);
             activeCameras.erase(activeCameras.begin()+i);
+        }else{
+            activeCameras.at(i).window->setWindowTitle(item->text());
         }
     }else{
-        if(active){
+        if(active){// activation
             qDebug() << "activating Camera";
             activeCameraEntry entry = activeCameraEntry(camera, item);
             connect(entry.window, SIGNAL(destroyed(QObject*)),
                     this, SLOT(on_subwindow_closing(QObject*)) );
+            entry.window->setWindowTitle(item->text());
             mainWindow->modifySubWindow(entry.window, true);
             activeCameras.push_back(entry);
         }
@@ -78,14 +88,24 @@ void AbstractCameraManager::on_CameraTree_itemChanged(QStandardItem* item){
     if( item->data(CameraRole).isValid() ){
         activateCamera( item->data(CameraRole).value<AbstractCamera *>(), item, checked==Qt::Checked);
     }else{
-        cameraTree_recursive(item, checked);
+        cameraTree_recursiveCheck(item, checked);
     }
 }
-void AbstractCameraManager::cameraTree_recursive(QStandardItem* parent, Qt::CheckState checked){
+void AbstractCameraManager::cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked){
     for(int i=0; i<parent->rowCount(); ++i){
          QStandardItem* currItem = parent->child(i);
          if(currItem->checkState() != checked){
              currItem->setCheckState(checked);
          }
     }
+}
+bool AbstractCameraManager::cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera){
+    QVariant data = parent->data(CameraRole);
+    //qDebug() << "cameraTree_recursiveSearch( " << parent->text() << ", " << camera << ") " << data.value<AbstractCamera*>();
+    if(data.isValid() && data.value<AbstractCamera*>() == camera) return true;
+
+    for(int i=0; i<parent->rowCount(); ++i){
+        if(cameraTree_recursiveSearch(parent->child(i), camera)) return true;
+    }
+    return false;
 }
