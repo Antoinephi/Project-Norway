@@ -37,7 +37,7 @@ bool AbstractCameraManager::addNewCamera(std::string name, AbstractCamera *camer
 
     //adding
     QStandardItem *item = new QStandardItem(name.c_str());
-    item->setData(QVariant::fromValue(camera), CameraRole);
+    item->setData(QVariant::fromValue( reinterpret_cast<quintptr>(camera) ), CameraRole);
     //qDebug() << "setData " << camera << " data " << item->data(CameraRole).value<AbstractCamera *>();
     item->setCheckable(true);
     item->setCheckState(Qt::Unchecked);
@@ -86,7 +86,7 @@ void AbstractCameraManager::on_CameraTree_itemChanged(QStandardItem* item){
     qDebug() << "itemChanged on " << item->text();
     Qt::CheckState checked = item->checkState();
     if( item->data(CameraRole).isValid() ){
-        activateCamera( item->data(CameraRole).value<AbstractCamera *>(), item, checked==Qt::Checked);
+        activateCamera( reinterpret_cast<AbstractCamera*>( item->data(CameraRole).value<quintptr>() ), item, checked==Qt::Checked);
     }else{
         cameraTree_recursiveCheck(item, checked);
     }
