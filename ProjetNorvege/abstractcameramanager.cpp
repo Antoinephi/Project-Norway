@@ -53,7 +53,7 @@ void AbstractCameraManager::activateCamera(AbstractCamera* camera, QStandardItem
 
     if(i >= 0){ //trouve
         if(!active){ // desactivation
-            qDebug() << "desactivating Camera";
+            //qDebug() << "desactivating Camera";
             activeCameraEntry* entry = &activeCameras.at(i);
             mainWindow->modifySubWindow(entry->window, false);
             activeCameras.erase(activeCameras.begin()+i);
@@ -62,7 +62,7 @@ void AbstractCameraManager::activateCamera(AbstractCamera* camera, QStandardItem
         }
     }else{
         if(active){// activation
-            qDebug() << "activating Camera";
+            //qDebug() << "activating Camera";
             activeCameraEntry entry = activeCameraEntry(camera, item);
             connect(entry.window, SIGNAL(destroyed(QObject*)),
                     this, SLOT(on_subwindow_closing(QObject*)) );
@@ -102,7 +102,7 @@ void AbstractCameraManager::cameraTree_recursiveCheck(QStandardItem* parent, Qt:
 bool AbstractCameraManager::cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera){
     QVariant data = parent->data(CameraRole);
     //qDebug() << "cameraTree_recursiveSearch( " << parent->text() << ", " << camera << ") " << data.value<AbstractCamera*>();
-    if(data.isValid() && data.value<AbstractCamera*>() == camera) return true;
+    if(data.isValid() &&  reinterpret_cast<AbstractCamera*>(data.value<quintptr>()) == camera) return true;
 
     for(int i=0; i<parent->rowCount(); ++i){
         if(cameraTree_recursiveSearch(parent->child(i), camera)) return true;

@@ -39,7 +39,6 @@ void MainWindow::modifySubWindow(QMdiSubWindow* in, bool add){
     if(add){
         (ui->centralwidget->addSubWindow(in))->show();
     }else{
-
         ui->centralwidget->removeSubWindow(in);
     }
 }

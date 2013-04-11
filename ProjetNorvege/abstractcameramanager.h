@@ -45,7 +45,8 @@ class AbstractCameraManager : public QObject
             activeCameraEntry(AbstractCamera *c, QStandardItem* i)
                 : camera(c), window(new QMdiSubWindow()), treeItem(i){
                 window->setAttribute(Qt::WA_DeleteOnClose);
-                window->setWindowFlags(window->windowFlags() & ~Qt::WindowMaximizeButtonHint & ~Qt::WindowMinimizeButtonHint);
+                //window->setWindowFlags(window->windowFlags() & ~Qt::WindowMaximizeButtonHint & ~Qt::WindowMinimizeButtonHint);
+                window->setWindowFlags(Qt::Tool);
             }
             //~activeCameraEntry(){ delete window; }
             AbstractCamera* camera;
