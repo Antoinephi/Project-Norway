@@ -1,7 +1,7 @@
 #include "testcamera.h"
 
 TestCamera::TestCamera()
-    : AbstractCamera::AbstractCamera() {
+    : /*AbstractCamera::*/AbstractCamera() {
 
 }
 

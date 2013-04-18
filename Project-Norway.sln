@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProjetNorvege", "ProjetNorvege\ProjetNorvege.vcxproj", "{4F189A9D-A335-4BE9-92C1-0367F3CC516C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProjetNorvege", "ProjetNorvege\ProjetNorvege.vcxproj", "{C88D0CF3-2BCD-4067-B88A-02DD990FD8A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4F189A9D-A335-4BE9-92C1-0367F3CC516C}.Debug|Win32.ActiveCfg = Debug|Win32
-		{4F189A9D-A335-4BE9-92C1-0367F3CC516C}.Debug|Win32.Build.0 = Debug|Win32
-		{4F189A9D-A335-4BE9-92C1-0367F3CC516C}.Release|Win32.ActiveCfg = Release|Win32
-		{4F189A9D-A335-4BE9-92C1-0367F3CC516C}.Release|Win32.Build.0 = Release|Win32
+		{C88D0CF3-2BCD-4067-B88A-02DD990FD8A1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C88D0CF3-2BCD-4067-B88A-02DD990FD8A1}.Debug|Win32.Build.0 = Debug|Win32
+		{C88D0CF3-2BCD-4067-B88A-02DD990FD8A1}.Release|Win32.ActiveCfg = Release|Win32
+		{C88D0CF3-2BCD-4067-B88A-02DD990FD8A1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
