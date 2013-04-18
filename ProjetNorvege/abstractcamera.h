@@ -2,10 +2,13 @@
 #define ABSTRACTCAMERA_H
 
 #include <string>
+#include "cameraproperty.h"
 class AbstractCamera
 {
     public:
-        virtual /**/void getProperty(/**/)= 0;
+    virtual void setProperty(CameraProperty* p) = 0;
+    virtual void updateProperty(CameraProperty* p) = 0;
+
     protected:
         AbstractCamera();
 };

@@ -7,7 +7,8 @@
 class TestCamera : public AbstractCamera {
     public:
         TestCamera();
-        virtual /**/void getProperty(/**/);
+        void setProperty(CameraProperty* p);
+        void updateProperty(CameraProperty* p);
     private:
 };
 

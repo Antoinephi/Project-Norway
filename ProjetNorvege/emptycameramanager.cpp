@@ -1,7 +1,7 @@
 #include "emptycameramanager.h"
 
 EmptyCameraManager::EmptyCameraManager()
-    : AbstractCameraManager::AbstractCameraManager(true) {
+    : AbstractCameraManager(true) {
 }
 void EmptyCameraManager::detectNewCameras(){
     //Nothing here

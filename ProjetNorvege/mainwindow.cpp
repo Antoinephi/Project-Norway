@@ -90,17 +90,9 @@ void MainWindow::on_SelectCameras_currentIndexChanged(int index)
     cm->getPropertiesWidget()->show();
 }
 
+//need to be moved to AbstractCameraManager
 void MainWindow::on_CameraTree_itemClicked(const QModelIndex & index){
-    QStandardItem* clicked = cameraManagers.at(selectedCameraManager)->getModel()->itemFromIndex(index);
-    QStandardItem* first = cameraManagers.at(selectedCameraManager)->cameraTree_recursiveFirstCamera(clicked);
-
-    if( first != NULL && !clicked->data(CameraRole).isValid() )
-        ui->label->setText(clicked->text() + " ("+ first->text() + ")");
-    else{
-        ui->label->setText(clicked->text());
-    }
-
-
+    ui->label->setText( cameraManagers.at(selectedCameraManager)->cameraTree_itemClicked(index) );
 }
 
 

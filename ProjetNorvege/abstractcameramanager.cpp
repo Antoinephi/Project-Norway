@@ -2,13 +2,19 @@
 #include "mainwindow.h"
 #include <QtCore>
 #include <QDebug>
+#include <QCheckBox>
+#include <QSlider>
 #include <algorithm>
 Q_DECLARE_METATYPE(AbstractCamera *)
 
 AbstractCameraManager::AbstractCameraManager(bool empty)
     : cameraTree() , newCameraList("Detected Cameras"), propertiesList(), activeCameras() {
 
-    propertiesList.addItem("---");
+    propertiesList.setRootIsDecorated(false);
+    propertiesList.setColumnCount(4);
+    propertiesList.setHeaderLabels(QStringList() << "property" << "auto" << "value" << "slider");
+
+
     if(empty) return;
     QObject::connect(&cameraTree, SIGNAL(itemChanged(QStandardItem*)),
             this, SLOT(on_CameraTree_itemChanged(QStandardItem*)));
@@ -18,11 +24,41 @@ AbstractCameraManager::AbstractCameraManager(bool empty)
     //newCameraList.setCheckState(Qt::Checked);
     newCameraList.setEditable(false);
 
-    propertiesList.addItem("test");
 }
 void AbstractCameraManager::setMainWindow(MainWindow* window){
     mainWindow = window;
 }
+void AbstractCameraManager::setProperties(std::vector<CameraProperty> &properties){
+    for(int i=0; i<properties.size(); i++){
+        CameraProperty &property = properties.at(i);
+        qDebug() << property.getName().c_str() << reinterpret_cast<quintptr>(&property);
+        QTreeWidgetItem* it = new QTreeWidgetItem();
+        it->setText( 0, property.getName().c_str());
+        propertiesList.addTopLevelItem(it);
+        //checkbox
+        QCheckBox* box = new QCheckBox();
+        box->setProperty("CameraProperty", QVariant::fromValue(reinterpret_cast<quintptr>(&property)) );
+        if(!property.getCanAuto()) box->setEnabled(false);
+        propertiesList.setItemWidget(it, 1, box);
+        connect( box, SIGNAL(stateChanged(int)), this, SLOT(on_propertyCheckbox_changed(int)) );
+        //slider
+        QSlider* slider = new QSlider(Qt::Horizontal);
+        slider->setProperty("CameraProperty", QVariant::fromValue(reinterpret_cast<quintptr>(&property)) );
+        slider->setTracking(false); //might be wanted
+        propertiesList.setItemWidget(it, 3, slider);
+        connect( slider, SIGNAL(valueChanged(int)), this, SLOT(on_propertyCheckbox_changed(int)) );
+    }
+}
+void AbstractCameraManager::on_propertyCheckbox_changed(int state){
+    CameraProperty* prop = reinterpret_cast<CameraProperty*>( sender()->property("CameraProperty").value<quintptr>() );
+    qDebug() << sender()->property("CameraProperty").value<quintptr>();
+    qDebug() << sender() << prop->getName().c_str();
+}
+void AbstractCameraManager::on_propertySlider_changed(int val){
+    CameraProperty* prop = reinterpret_cast<CameraProperty*>( sender()->property("CameraProperty").value<quintptr>() );
+    qDebug() << sender() << prop->getName().c_str();
+}
+
 QModelIndex AbstractCameraManager::detectNewCamerasAndExpand(){
     detectNewCameras();
     return newCameraList.index();
@@ -78,7 +114,7 @@ void AbstractCameraManager::activateCamera(AbstractCamera* camera, QStandardItem
 QStandardItemModel* AbstractCameraManager::getModel(){
     return &cameraTree;
 }
-QListWidget* AbstractCameraManager::getPropertiesWidget(){
+QTreeWidget *AbstractCameraManager::getPropertiesWidget(){
     return &propertiesList;
 }
 void AbstractCameraManager::on_subwindow_closing(QObject *window){
@@ -114,6 +150,17 @@ bool AbstractCameraManager::cameraTree_recursiveSearch(QStandardItem* parent, Ab
         if(cameraTree_recursiveSearch(parent->child(i), camera)) return true;
     }
     return false;
+}
+
+QString AbstractCameraManager::cameraTree_itemClicked(const QModelIndex & index){
+    QStandardItem* clicked = getModel()->itemFromIndex(index);
+    QStandardItem* first = cameraTree_recursiveFirstCamera(clicked);
+    selectedCamera = first;
+    if( first != NULL && !clicked->data(CameraRole).isValid() )
+        return clicked->text() + " ("+ first->text() + ")";
+    else{
+        return clicked->text();
+    }
 }
 QStandardItem* AbstractCameraManager::cameraTree_recursiveFirstCamera(QStandardItem* parent){
     QVariant data = parent->data(CameraRole);

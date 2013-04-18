@@ -7,7 +7,7 @@
 #include <QStandardItem>
 #include <QMdiArea>
 #include <QMdiSubWindow>
-#include <QListWidget>
+#include <QTreeWidget>
 #include "abstractcamera.h"
 #include "cameraproperty.h"
 
@@ -31,22 +31,25 @@ class AbstractCameraManager : public QObject
         QModelIndex detectNewCamerasAndExpand();
         QModelIndex addGroup();
         void activateCamera(AbstractCamera* camera, QStandardItem* item, bool active);
-        QStandardItem* cameraTree_recursiveFirstCamera(QStandardItem* parent);
+        QString cameraTree_itemClicked(const QModelIndex & index);
         QStandardItemModel* getModel();
-        QListWidget* getPropertiesWidget();
+        QTreeWidget* getPropertiesWidget();
         void setMainWindow(MainWindow* window);        
     protected:
         AbstractCameraManager(bool empty=false);
-        //void setProperties(vector<CameraProperty> properties);
+        void setProperties(std::vector<CameraProperty> &properties);
         bool addNewCamera(std::string name, AbstractCamera *camera);
     private slots:
         void on_CameraTree_itemChanged(QStandardItem* item);
         void on_subwindow_closing(QObject* window);
+        void on_propertyCheckbox_changed(int state);
+        void on_propertySlider_changed(int val);
     private:
         MainWindow* mainWindow;
         QStandardItemModel cameraTree;
         QStandardItem newCameraList;
-        QListWidget propertiesList;
+        QTreeWidget propertiesList;
+        QStandardItem* selectedCamera;
         struct activeCameraEntry{
             activeCameraEntry(AbstractCamera *c, QStandardItem* i)
                 : camera(c), window(new QMdiSubWindow()), treeItem(i){
@@ -62,7 +65,7 @@ class AbstractCameraManager : public QObject
         std::vector<activeCameraEntry> activeCameras;
         void cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked);
         bool cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera);
-
+        QStandardItem* cameraTree_recursiveFirstCamera(QStandardItem* parent);
 };
 
 #endif // ABSTRACTCAMERAMANAGER_H

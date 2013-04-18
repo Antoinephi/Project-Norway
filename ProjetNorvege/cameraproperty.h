@@ -1,6 +1,8 @@
 #ifndef CAMERAPROPERTY_H
 #define CAMERAPROPERTY_H
 
+#include <string>
+
 enum PropertyType {
     BRIGHTNESS,
     GAIN,
@@ -16,8 +18,10 @@ public:
     PropertyType getType(){ return type; }
     void setAuto(bool a){ isAuto = a; }
     bool getAuto(){ return isAuto; }
+    bool getCanAuto(){ return canAuto; }
     void setValue(double value){ val = value; }
     double getValue(){ return val; }
+    std::string getName();
 private:
     PropertyType type;
     double min, max, step;
