@@ -6,8 +6,9 @@
 Q_DECLARE_METATYPE(AbstractCamera *)
 
 AbstractCameraManager::AbstractCameraManager(bool empty)
-    : cameraTree() , newCameraList("Detected Cameras"), activeCameras() {
+    : cameraTree() , newCameraList("Detected Cameras"), propertiesList(), activeCameras() {
 
+    propertiesList.addItem("---");
     if(empty) return;
     QObject::connect(&cameraTree, SIGNAL(itemChanged(QStandardItem*)),
             this, SLOT(on_CameraTree_itemChanged(QStandardItem*)));
@@ -16,6 +17,8 @@ AbstractCameraManager::AbstractCameraManager(bool empty)
     newCameraList.setDragEnabled(false);
     //newCameraList.setCheckState(Qt::Checked);
     newCameraList.setEditable(false);
+
+    propertiesList.addItem("test");
 }
 void AbstractCameraManager::setMainWindow(MainWindow* window){
     mainWindow = window;
@@ -75,6 +78,9 @@ void AbstractCameraManager::activateCamera(AbstractCamera* camera, QStandardItem
 QStandardItemModel* AbstractCameraManager::getModel(){
     return &cameraTree;
 }
+QListWidget* AbstractCameraManager::getPropertiesWidget(){
+    return &propertiesList;
+}
 void AbstractCameraManager::on_subwindow_closing(QObject *window){
     qDebug() << "closing " << window;
     int i = activeCameras.size()-1;
@@ -108,4 +114,15 @@ bool AbstractCameraManager::cameraTree_recursiveSearch(QStandardItem* parent, Ab
         if(cameraTree_recursiveSearch(parent->child(i), camera)) return true;
     }
     return false;
+}
+QStandardItem* AbstractCameraManager::cameraTree_recursiveFirstCamera(QStandardItem* parent){
+    QVariant data = parent->data(CameraRole);
+    if(data.isValid())
+        return parent;
+
+    for(int i=0; i<parent->rowCount(); ++i){
+        QStandardItem* tmp = cameraTree_recursiveFirstCamera(parent->child(i));
+        if( tmp != NULL ) return tmp;
+    }
+    return NULL;
 }

@@ -20,14 +20,16 @@ SOURCES += main.cpp\
     testcameramanager.cpp \
     abstractcamera.cpp \
     testcamera.cpp \
-    emptycameramanager.cpp
+    emptycameramanager.cpp \
+    cameraproperty.cpp
 
 HEADERS  += mainwindow.h \
     abstractcameramanager.h \
     testcameramanager.h \
     abstractcamera.h \
     testcamera.h \
-    emptycameramanager.h
+    emptycameramanager.h \
+    cameraproperty.h
 
 FORMS    += \
     mainwindow.ui

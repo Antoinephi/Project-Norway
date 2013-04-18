@@ -4,8 +4,11 @@
 #include <QMdiArea>
 #include <QMdiSubWindow>
 
+#include <QWidgetItem>
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "abstractcameramanager.h"
 #include "testcameramanager.h"
 #include "emptycameramanager.h"
 
@@ -15,10 +18,12 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow),
       addGroup(new QAction("Add Group", this)), cameraManagers(), selectedCameraManager(-1)
 {
-    ui->setupUi(this);
-    //ui->SelectCameras->addItem("Select");
     cameraManagers.push_back(new EmptyCameraManager());
     cameraManagers.push_back(new TestCameraManager());
+
+    ui->setupUi(this);
+    //ui->SelectCameras->addItem("Select");
+
     for (unsigned int i=0 ; i < cameraManagers.size(); ++i){
         AbstractCameraManager* manager = cameraManagers.at(i);
         manager->setMainWindow(this);
@@ -76,12 +81,26 @@ void MainWindow::on_createGroup_triggered()
 
 void MainWindow::on_SelectCameras_currentIndexChanged(int index)
 {
+    if(selectedCameraManager >= 0)
+        cameraManagers.at(selectedCameraManager)->getPropertiesWidget()->hide();
     selectedCameraManager = index;
-    ui->CameraTree->setModel(cameraManagers.at(selectedCameraManager)->getModel());
+    AbstractCameraManager* cm = cameraManagers.at(selectedCameraManager);
+    ui->CameraTree->setModel(cm->getModel());
+    ui->propertiesContainer->addWidget(cm->getPropertiesWidget());
+    cm->getPropertiesWidget()->show();
 }
 
 void MainWindow::on_CameraTree_itemClicked(const QModelIndex & index){
-    ui->label->setText(cameraManagers.at(selectedCameraManager)->getModel()->itemFromIndex(index)->text());
+    QStandardItem* clicked = cameraManagers.at(selectedCameraManager)->getModel()->itemFromIndex(index);
+    QStandardItem* first = cameraManagers.at(selectedCameraManager)->cameraTree_recursiveFirstCamera(clicked);
+
+    if( first != NULL && !clicked->data(CameraRole).isValid() )
+        ui->label->setText(clicked->text() + " ("+ first->text() + ")");
+    else{
+        ui->label->setText(clicked->text());
+    }
+
+
 }
 
 

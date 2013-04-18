@@ -146,17 +146,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QListView" name="listView">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
+      <layout class="QVBoxLayout" name="propertiesContainer"/>
      </item>
     </layout>
    </widget>

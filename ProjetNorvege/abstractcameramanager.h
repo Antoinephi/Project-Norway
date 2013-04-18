@@ -7,7 +7,9 @@
 #include <QStandardItem>
 #include <QMdiArea>
 #include <QMdiSubWindow>
+#include <QListWidget>
 #include "abstractcamera.h"
+#include "cameraproperty.h"
 
 class MainWindow;
 
@@ -29,10 +31,13 @@ class AbstractCameraManager : public QObject
         QModelIndex detectNewCamerasAndExpand();
         QModelIndex addGroup();
         void activateCamera(AbstractCamera* camera, QStandardItem* item, bool active);
+        QStandardItem* cameraTree_recursiveFirstCamera(QStandardItem* parent);
         QStandardItemModel* getModel();
-        void setMainWindow(MainWindow* window);
+        QListWidget* getPropertiesWidget();
+        void setMainWindow(MainWindow* window);        
     protected:
         AbstractCameraManager(bool empty=false);
+        //void setProperties(vector<CameraProperty> properties);
         bool addNewCamera(std::string name, AbstractCamera *camera);
     private slots:
         void on_CameraTree_itemChanged(QStandardItem* item);
@@ -41,6 +46,7 @@ class AbstractCameraManager : public QObject
         MainWindow* mainWindow;
         QStandardItemModel cameraTree;
         QStandardItem newCameraList;
+        QListWidget propertiesList;
         struct activeCameraEntry{
             activeCameraEntry(AbstractCamera *c, QStandardItem* i)
                 : camera(c), window(new QMdiSubWindow()), treeItem(i){
