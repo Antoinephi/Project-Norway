@@ -1,11 +1,7 @@
 #include "emptycameramanager.h"
 
 EmptyCameraManager::EmptyCameraManager()
-<<<<<<< HEAD
     : AbstractCameraManager(true) {
-=======
-    : /*AbstractCameraManager::*/AbstractCameraManager(true) {
->>>>>>> origin/FlyCapture
 }
 void EmptyCameraManager::detectNewCameras(){
     //Nothing here

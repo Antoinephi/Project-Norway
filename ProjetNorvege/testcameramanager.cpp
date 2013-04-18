@@ -2,11 +2,7 @@
 #include "testcamera.h"
 
 TestCameraManager::TestCameraManager()
-<<<<<<< HEAD
     : AbstractCameraManager(), foundCameras() {
-=======
-    : /*AbstractCameraManager::*/AbstractCameraManager(), foundCameras() {
->>>>>>> origin/FlyCapture
     foundCameras.push_back(FoundCamera(new TestCamera(), "Camera1"));
     foundCameras.push_back(FoundCamera(new TestCamera(), "Camera2"));
     foundCameras.push_back(FoundCamera(new TestCamera(), "Camera3"));
