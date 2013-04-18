@@ -1,7 +1,11 @@
 #include "testcamera.h"
 
 TestCamera::TestCamera()
+<<<<<<< HEAD
     : AbstractCamera() {
+=======
+    : /*AbstractCamera::*/AbstractCamera() {
+>>>>>>> origin/FlyCapture
 
 }
 

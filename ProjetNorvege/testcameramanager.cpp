@@ -2,7 +2,11 @@
 #include "testcamera.h"
 
 TestCameraManager::TestCameraManager()
+<<<<<<< HEAD
     : AbstractCameraManager(), foundCameras() {
+=======
+    : /*AbstractCameraManager::*/AbstractCameraManager(), foundCameras() {
+>>>>>>> origin/FlyCapture
     foundCameras.push_back(FoundCamera(new TestCamera(), "Camera1"));
     foundCameras.push_back(FoundCamera(new TestCamera(), "Camera2"));
     foundCameras.push_back(FoundCamera(new TestCamera(), "Camera3"));
@@ -17,7 +21,7 @@ TestCameraManager::TestCameraManager()
 }
 
 void TestCameraManager::detectNewCameras(){
-    for(int i=0; i<foundCameras.size(); i++)
+    for(unsigned int i=0; i < foundCameras.size(); i++)
         addNewCamera(foundCameras.at(i).name, foundCameras.at(i).camera);
 }
 void TestCameraManager::getCamerasPropertiesList() const{
