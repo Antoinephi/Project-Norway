@@ -8,6 +8,7 @@
 #include <QMdiArea>
 #include <QMdiSubWindow>
 #include <QTreeWidget>
+#include <QLabel>
 #include "abstractcamera.h"
 #include "cameraproperty.h"
 
@@ -29,6 +30,7 @@ class AbstractCameraManager : public QObject
         virtual std::string getName() const = 0;
         //do not reimplement
         QModelIndex detectNewCamerasAndExpand();
+        void updateImages(); //temp
         QModelIndex addGroup();
         void activateCamera(AbstractCamera* camera, QStandardItem* item, bool active);
         QString cameraTree_itemClicked(const QModelIndex & index);
@@ -56,6 +58,7 @@ class AbstractCameraManager : public QObject
                 window->setAttribute(Qt::WA_DeleteOnClose);
                 //window->setWindowFlags(window->windowFlags() & ~Qt::WindowMaximizeButtonHint & ~Qt::WindowMinimizeButtonHint);
                 window->setWindowFlags(Qt::Tool);
+                window->setWidget(new QLabel());
             }
             //~activeCameraEntry(){ delete window; }
             AbstractCamera* camera;
@@ -63,6 +66,7 @@ class AbstractCameraManager : public QObject
             QMdiSubWindow* window;
         };
         std::vector<activeCameraEntry> activeCameras;
+        std::vector<CameraProperty> cameraProperties;
         void cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked);
         bool cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera);
         QStandardItem* cameraTree_recursiveFirstCamera(QStandardItem* parent);

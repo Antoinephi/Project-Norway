@@ -24,6 +24,8 @@ private slots:
 	void on_createGroup_triggered();
 	void on_SelectCameras_currentIndexChanged(int index);
 	void on_CameraTree_itemClicked(const QModelIndex & index);
+    void on_pushButton_clicked();
+
 private:
 	Ui::MainWindow *ui;
 	QAction *addGroup;

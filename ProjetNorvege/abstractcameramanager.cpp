@@ -6,9 +6,10 @@
 #include <QSlider>
 #include <algorithm>
 Q_DECLARE_METATYPE(AbstractCamera *)
+Q_DECLARE_METATYPE(CameraProperty *)
 
 AbstractCameraManager::AbstractCameraManager(bool empty)
-    : cameraTree() , newCameraList("Detected Cameras"), propertiesList(), activeCameras() {
+    : cameraTree() , newCameraList("Detected Cameras"), propertiesList(), cameraProperties(), activeCameras() {
 
     propertiesList.setRootIsDecorated(false);
     propertiesList.setColumnCount(4);
@@ -29,8 +30,9 @@ void AbstractCameraManager::setMainWindow(MainWindow* window){
     mainWindow = window;
 }
 void AbstractCameraManager::setProperties(std::vector<CameraProperty> &properties){
-    for(int i=0; i<properties.size(); i++){
-        CameraProperty &property = properties.at(i);
+    cameraProperties = properties;
+    for(int i=0; i<cameraProperties.size(); i++){
+        CameraProperty &property = cameraProperties.at(i);
         qDebug() << property.getName().c_str() << reinterpret_cast<quintptr>(&property);
         QTreeWidgetItem* it = new QTreeWidgetItem();
         it->setText( 0, property.getName().c_str());
@@ -48,6 +50,9 @@ void AbstractCameraManager::setProperties(std::vector<CameraProperty> &propertie
         propertiesList.setItemWidget(it, 3, slider);
         connect( slider, SIGNAL(valueChanged(int)), this, SLOT(on_propertyCheckbox_changed(int)) );
     }
+    propertiesList.resizeColumnToContents(0);
+    propertiesList.resizeColumnToContents(1);
+    propertiesList.resizeColumnToContents(2);
 }
 void AbstractCameraManager::on_propertyCheckbox_changed(int state){
     CameraProperty* prop = reinterpret_cast<CameraProperty*>( sender()->property("CameraProperty").value<quintptr>() );
@@ -172,4 +177,15 @@ QStandardItem* AbstractCameraManager::cameraTree_recursiveFirstCamera(QStandardI
         if( tmp != NULL ) return tmp;
     }
     return NULL;
+}
+
+void AbstractCameraManager::updateImages(){
+    for(int i=activeCameras.size()-1; i>=0; i--){
+        activeCameraEntry& camEntry = activeCameras.at(i);
+        qDebug() << camEntry.window->widget();
+        QLabel* lbl = qobject_cast<QLabel *>( camEntry.window->widget() );
+        qDebug() << "setting img in widget" << lbl;
+        lbl->setPixmap(QPixmap::fromImage(camEntry.camera->retrieveImage()));
+        lbl->show();
+    }
 }
