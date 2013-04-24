@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-#include <abstractcamera.h>
+#include "abstractcamera.h"
 #include "abstractcameramanager.h"
 
 class TestCameraManager : public AbstractCameraManager {

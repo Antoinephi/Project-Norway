@@ -21,7 +21,10 @@ SOURCES += main.cpp\
     abstractcamera.cpp \
     testcamera.cpp \
     emptycameramanager.cpp \
-    cameraproperty.cpp
+    cameraproperty.cpp \
+    flycameramanager.cpp \
+    flycamera.cpp \
+    circularbuffer.cpp
 
 HEADERS  += mainwindow.h \
     abstractcameramanager.h \
@@ -29,7 +32,20 @@ HEADERS  += mainwindow.h \
     abstractcamera.h \
     testcamera.h \
     emptycameramanager.h \
-    cameraproperty.h
+    cameraproperty.h \
+    flycameramanager.h \
+    flycamera.h \
+    circularbuffer.h
 
 FORMS    += \
     mainwindow.ui
+
+OTHER_FILES += \
+    ../../../../usr/lib/libflycapture.so
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../usr/lib/release/ -lflycapture
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../usr/lib/debug/ -lflycapture
+else:unix: LIBS += -L$$PWD/../../../../usr/lib/ -lflycapture
+
+INCLUDEPATH += $$PWD/../../../../usr/include
+DEPENDPATH += $$PWD/../../../../usr/include
