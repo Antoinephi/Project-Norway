@@ -30,7 +30,8 @@ class AbstractCameraManager : public QObject
         virtual std::string getName() const = 0;
         //do not reimplement
         QModelIndex detectNewCamerasAndExpand();
-        void updateImages(); //temp
+        void updateImages();
+        void updateProperties();
         QModelIndex addGroup();
         void activateCamera(AbstractCamera* camera, QStandardItem* item, bool active);
         QString cameraTree_itemClicked(const QModelIndex & index);
@@ -70,6 +71,7 @@ class AbstractCameraManager : public QObject
         void cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked);
         bool cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera);
         QStandardItem* cameraTree_recursiveFirstCamera(QStandardItem* parent);
+        AbstractCamera* getSelectedCamera();
 };
 
 #endif // ABSTRACTCAMERAMANAGER_H

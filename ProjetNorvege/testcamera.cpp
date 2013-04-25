@@ -1,9 +1,10 @@
 #include "testcamera.h"
 #include <QPainter>
+#include <stdlib.h>
 
 TestCamera::TestCamera()
     : AbstractCamera() {
-
+    srand(42);
 }
 
 void TestCamera::setProperty(CameraProperty* p){
@@ -18,7 +19,7 @@ QImage TestCamera::retrieveImage(){
     img.fill(Qt::green);
     QPainter p;
     p.begin(&img);
-    p.drawRect(50, 50, 300, 300);
+    p.drawRect(rand()%100, rand()%100,rand()%300, rand()%300);
     p.end();
     return img;
 }

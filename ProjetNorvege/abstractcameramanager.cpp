@@ -8,8 +8,15 @@
 Q_DECLARE_METATYPE(AbstractCamera *)
 Q_DECLARE_METATYPE(CameraProperty *)
 
+enum PropertiesWidgetPosition{
+    PropertyName = 0,
+    PropertyAuto = 1,
+    PropertyValue = 2,
+    PropertySlider = 3
+};
+
 AbstractCameraManager::AbstractCameraManager(bool empty)
-    : cameraTree() , newCameraList("Detected Cameras"), propertiesList(), cameraProperties(), activeCameras() {
+    : cameraTree() , newCameraList("Detected Cameras"), propertiesList(), cameraProperties(), activeCameras(), selectedCamera(NULL) {
 
     propertiesList.setRootIsDecorated(false);
     propertiesList.setColumnCount(4);
@@ -30,38 +37,48 @@ void AbstractCameraManager::setMainWindow(MainWindow* window){
     mainWindow = window;
 }
 void AbstractCameraManager::setProperties(std::vector<CameraProperty> &properties){
-    cameraProperties = properties;
+    cameraProperties = std::vector<CameraProperty>(properties);
     for(int i=0; i<cameraProperties.size(); i++){
         CameraProperty &property = cameraProperties.at(i);
-        qDebug() << property.getName().c_str() << reinterpret_cast<quintptr>(&property);
+        //qDebug() << property.getName().c_str() << reinterpret_cast<quintptr>(&property);
         QTreeWidgetItem* it = new QTreeWidgetItem();
-        it->setText( 0, property.getName().c_str());
+        it->setText( PropertyName, property.getName().c_str());
         propertiesList.addTopLevelItem(it);
         //checkbox
         QCheckBox* box = new QCheckBox();
         box->setProperty("CameraProperty", QVariant::fromValue(reinterpret_cast<quintptr>(&property)) );
         if(!property.getCanAuto()) box->setEnabled(false);
-        propertiesList.setItemWidget(it, 1, box);
+        propertiesList.setItemWidget(it, PropertyAuto, box);
         connect( box, SIGNAL(stateChanged(int)), this, SLOT(on_propertyCheckbox_changed(int)) );
         //slider
         QSlider* slider = new QSlider(Qt::Horizontal);
         slider->setProperty("CameraProperty", QVariant::fromValue(reinterpret_cast<quintptr>(&property)) );
+        slider->setProperty("TreeWidgetItem", QVariant::fromValue(reinterpret_cast<quintptr>(it)) );
         slider->setTracking(false); //might be wanted
-        propertiesList.setItemWidget(it, 3, slider);
-        connect( slider, SIGNAL(valueChanged(int)), this, SLOT(on_propertyCheckbox_changed(int)) );
+        propertiesList.setItemWidget(it, PropertySlider, slider);
+        connect( slider, SIGNAL(valueChanged(int)), this, SLOT(on_propertySlider_changed(int)) );
     }
     propertiesList.resizeColumnToContents(0);
     propertiesList.resizeColumnToContents(1);
     propertiesList.resizeColumnToContents(2);
 }
+AbstractCamera* AbstractCameraManager::getSelectedCamera(){
+    //qDebug() << "getSelectedCamera" << selectedCamera;
+    if(selectedCamera == NULL) return NULL;
+    return reinterpret_cast<AbstractCamera *>( selectedCamera->data(CameraRole).value<quintptr>() );
+}
 void AbstractCameraManager::on_propertyCheckbox_changed(int state){
     CameraProperty* prop = reinterpret_cast<CameraProperty*>( sender()->property("CameraProperty").value<quintptr>() );
-    qDebug() << sender()->property("CameraProperty").value<quintptr>();
     qDebug() << sender() << prop->getName().c_str();
+    prop->setAuto(state == Qt::Checked);
+    getSelectedCamera()->setProperty(prop);
 }
 void AbstractCameraManager::on_propertySlider_changed(int val){
     CameraProperty* prop = reinterpret_cast<CameraProperty*>( sender()->property("CameraProperty").value<quintptr>() );
-    qDebug() << sender() << prop->getName().c_str();
+    prop->setValue(val);
+    getSelectedCamera()->setProperty(prop);
+
+    reinterpret_cast<QTreeWidgetItem*>( sender()->property("TreeWidgetItem").value<quintptr>() )->setText(PropertyValue, prop->formatValue() );
 }
 
 QModelIndex AbstractCameraManager::detectNewCamerasAndExpand(){
@@ -188,4 +205,18 @@ void AbstractCameraManager::updateImages(){
         lbl->setPixmap(QPixmap::fromImage(camEntry.camera->retrieveImage()));
         lbl->show();
     }
+}
+
+void AbstractCameraManager::updateProperties(){
+    AbstractCamera* selected = getSelectedCamera();
+    if( selected == NULL ) return ;
+    for( int i = propertiesList.topLevelItemCount()-1; i>=0; i--){
+        QTreeWidgetItem* item = propertiesList.topLevelItem(i);
+        CameraProperty * prop = reinterpret_cast<CameraProperty*>( propertiesList.itemWidget(item, PropertyAuto)->property("CameraProperty").value<quintptr>() );
+        //qDebug() << "updating:" << prop->getName().c_str();
+        selected->updateProperty(prop);
+        item->setText(PropertyValue, prop->formatValue() );
+        //qDebug() << prop->getName().c_str() << prop->getPrecision();
+    }
+
 }

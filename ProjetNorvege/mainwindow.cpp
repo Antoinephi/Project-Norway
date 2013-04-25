@@ -96,8 +96,12 @@ void MainWindow::on_CameraTree_itemClicked(const QModelIndex & index){
 }
 
 
-
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_updateImages_clicked()
 {
     cameraManagers.at(selectedCameraManager)->updateImages();
+}
+
+void MainWindow::on_updateProperties_clicked()
+{
+    cameraManagers.at(selectedCameraManager)->updateProperties();
 }
