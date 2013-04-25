@@ -47,6 +47,7 @@ public:
     QComboBox *SelectCameras;
     QPushButton *Detect;
     QTreeView *CameraTree;
+    QPushButton *pushButton;
     QDockWidget *PropertiesWidget;
     QWidget *dockWidgetContents_2;
     QVBoxLayout *verticalLayout_2;
@@ -122,6 +123,11 @@ public:
 
         verticalLayout->addWidget(CameraTree);
 
+        pushButton = new QPushButton(dockWidgetContents);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        verticalLayout->addWidget(pushButton);
+
         CamerasWidget->setWidget(dockWidgetContents);
         MainWindow->addDockWidget(static_cast<Qt::DockWidgetArea>(1), CamerasWidget);
         PropertiesWidget = new QDockWidget(MainWindow);
@@ -172,6 +178,7 @@ public:
         menuFichier->setTitle(QApplication::translate("MainWindow", "Fichier", 0));
         CamerasWidget->setWindowTitle(QApplication::translate("MainWindow", "Cameras", 0));
         Detect->setText(QApplication::translate("MainWindow", "Detect", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "Update images", 0));
         PropertiesWidget->setWindowTitle(QApplication::translate("MainWindow", "Properties", 0));
         label->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));
