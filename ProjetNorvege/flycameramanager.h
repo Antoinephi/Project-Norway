@@ -6,12 +6,15 @@
 #include <vector>
 #include <iostream>
 #include <stdlib.h>
+#include "abstractcamera.h"
+#include "abstractcameramanager.h"
 
 using namespace FlyCapture2;
 
 
 
 class FlyCameraManager
+	: public AbstractCameraManager
 {
     public:
         FlyCameraManager();
