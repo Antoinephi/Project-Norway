@@ -32,22 +32,10 @@ class FlyCameraManager
         CircularBuffer** camBuffer;
         unsigned int numCameras;
 
-
-//        struct myCamera{
-//            public:
-//            Camera* cam;
-//            PGRGuid guid;
-//            CameraInfo camInfo;
-//        };
-
-    protected:
-
     private:
     BusManager busMgr;
     Error error;
     std::vector<FlyCamera> flyCameras;
-
-
 };
 
 #endif // FLYCAMERAMANAGER_H

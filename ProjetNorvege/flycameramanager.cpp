@@ -6,8 +6,6 @@ using namespace std;
 FlyCameraManager::FlyCameraManager()
 	: AbstractCameraManager()
 {
-
-
     //ctor
 }
 
