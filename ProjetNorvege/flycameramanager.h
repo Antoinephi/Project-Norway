@@ -1,6 +1,6 @@
 #ifndef FLYCAMERAMANAGER_H
 #define FLYCAMERAMANAGER_H
-#include "flycapture/FlyCapture2.h"
+
 #include "circularbuffer.h"
 #include "flycamera.h"
 #include <vector>
@@ -8,6 +8,8 @@
 #include <stdlib.h>
 
 using namespace FlyCapture2;
+
+
 
 class FlyCameraManager
 {

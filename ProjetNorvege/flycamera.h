@@ -1,9 +1,15 @@
 #ifndef FLYCAMERA_H
 #define FLYCAMERA_H
-#include "flycapture/FlyCapture2.h"
 
+#if defined(WIN64) || defined(WIN32)
+	#include "FlyCapture2.h"
+#elif defined(__unix__)
+	#include "flycapture/FlyCapture2.h"
+#endif
 
 using namespace FlyCapture2;
+
+
 
 class FlyCamera
 {

@@ -1,7 +1,11 @@
 #ifndef CIRCULARBUFFER_H_INCLUDED
 #define CIRCULARBUFFER_H_INCLUDED
 
-#include "flycapture/FlyCapture2.h"
+#if defined(WIN64) || defined(WIN32)
+	#include "FlyCapture2.h"
+#elif defined(__unix__)
+	#include "flycapture/FlyCapture2.h"
+#endif
 
 
 using namespace FlyCapture2;
