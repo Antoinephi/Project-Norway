@@ -202,7 +202,10 @@ void AbstractCameraManager::updateImages(){
         qDebug() << camEntry.window->widget();
         QLabel* lbl = qobject_cast<QLabel *>( camEntry.window->widget() );
         qDebug() << "setting img in widget" << lbl;
-        lbl->setPixmap(QPixmap::fromImage(camEntry.camera->retrieveImage()));
+        qDebug() << camEntry.window->size();
+        QPixmap pxmap = QPixmap::fromImage(camEntry.camera->retrieveImage().scaled(lbl->size(), Qt::KeepAspectRatio));
+        //lbl->setAlignment(Qt::AlignCenter);
+        lbl->setPixmap(pxmap);
         lbl->show();
     }
 }

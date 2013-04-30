@@ -19,6 +19,7 @@ QImage TestCamera::retrieveImage(){
     img.fill(Qt::green);
     QPainter p;
     p.begin(&img);
+    p.drawRect(0,0,399,399);
     p.drawRect(rand()%100, rand()%100,rand()%300, rand()%300);
     p.end();
     return img;
