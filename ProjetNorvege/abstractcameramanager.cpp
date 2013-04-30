@@ -54,7 +54,7 @@ void AbstractCameraManager::setProperties(std::vector<CameraProperty> &propertie
         QSlider* slider = new QSlider(Qt::Horizontal);
         slider->setProperty("CameraProperty", QVariant::fromValue(reinterpret_cast<quintptr>(&property)) );
         slider->setProperty("TreeWidgetItem", QVariant::fromValue(reinterpret_cast<quintptr>(it)) );
-        slider->setTracking(false); //might be wanted
+        slider->setTracking(true); //might be wanted
         propertiesList.setItemWidget(it, PropertySlider, slider);
         connect( slider, SIGNAL(valueChanged(int)), this, SLOT(on_propertySlider_changed(int)) );
     }

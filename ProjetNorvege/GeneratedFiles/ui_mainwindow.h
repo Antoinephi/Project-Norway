@@ -47,7 +47,9 @@ public:
     QComboBox *SelectCameras;
     QPushButton *Detect;
     QTreeView *CameraTree;
-    QPushButton *pushButton;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *updateImages;
+    QPushButton *updateProperties;
     QDockWidget *PropertiesWidget;
     QWidget *dockWidgetContents_2;
     QVBoxLayout *verticalLayout_2;
@@ -123,10 +125,21 @@ public:
 
         verticalLayout->addWidget(CameraTree);
 
-        pushButton = new QPushButton(dockWidgetContents);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(-1, 0, -1, -1);
+        updateImages = new QPushButton(dockWidgetContents);
+        updateImages->setObjectName(QStringLiteral("updateImages"));
 
-        verticalLayout->addWidget(pushButton);
+        horizontalLayout_2->addWidget(updateImages);
+
+        updateProperties = new QPushButton(dockWidgetContents);
+        updateProperties->setObjectName(QStringLiteral("updateProperties"));
+
+        horizontalLayout_2->addWidget(updateProperties);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
 
         CamerasWidget->setWidget(dockWidgetContents);
         MainWindow->addDockWidget(static_cast<Qt::DockWidgetArea>(1), CamerasWidget);
@@ -178,7 +191,8 @@ public:
         menuFichier->setTitle(QApplication::translate("MainWindow", "Fichier", 0));
         CamerasWidget->setWindowTitle(QApplication::translate("MainWindow", "Cameras", 0));
         Detect->setText(QApplication::translate("MainWindow", "Detect", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "Update images", 0));
+        updateImages->setText(QApplication::translate("MainWindow", "Update Images", 0));
+        updateProperties->setText(QApplication::translate("MainWindow", "Update Properties", 0));
         PropertiesWidget->setWindowTitle(QApplication::translate("MainWindow", "Properties", 0));
         label->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));

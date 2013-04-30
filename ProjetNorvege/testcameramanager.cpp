@@ -13,8 +13,8 @@ TestCameraManager::TestCameraManager()
     prop.push_back(CameraProperty(CameraManager::EXPOSURE, 0, 255, 1, true));
     prop.push_back(CameraProperty(CameraManager::GAMMA, 0, 5, 0.01, false));
     prop.push_back(CameraProperty(CameraManager::SHUTTER, 0, 255, 1, true));
-    for(int i=props.size()-1; i>=0; i--){
-        props.at(i).setValue(0.0);
+    for(int i=prop.size()-1; i>=0; i--){
+        prop.at(i).setValue(0.0);
     }
 	setProperties(prop);
 }
