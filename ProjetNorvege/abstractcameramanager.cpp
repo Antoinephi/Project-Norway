@@ -8,6 +8,8 @@
 Q_DECLARE_METATYPE(AbstractCamera *)
 Q_DECLARE_METATYPE(CameraProperty *)
 
+
+
 enum PropertiesWidgetPosition{
     PropertyName = 0,
     PropertyAuto = 1,

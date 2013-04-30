@@ -1,6 +1,6 @@
 #include "cameraproperty.h"
 #include <QDebug>
-CameraProperty::CameraProperty(PropertyType type, float min, float max, int decimals, bool canAuto)
+CameraProperty::CameraProperty(CameraManager::PropertyType type, float min, float max, int decimals, bool canAuto)
     :type(type), min(min), max(max), decimals(decimals), canAuto(canAuto) {
 
 }
@@ -8,11 +8,11 @@ CameraProperty::CameraProperty(PropertyType type, float min, float max, int deci
 std::string CameraProperty::getName(){
     //qDebug() << type;
     switch (type){
-    case BRIGHTNESS : return "brightness";
-    case GAIN : return "gain";
-    case EXPOSURE : return "exposure";
-    case GAMMA : return "gamma";
-    case SHUTTER : return "shutter";
+    case CameraManager::BRIGHTNESS : return "brightness";
+    case CameraManager::GAIN : return "gain";
+    case CameraManager::EXPOSURE : return "exposure";
+    case CameraManager::GAMMA : return "gamma";
+    case CameraManager::SHUTTER : return "shutter";
     }
     return "unknown type"/*+type*/;
 }

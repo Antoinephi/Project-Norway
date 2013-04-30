@@ -5,19 +5,25 @@
 #include <cmath>
 #include <QString>
 
-enum PropertyType {
-    BRIGHTNESS,
-    GAIN,
-    EXPOSURE,
-    GAMMA,
-    SHUTTER
-};
+namespace CameraManager {
+    class CameraProperty;
+
+    enum PropertyType {
+        BRIGHTNESS,
+        GAIN,
+        EXPOSURE,
+        GAMMA,
+        SHUTTER
+    };
+}
+
+
 
 class CameraProperty
 {
 public:
-    CameraProperty(PropertyType type, float min, float max, int decimals = 0, bool canAuto = false);
-    PropertyType getType(){ return type; }
+    CameraProperty(CameraManager::PropertyType type, float min, float max, int decimals = 0, bool canAuto = false);
+    CameraManager::PropertyType getType(){ return type; }
     void setAuto(bool a){ isAuto = a; }
     bool getAuto(){ return isAuto; }
     bool getCanAuto(){ return canAuto; }
@@ -33,7 +39,7 @@ public:
 
     std::string getName();
 private:
-    PropertyType type;
+    CameraManager::PropertyType type;
     float min, max;
     int decimals;
     bool canAuto;
