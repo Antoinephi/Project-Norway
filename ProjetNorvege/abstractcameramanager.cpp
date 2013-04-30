@@ -179,6 +179,7 @@ QString AbstractCameraManager::cameraTree_itemClicked(const QModelIndex & index)
     QStandardItem* clicked = getModel()->itemFromIndex(index);
     QStandardItem* first = cameraTree_recursiveFirstCamera(clicked);
     selectedCamera = first;
+    updateProperties();
     if( first != NULL && !clicked->data(CameraRole).isValid() )
         return clicked->text() + " ("+ first->text() + ")";
     else{
@@ -200,12 +201,11 @@ QStandardItem* AbstractCameraManager::cameraTree_recursiveFirstCamera(QStandardI
 void AbstractCameraManager::updateImages(){
     for(int i=activeCameras.size()-1; i>=0; i--){
         activeCameraEntry& camEntry = activeCameras.at(i);
-        qDebug() << camEntry.window->widget();
+        //qDebug() << camEntry.window->widget();
         QLabel* lbl = qobject_cast<QLabel *>( camEntry.window->widget() );
-        qDebug() << "setting img in widget" << lbl;
-        qDebug() << camEntry.window->size();
+        //qDebug() << "setting img in widget" << lbl;
+        //qDebug() << camEntry.window->size();
         QPixmap pxmap = QPixmap::fromImage(camEntry.camera->retrieveImage().scaled(lbl->size(), Qt::KeepAspectRatio));
-        //lbl->setAlignment(Qt::AlignCenter);
         lbl->setPixmap(pxmap);
         lbl->show();
     }

@@ -1,6 +1,6 @@
 #include "cameraproperty.h"
 #include <QDebug>
-CameraProperty::CameraProperty(PropertyType type, double min, double max, int decimals, bool canAuto)
+CameraProperty::CameraProperty(PropertyType type, float min, float max, int decimals, bool canAuto)
     :type(type), min(min), max(max), decimals(decimals), canAuto(canAuto) {
 
 }

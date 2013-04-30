@@ -16,14 +16,14 @@ enum PropertyType {
 class CameraProperty
 {
 public:
-    CameraProperty(PropertyType type, double min, double max, int decimals = 0, bool canAuto = false);
+    CameraProperty(PropertyType type, float min, float max, int decimals = 0, bool canAuto = false);
     PropertyType getType(){ return type; }
     void setAuto(bool a){ isAuto = a; }
     bool getAuto(){ return isAuto; }
     bool getCanAuto(){ return canAuto; }
-    void setValue(double value){ val = value; }
-    double getValue(){ return val; }
-    double getDecimals(){ return decimals; }
+    void setValue(float value){ val = value; }
+    float getValue(){ return val; }
+    float getDecimals(){ return decimals; }
 
     void setValueFromSlider(int value){ val = value/pow(10, decimals); }
     int getValueToSlider(){ return val*pow(10, decimals); }
@@ -34,11 +34,11 @@ public:
     std::string getName();
 private:
     PropertyType type;
-    double min, max;
+    float min, max;
     int decimals;
     bool canAuto;
 
-    double val;
+    float val;
     bool isAuto;
 };
 
