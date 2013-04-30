@@ -11,7 +11,7 @@
 #include "abstractcameramanager.h"
 #include "testcameramanager.h"
 #include "emptycameramanager.h"
-
+#include "flycameramanager.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
 	cameraManagers.push_back(new EmptyCameraManager());
 	cameraManagers.push_back(new TestCameraManager());
+    cameraManagers.push_back(new FlyCameraManager());
 
 	ui->setupUi(this);
 	//ui->SelectCameras->addItem("Select");

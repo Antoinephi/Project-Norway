@@ -35,7 +35,8 @@ void FlyCameraManager::PrintCameraInfo(CameraInfo* pCamInfo)
 }
 
 
-void FlyCameraManager::detectNewCameras(){
+void FlyCameraManager::detectNewCameras()
+{
     busMgr.GetNumOfCameras(&numCameras);
     for(unsigned int i = 0; i<numCameras; i++){
         FlyCamera* flyCam = new FlyCamera();
@@ -44,11 +45,13 @@ void FlyCameraManager::detectNewCameras(){
         flyCam->getCamera()->GetCameraInfo(flyCam->getCameraInfo());
         PrintCameraInfo(flyCam->getCameraInfo());
         flyCameras.push_back(*flyCam);
+        addNewCamera("cam" ,flyCam);
 
     }
 }
 
-void FlyCameraManager::takePicture(unsigned int numCam){
+void FlyCameraManager::takePicture(unsigned int numCam)
+{
       if(numCameras >= 1 && numCam <= numCameras){
             FlyCamera tmpCam = flyCameras.at(numCam);
             Image img;
@@ -61,7 +64,8 @@ void FlyCameraManager::takePicture(unsigned int numCam){
     }
 }
 
-void FlyCameraManager::getPicture(unsigned int numCam){
+void FlyCameraManager::getPicture(unsigned int numCam)
+{
 
     if(numCameras >= 1 && numCam <= numCameras){
         FlyCamera tmpCam = flyCameras.at(numCam);
@@ -88,23 +92,33 @@ void FlyCameraManager::getPicture(unsigned int numCam){
 
 }
 
-void FlyCameraManager::disconnectAllCameras(){
-    for(unsigned int i = 0; i < flyCameras.size();i++){
+void FlyCameraManager::disconnectAllCameras()
+{
+    for(unsigned int i = 0; i < flyCameras.size();i++)
+    {
         flyCameras.at(i).getCamera()->Disconnect();
     }
     cout << "All cameras are disconnected" << endl;
 }
 
 
-void FlyCameraManager::startCapture(int numCam){
+void FlyCameraManager::startCapture(int numCam)
+{
     flyCameras.at(numCam-1).getCamera()->StartCapture();
 }
 
-void FlyCameraManager::stopCapture(int numCam){
+void FlyCameraManager::stopCapture(int numCam)
+{
     flyCameras.at(numCam-1).getCamera()->StopCapture();
 }
 
-string FlyCameraManager::getName(){
+void FlyCameraManager::getCamerasPropertiesList() const
+{
+    //Nothing here
+}
+
+string FlyCameraManager::getName() const
+{
     return "FlyCapture Camera Manager";
 }
 

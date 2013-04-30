@@ -21,7 +21,8 @@ class FlyCameraManager
         virtual ~FlyCameraManager();
         void PrintCameraInfo(CameraInfo*);
         void detectNewCameras();
-        std::string getName();
+        std::string getName() const;
+        void getCamerasPropertiesList() const;
         void disconnectAllCameras();
         void getPicture(unsigned int numCam);
         void takePicture(unsigned int numCam);
