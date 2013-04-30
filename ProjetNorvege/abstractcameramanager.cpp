@@ -54,7 +54,7 @@ void AbstractCameraManager::setProperties(std::vector<CameraProperty> &propertie
         QSlider* slider = new QSlider(Qt::Horizontal);
         slider->setProperty("CameraProperty", QVariant::fromValue(reinterpret_cast<quintptr>(&property)) );
         slider->setProperty("TreeWidgetItem", QVariant::fromValue(reinterpret_cast<quintptr>(it)) );
-        slider->setTracking(false); //might be wanted
+        slider->setTracking(true); //might be wanted
         propertiesList.setItemWidget(it, PropertySlider, slider);
         connect( slider, SIGNAL(valueChanged(int)), this, SLOT(on_propertySlider_changed(int)) );
     }
@@ -166,7 +166,7 @@ void AbstractCameraManager::cameraTree_recursiveCheck(QStandardItem* parent, Qt:
 bool AbstractCameraManager::cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera){
     QVariant data = parent->data(CameraRole);
     //qDebug() << "cameraTree_recursiveSearch( " << parent->text() << ", " << camera << ") " << data.value<AbstractCamera*>();
-    if(data.isValid() &&  reinterpret_cast<AbstractCamera*>(data.value<quintptr>()) == camera) return true;
+    if(data.isValid() &&  reinterpret_cast<AbstractCamera*>(data.value<quintptr>())->equalsTo(camera) ) return true;
 
     for(int i=0; i<parent->rowCount(); ++i){
         if(cameraTree_recursiveSearch(parent->child(i), camera)) return true;
