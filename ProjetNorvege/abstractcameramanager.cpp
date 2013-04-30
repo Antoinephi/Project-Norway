@@ -166,7 +166,7 @@ void AbstractCameraManager::cameraTree_recursiveCheck(QStandardItem* parent, Qt:
 bool AbstractCameraManager::cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera){
     QVariant data = parent->data(CameraRole);
     //qDebug() << "cameraTree_recursiveSearch( " << parent->text() << ", " << camera << ") " << data.value<AbstractCamera*>();
-    if(data.isValid() &&  reinterpret_cast<AbstractCamera*>(data.value<quintptr>()) == camera) return true;
+    if(data.isValid() &&  reinterpret_cast<AbstractCamera*>(data.value<quintptr>())->equalsTo(camera) ) return true;
 
     for(int i=0; i<parent->rowCount(); ++i){
         if(cameraTree_recursiveSearch(parent->child(i), camera)) return true;

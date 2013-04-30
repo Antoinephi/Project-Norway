@@ -26,7 +26,6 @@ class AbstractCameraManager : public QObject
     public:
         // Pure virtual -> to implement
         virtual void detectNewCameras() = 0;
-        virtual void getCamerasPropertiesList() const = 0;
         virtual std::string getName() const = 0;
         //do not reimplement
         QModelIndex detectNewCamerasAndExpand();
