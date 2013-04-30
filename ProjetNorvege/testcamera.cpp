@@ -7,10 +7,10 @@ TestCamera::TestCamera()
     srand(42);
 }
 
-void TestCamera::setProperty(CameraProperty* p){
+void TestCamera::setProperty(CameraManager::CameraProperty* p){
     //Nothing here
 }
-void TestCamera::updateProperty(CameraProperty* p){
+void TestCamera::updateProperty(CameraManager::CameraProperty* p){
     //Nothing here
 }
 
@@ -19,6 +19,7 @@ QImage TestCamera::retrieveImage(){
     img.fill(Qt::green);
     QPainter p;
     p.begin(&img);
+    p.drawRect(1,1,397,397);
     p.drawRect(rand()%100, rand()%100,rand()%300, rand()%300);
     p.end();
     return img;

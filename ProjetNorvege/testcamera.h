@@ -7,8 +7,8 @@
 class TestCamera : public AbstractCamera {
     public:
         TestCamera();
-        void setProperty(CameraProperty* p);
-        void updateProperty(CameraProperty* p);
+        void setProperty(CameraManager::CameraProperty* p);
+        void updateProperty(CameraManager::CameraProperty* p);
         virtual QImage retrieveImage();
     private:
 };

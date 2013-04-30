@@ -7,7 +7,7 @@ TestCameraManager::TestCameraManager()
     foundCameras.push_back(FoundCamera(new TestCamera(), "Camera2"));
     foundCameras.push_back(FoundCamera(new TestCamera(), "Camera3"));
 
-    std::vector<CameraProperty> prop = std::vector<CameraProperty>();
+	std::vector<CameraProperty> prop = std::vector<CameraProperty>();
     prop.push_back(CameraProperty(CameraManager::BRIGHTNESS, 0, 255, 1, true));
     prop.push_back(CameraProperty(CameraManager::GAIN, 0, 255, 1, true));
     prop.push_back(CameraProperty(CameraManager::EXPOSURE, 0, 255, 1, true));

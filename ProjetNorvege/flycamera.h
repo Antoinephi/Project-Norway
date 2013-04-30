@@ -21,8 +21,8 @@ class FlyCamera : public AbstractCamera
         Camera* getCamera();
         PGRGuid* getGuid();
         CameraInfo* getCameraInfo();
-        void setProperty(CameraProperty *p);
-        void updateProperty(CameraProperty *p);
+        void setProperty(CameraManager::CameraProperty *p);
+        void updateProperty(CameraManager::CameraProperty *p);
         QImage retrieveImage();
         bool equalsTo(AbstractCamera *c);
     private:

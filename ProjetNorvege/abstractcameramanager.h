@@ -12,6 +12,8 @@
 #include "abstractcamera.h"
 #include "cameraproperty.h"
 
+using namespace CameraManager;
+
 class MainWindow;
 
 
@@ -58,7 +60,10 @@ class AbstractCameraManager : public QObject
                 window->setAttribute(Qt::WA_DeleteOnClose);
                 //window->setWindowFlags(window->windowFlags() & ~Qt::WindowMaximizeButtonHint & ~Qt::WindowMinimizeButtonHint);
                 window->setWindowFlags(Qt::Tool);
-                window->setWidget(new QLabel());
+                QLabel* lbl = new QLabel();
+                lbl->setAlignment(Qt::AlignCenter);
+                lbl->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+                window->setWidget(lbl);
             }
             //~activeCameraEntry(){ delete window; }
             AbstractCamera* camera;

@@ -22,11 +22,11 @@ CameraInfo* FlyCamera::getCameraInfo()
     return &camInfo;
 }
 
-void FlyCamera::setProperty(CameraProperty* p)
+void FlyCamera::setProperty(CameraManager::CameraProperty* p)
 {
     //Nothing here
 }
-void FlyCamera::updateProperty(CameraProperty* p)
+void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
 {
     //Nothing here
 }
