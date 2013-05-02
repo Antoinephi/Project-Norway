@@ -19,16 +19,9 @@ class FlyCameraManager
     public:
         FlyCameraManager();
         virtual ~FlyCameraManager();
-        void PrintCameraInfo(CameraInfo*);
         void detectNewCameras();
         std::string getName() const;
         void getCamerasPropertiesList() const;
-        void disconnectAllCameras();
-        void getPicture(unsigned int numCam);
-        void takePicture(unsigned int numCam);
-        void showCamera();
-        void startCapture(int numCam);
-        void stopCapture(int numCam);
 
         CircularBuffer** camBuffer;
         unsigned int numCameras;
@@ -36,7 +29,6 @@ class FlyCameraManager
     private:
     BusManager busMgr;
     Error error;
-    std::vector<FlyCamera> flyCameras;
 };
 
 #endif // FLYCAMERAMANAGER_H

@@ -2,6 +2,7 @@
 #define FLYCAMERA_H
 
 #include "abstractcamera.h"
+#include <iostream>
 
 #if defined(WIN64) || defined(WIN32)
 	#include "FlyCapture2.h"
@@ -25,6 +26,7 @@ class FlyCamera : public AbstractCamera
         void updateProperty(CameraManager::CameraProperty *p);
         QImage retrieveImage();
         bool equalsTo(AbstractCamera *c);
+
     private:
         Camera* cam;
         PGRGuid guid;

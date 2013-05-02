@@ -1,5 +1,5 @@
 #include "flycamera.h"
-
+#include <QPainter>
 
 
 FlyCamera::FlyCamera() : AbstractCamera()
@@ -32,22 +32,23 @@ void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
 }
 
 QImage FlyCamera::retrieveImage(){
+    getCamera()->StartCapture();
     Image img;
-    int size = img.GetDataSize();
-    unsigned char* data = (unsigned char*) malloc(size * 4);
-    unsigned char* picData = img.GetData();
     getCamera()->RetrieveBuffer(&img);
+    int size = img.GetDataSize();
+    unsigned char* data = (unsigned char*) malloc(size * 3);
+    unsigned char* picData = img.GetData();
     int j = 0;
-    for(unsigned int i = 0; i<img.GetCols()  * img.GetRows() *4; i+=4)
+    for(unsigned int i = 0; i<img.GetCols()  * img.GetRows() *3; i+=3)
     {
         data[i] = picData[j];
         data[i+1] = picData[j];
         data[i+2] = picData[j];
-        data[i+3] = picData[j];
         j++;
 
     }
-    QImage image(data, img.GetCols(), img.GetRows(), QImage::Format_ARGB32);
+
+    QImage image(data, img.GetCols(), img.GetRows(), QImage::Format_RGB32);
     return image;
 }
 
