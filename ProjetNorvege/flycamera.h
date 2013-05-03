@@ -31,6 +31,7 @@ class FlyCamera : public AbstractCamera
         Camera* cam;
         PGRGuid guid;
         CameraInfo camInfo;
+		Property getProperty(CameraManager::CameraProperty *p);
 
 };
 
