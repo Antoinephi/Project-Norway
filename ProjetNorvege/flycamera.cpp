@@ -72,26 +72,37 @@ Property FlyCamera::getProperty(CameraManager::CameraProperty* p)
 }
 
 QImage FlyCamera::retrieveImage(){
+
+
     getCamera()->StartCapture();
     Image img;
     getCamera()->RetrieveBuffer(&img);
     int size = img.GetDataSize();
-    unsigned char* data = (unsigned char*) malloc(size * 3);
+
     unsigned char* picData = img.GetData();
-    int j = 0;
+    QImage image(img.GetCols(), img.GetRows(), QImage::Format_RGB32);
+    for(unsigned int i = 0; i <img.GetCols(); i++){
+        for(unsigned int j = 0; j <img.GetRows(); j++) {
 
-    for(unsigned int i = 0; i<img.GetCols()  * img.GetRows() *3; i+=3)
-    {
-        data[i] = picData[j];
-        data[i+1] = picData[j];
-        data[i+2] = picData[j];
-        j++;
+            image.setPixel(i, j, picData[i*img.GetRows()+j]);
 
-    }
+        }
+       }
 
-    QImage image(3, 3, QImage::Format_RGB32);
-    QRgb value = qRgb(100,100,100);
-    image.setPixel(1,1, value);
+//    unsigned char* data = (unsigned char*) malloc(size * 3);
+//    unsigned char* picData = img.GetData();
+//    int j = 0;
+
+//    for(unsigned int i = 0; i<img.GetCols()  * img.GetRows() *3; i+=3)
+//    {
+//        data[i] = picData[j];
+//        data[i+1] = picData[j];
+//        data[i+2] = picData[j];
+//        j++;
+
+//    }
+
+
     return image;
 }
 
