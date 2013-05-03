@@ -1,6 +1,6 @@
 #include "flycamera.h"
 #include <QPainter>
-
+#include <QRgb>
 
 FlyCamera::FlyCamera() : AbstractCamera()
 {
@@ -39,6 +39,7 @@ QImage FlyCamera::retrieveImage(){
     unsigned char* data = (unsigned char*) malloc(size * 3);
     unsigned char* picData = img.GetData();
     int j = 0;
+
     for(unsigned int i = 0; i<img.GetCols()  * img.GetRows() *3; i+=3)
     {
         data[i] = picData[j];
@@ -48,7 +49,9 @@ QImage FlyCamera::retrieveImage(){
 
     }
 
-    QImage image(data, img.GetCols(), img.GetRows(), QImage::Format_RGB32);
+    QImage image(3, 3, QImage::Format_RGB32);
+    QRgb value = qRgb(100,100,100);
+    image.setPixel(1,1, value);
     return image;
 }
 
