@@ -32,7 +32,9 @@ void FlyCamera::setProperty(CameraManager::CameraProperty* p)
     {
 		prop.autoManualMode = p->getAuto();
 		prop.absValue = p->getValue();
-    }
+    } else {
+		printf("Erreur : %d", error);
+	}
 }
 void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
 {
@@ -44,7 +46,9 @@ void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
     {
 		p->setAuto(prop.autoManualMode);
 		p->setValue(prop.absValue);
-    }
+    } else {
+		printf("Erreur : %d", error);
+	}
 }
 Property FlyCamera::getProperty(CameraManager::CameraProperty* p)
 {
