@@ -85,29 +85,13 @@ QImage FlyCamera::retrieveImage(){
 
     unsigned char* picData = img.GetData();
     QImage image(img.GetCols(), img.GetRows(), QImage::Format_RGB32);
-    for(unsigned int i = 0; i <img.GetCols(); i++){
-        for(unsigned int j = 0; j <img.GetRows(); j++) {
-
-            image.setPixel(i, j, picData[i*img.GetRows()+j]);
-
-        }
-       }
-
-//    unsigned char* data = (unsigned char*) malloc(size * 3);
-//    unsigned char* picData = img.GetData();
-//    int j = 0;
-
-//    for(unsigned int i = 0; i<img.GetCols()  * img.GetRows() *3; i+=3)
-//    {
-//        data[i] = picData[j];
-//        data[i+1] = picData[j];
-//        data[i+2] = picData[j];
-//        j++;
-
-//    }
-
-
-    return image;
+	for(unsigned int i = 0; i <img.GetCols(); i++){
+		for(unsigned int j = 0; j <img.GetRows(); j++) {
+			image.setPixel(i, j, picData[i*img.GetRows()+j]);
+		}
+	}
+	
+	return image;
 }
 
 
