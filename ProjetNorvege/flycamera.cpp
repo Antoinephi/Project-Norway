@@ -28,13 +28,18 @@ void FlyCamera::setProperty(CameraManager::CameraProperty* p)
     Error error;
 	Property prop;
 	prop.type = getPropertyType(p);
-
+	
     error = cam->GetProperty(&prop);
     if (error == PGRERROR_OK)
     {
 		prop.autoManualMode = p->getAuto();
-		prop.absValue = p->getValue();
-		qDebug() << "set " << p->getName().c_str() << " : " << prop.absValue;
+
+		if(p->getDecimals() > 0)
+			prop.absValue = p->getValue();
+		else
+			prop.valueA = (int) p->getValue();
+		
+		cam->SetProperty(&prop);
     }
 }
 void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
@@ -47,8 +52,7 @@ void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
     if (error == PGRERROR_OK)
     {
 		p->setAuto(prop.autoManualMode);
-		p->setValue(prop.absValue);
-		qDebug() << "get " << p->getName().c_str() << " : " << prop.absValue;
+		p->setValue(p->getDecimals() > 0 ? prop.absValue : prop.valueA);
     }
 }
 FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProperty* p)
