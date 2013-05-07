@@ -218,9 +218,11 @@ void AbstractCameraManager::updateProperties(){
     if( selected == NULL ) return ;
     for( int i = propertiesList.topLevelItemCount()-1; i>=0; i--){
         QTreeWidgetItem* item = propertiesList.topLevelItem(i);
-        CameraProperty * prop = reinterpret_cast<CameraProperty*>( propertiesList.itemWidget(item, PropertyAuto)->property("CameraProperty").value<quintptr>() );
+        QCheckBox* checkBox = qobject_cast<QCheckBox*>( propertiesList.itemWidget(item, PropertyAuto) );
+        CameraProperty * prop = reinterpret_cast<CameraProperty*>( checkBox->property("CameraProperty").value<quintptr>() );
         //qDebug() << "updating:" << prop->getName().c_str();
         selected->updateProperty(prop);
+        checkBox->setChecked(prop->getAuto());
         item->setText(PropertyValue, prop->formatValue() );
         //qDebug() << prop->getName().c_str() << prop->getPrecision();
     }
