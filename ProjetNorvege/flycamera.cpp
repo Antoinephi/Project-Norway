@@ -1,4 +1,5 @@
 #include "flycamera.h"
+#include <QDebug>
 #include <QPainter>
 #include <QRgb>
 
@@ -25,54 +26,50 @@ CameraInfo* FlyCamera::getCameraInfo()
 void FlyCamera::setProperty(CameraManager::CameraProperty* p)
 {
     Error error;
-    Property prop = getProperty(p);
+	Property prop;
+	prop.type = getPropertyType(p);
 
     error = cam->GetProperty(&prop);
     if (error == PGRERROR_OK)
     {
 		prop.autoManualMode = p->getAuto();
 		prop.absValue = p->getValue();
-    } else {
-		printf("Erreur : %d", error);
-	}
+		qDebug() << "set " << p->getName().c_str() << " : " << prop.absValue;
+    }
 }
 void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
 {
 	Error error;
-	Property prop = getProperty(p);
+	Property prop;
+	prop.type = getPropertyType(p);
 
     error = cam->GetProperty(&prop);
     if (error == PGRERROR_OK)
     {
 		p->setAuto(prop.autoManualMode);
 		p->setValue(prop.absValue);
-    } else {
-		printf("Erreur : %d", error);
-	}
+		qDebug() << "get " << p->getName().c_str() << " : " << prop.absValue;
+    }
 }
-Property FlyCamera::getProperty(CameraManager::CameraProperty* p)
+FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProperty* p)
 {
-	Property prop;
-
 	switch(p->getType()){
 	case CameraManager::BRIGHTNESS:
-		prop.type = BRIGHTNESS;
+		return BRIGHTNESS;
 		break;
 	case CameraManager::EXPOSURE:
-		prop.type = AUTO_EXPOSURE;
+		return AUTO_EXPOSURE;
 		break;
 	case CameraManager::GAIN:
-		prop.type = GAIN;
+		return GAIN;
 		break;
 	case CameraManager::GAMMA:
-		prop.type = GAMMA;
+		return GAMMA;
 		break;
 	case CameraManager::SHUTTER:
-		prop.type = SHUTTER;
+		return SHUTTER;
 		break;
 	}
-
-	return prop;
 }
 
 QImage FlyCamera::retrieveImage(){
