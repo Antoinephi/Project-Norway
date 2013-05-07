@@ -49,6 +49,7 @@ void AbstractCameraManager::setProperties(std::vector<CameraProperty> &propertie
         //checkbox
         QCheckBox* box = new QCheckBox();
         box->setProperty("CameraProperty", QVariant::fromValue(reinterpret_cast<quintptr>(&property)) );
+
         if(!property.getCanAuto()) box->setEnabled(false);
         propertiesList.setItemWidget(it, PropertyAuto, box);
         connect( box, SIGNAL(stateChanged(int)), this, SLOT(on_propertyCheckbox_changed(int)) );
@@ -59,6 +60,8 @@ void AbstractCameraManager::setProperties(std::vector<CameraProperty> &propertie
         slider->setTracking(true); //might be wanted
         slider->setRange(property.getMinToSlider(), property.getMaxToSLider());
         propertiesList.setItemWidget(it, PropertySlider, slider);
+
+        box->setProperty("TreeWidgetSlider", QVariant::fromValue(reinterpret_cast<quintptr>(slider)) );
         connect( slider, SIGNAL(valueChanged(int)), this, SLOT(on_propertySlider_changed(int)) );
     }
     propertiesList.resizeColumnToContents(0);
@@ -75,6 +78,9 @@ void AbstractCameraManager::on_propertyCheckbox_changed(int state){
     qDebug() << sender() << prop->getName().c_str();
     prop->setAuto(state == Qt::Checked);
     getSelectedCamera()->setProperty(prop);
+
+    //(de)activate slider
+    reinterpret_cast<QSlider*>( sender()->property("TreeWidgetSlider").value<quintptr>() )->setEnabled(state != Qt::Checked);
 }
 void AbstractCameraManager::on_propertySlider_changed(int val){
     CameraProperty* prop = reinterpret_cast<CameraProperty*>( sender()->property("CameraProperty").value<quintptr>() );
@@ -221,10 +227,13 @@ void AbstractCameraManager::updateProperties(){
         QCheckBox* checkBox = qobject_cast<QCheckBox*>( propertiesList.itemWidget(item, PropertyAuto) );
         CameraProperty * prop = reinterpret_cast<CameraProperty*>( checkBox->property("CameraProperty").value<quintptr>() );
         //qDebug() << "updating:" << prop->getName().c_str();
-        selected->updateProperty(prop);
-        checkBox->setChecked(prop->getAuto());
+        selected->updateProperty(prop);        
         item->setText(PropertyValue, prop->formatValue() );
-        //qDebug() << prop->getName().c_str() << prop->getPrecision();
+        checkBox->setChecked(prop->getAuto());
+
+        //(de)activate slider
+        //reinterpret_cast<QSlider*>( checkBox->property("TreeWidgetSlider").value<quintptr>() )->setEnabled(prop->getAuto());
+
     }
 
 }
