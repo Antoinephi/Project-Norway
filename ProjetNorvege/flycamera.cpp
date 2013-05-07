@@ -40,7 +40,6 @@ void FlyCamera::setProperty(CameraManager::CameraProperty* p)
 			prop.valueA = (int) p->getValue();
 		
 		cam->SetProperty(&prop);
-		qDebug() << "set " << p->getName().c_str() << " : " << (p->getDecimals() > 0 ? prop.absValue : prop.valueA);;
     }
 }
 void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
@@ -54,7 +53,6 @@ void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
     {
 		p->setAuto(prop.autoManualMode);
 		p->setValue(p->getDecimals() > 0 ? prop.absValue : prop.valueA);
-		qDebug() << "get " << p->getName().c_str() << " : " << (p->getDecimals() > 0 ? prop.absValue : prop.valueA);
     }
 }
 FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProperty* p)
