@@ -72,19 +72,19 @@ FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProper
 	}
 }
 
-QImage FlyCamera::retrieveImage(){
-
-
+QImage FlyCamera::retrieveImage()
+{
     getCamera()->StartCapture();
     Image img;
     getCamera()->RetrieveBuffer(&img);
-    int size = img.GetDataSize();
-
     unsigned char* picData = img.GetData();
-    QImage image(img.GetCols(), img.GetRows(), QImage::Format_RGB32);
-	for(unsigned int i = 0; i <img.GetCols(); i++){
-		for(unsigned int j = 0; j <img.GetRows(); j++) {
-			image.setPixel(i, j, picData[i*img.GetRows()+j]);
+    unsigned int x = img.GetCols();
+    unsigned int y = img.GetRows();
+    QImage image(x, y, QImage::Format_RGB32);
+    for(unsigned int i = 0; i <x; i++){
+        for(unsigned int j = 0; j <y; j++) {
+            unsigned char data = picData[i*x+j];
+            image.setPixel(i, j, qRgb(data, data, data));
 		}
 	}
 	
