@@ -1,5 +1,6 @@
 #include "flycameramanager.h"
 #include "flycamera.h"
+#include <sstream>
 #include <QImage>
 using namespace std;
 
@@ -33,7 +34,13 @@ void FlyCameraManager::detectNewCameras()
         busMgr.GetCameraFromIndex(i, flyCam->getGuid());
         flyCam->getCamera()->Connect(flyCam->getGuid());
         flyCam->getCamera()->GetCameraInfo(flyCam->getCameraInfo());
-        addNewCamera("cam" ,flyCam);
+
+		string name = flyCam->getCameraInfo()->modelName;
+		ostringstream refTmp;
+		refTmp << flyCam->getCameraInfo()->serialNumber;
+		string ref = refTmp.str();
+
+        addNewCamera(name + " - " + ref, flyCam);
     }
 }
 
