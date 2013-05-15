@@ -3,6 +3,7 @@
 #include <QPainter>
 #include <QRgb>
 
+
 FlyCamera::FlyCamera() : AbstractCamera()
 {
     cam = new Camera();
@@ -98,6 +99,21 @@ QImage FlyCamera::retrieveImage()
 bool FlyCamera::equalsTo(AbstractCamera *c){
     return guid == *((FlyCamera *)c)->getGuid();
 }
+
+
+
+
+
+std::string FlyCamera::getString(){
+	string name = FlyCamera::getCameraInfo()->modelName;
+	ostringstream refTmp;
+	refTmp << FlyCamera::getCameraInfo()->serialNumber;
+	string ref = refTmp.str();
+
+	return name + " - " + ref;
+}
+
+
 
 FlyCamera::~FlyCamera()
 {

@@ -3,6 +3,7 @@
 
 #include "abstractcamera.h"
 #include <iostream>
+#include <sstream>
 
 #if defined(WIN64) || defined(WIN32)
 	#include "FlyCapture2.h"
@@ -11,6 +12,7 @@
 #endif
 
 using namespace FlyCapture2;
+using namespace std;
 
 
 
@@ -26,6 +28,7 @@ class FlyCamera : public AbstractCamera
         void updateProperty(CameraManager::CameraProperty *p);
         QImage retrieveImage();
         bool equalsTo(AbstractCamera *c);
+		std::string getString();
 
     private:
         Camera* cam;

@@ -19,7 +19,7 @@ class FlyCameraManager
     public:
         FlyCameraManager();
         virtual ~FlyCameraManager();
-        void detectNewCameras();
+        virtual void detectNewCameras(std::vector<AbstractCamera*> *newCameras);
         std::string getName() const;
         void getCamerasPropertiesList() const;
 

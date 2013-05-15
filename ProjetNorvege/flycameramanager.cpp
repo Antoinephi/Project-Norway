@@ -26,7 +26,7 @@ FlyCameraManager::~FlyCameraManager()
 }
 
 
-void FlyCameraManager::detectNewCameras()
+void FlyCameraManager::detectNewCameras(std::vector<AbstractCamera*> *newCameras)
 {
     busMgr.GetNumOfCameras(&numCameras);
     for(unsigned int i = 0; i<numCameras; i++){
@@ -34,13 +34,8 @@ void FlyCameraManager::detectNewCameras()
         busMgr.GetCameraFromIndex(i, flyCam->getGuid());
         flyCam->getCamera()->Connect(flyCam->getGuid());
         flyCam->getCamera()->GetCameraInfo(flyCam->getCameraInfo());
-
-		string name = flyCam->getCameraInfo()->modelName;
-		ostringstream refTmp;
-		refTmp << flyCam->getCameraInfo()->serialNumber;
-		string ref = refTmp.str();
-
-        addNewCamera(name + " - " + ref, flyCam);
+		
+		newCameras->push_back(flyCam);
     }
 }
 
