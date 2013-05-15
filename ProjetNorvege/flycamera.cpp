@@ -34,10 +34,9 @@ void FlyCamera::setProperty(CameraManager::CameraProperty* p)
     {
 		prop.autoManualMode = p->getAuto();
 
-		if(p->getDecimals() > 0)
-			prop.absValue = p->getValue();
-		else
-			prop.valueA = (int) p->getValue();
+		prop.absValue = p->getValue();
+		prop.valueA = (int) p->getValue();
+		prop.valueB = (int) p->getValue();
 		
 		cam->SetProperty(&prop);
     }
