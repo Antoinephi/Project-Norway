@@ -88,6 +88,7 @@ void MainWindow::on_SelectCameras_currentIndexChanged(int index)
 	ui->CameraTree->setModel(cm->getModel());
 	ui->propertiesContainer->addWidget(cm->getPropertiesWidget());
 	cm->getPropertiesWidget()->show();
+    on_Detect_clicked();
 }
 
 //need to be moved to AbstractCameraManager
