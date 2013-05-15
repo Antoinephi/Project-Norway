@@ -106,6 +106,7 @@ QModelIndex AbstractCameraManager::detectNewCamerasAndExpand(){
         }
         if( !found ){ //remove if disconnected
             activateCamera(cam, item, false);
+            item->parent()->removeRow(item->row());
         }
     }
     qDebug() << "newCameras" << newCameras.size();
