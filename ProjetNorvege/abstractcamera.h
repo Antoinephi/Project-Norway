@@ -10,6 +10,7 @@ class AbstractCamera
         virtual void setProperty(CameraManager::CameraProperty* p) = 0;
         virtual void updateProperty(CameraManager::CameraProperty* p) = 0;
         virtual bool equalsTo(AbstractCamera* c);
+        virtual std::string getString() = 0;
         virtual QImage retrieveImage() = 0;
 
     protected:

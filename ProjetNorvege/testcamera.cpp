@@ -3,8 +3,8 @@
 #include <QDebug>
 #include <stdlib.h>
 
-TestCamera::TestCamera()
-    : AbstractCamera() {
+TestCamera::TestCamera(std::string n)
+    : AbstractCamera(), n(n) {
     srand(42);
 }
 
