@@ -6,11 +6,13 @@
 
 class TestCamera : public AbstractCamera {
     public:
-        TestCamera();
+        TestCamera(std::string n);
         void setProperty(CameraProperty* p);
         void updateProperty(CameraProperty* p);
+        virtual std::string getString(){ return n; }
         virtual QImage retrieveImage();
     private:
+        std::string n;
 };
 
 #endif // TESTCAMERA_H

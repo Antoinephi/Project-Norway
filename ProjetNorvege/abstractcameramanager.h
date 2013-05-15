@@ -25,7 +25,7 @@ class AbstractCameraManager : public QObject
     Q_OBJECT
     public:
         // Pure virtual -> to implement
-        virtual void detectNewCameras() = 0;
+        virtual void detectNewCameras(std::vector<AbstractCamera*> *newCameras) = 0;
         virtual std::string getName() const = 0;
         //do not reimplement
         QModelIndex detectNewCamerasAndExpand();
@@ -72,9 +72,10 @@ class AbstractCameraManager : public QObject
         std::vector<activeCameraEntry> activeCameras;
         std::vector<CameraProperty> cameraProperties;
         void cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked);
-        bool cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera);
+        //bool cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera);
         QStandardItem* cameraTree_recursiveFirstCamera(QStandardItem* parent);
         void cameraTree_recursiveSetProperty(QStandardItem* parent, CameraProperty* prop);
+        void cameraTree_getCameraList(QStandardItem* parent, std::vector<QStandardItem*> *list);
         AbstractCamera* getSelectedCamera();
 };
 

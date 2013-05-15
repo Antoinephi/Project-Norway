@@ -3,9 +3,9 @@
 
 TestCameraManager::TestCameraManager()
     : AbstractCameraManager(), foundCameras() {
-    foundCameras.push_back(FoundCamera(new TestCamera(), "Camera1"));
-    foundCameras.push_back(FoundCamera(new TestCamera(), "Camera2"));
-    foundCameras.push_back(FoundCamera(new TestCamera(), "Camera3"));
+    foundCameras.push_back(new TestCamera("Camera1"));
+    foundCameras.push_back(new TestCamera("Camera2"));
+    foundCameras.push_back(new TestCamera("Camera3"));
 
     std::vector<CameraProperty> props = std::vector<CameraProperty>();
     props.push_back(CameraProperty(CameraManager::BRIGHTNESS, 0, 255, 0, true));
@@ -19,9 +19,8 @@ TestCameraManager::TestCameraManager()
     setProperties(props);
 }
 
-void TestCameraManager::detectNewCameras(){
-    for(unsigned int i=0; i < foundCameras.size(); i++)
-        addNewCamera(foundCameras.at(i).name, foundCameras.at(i).camera);
+void TestCameraManager::detectNewCameras(std::vector<AbstractCamera *> *newCameras){
+    *newCameras = foundCameras;
 }
 void TestCameraManager::getCamerasPropertiesList() const{
     //Nothing here

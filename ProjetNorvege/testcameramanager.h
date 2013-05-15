@@ -9,17 +9,11 @@
 class TestCameraManager : public AbstractCameraManager {
     public:
         TestCameraManager();
-        virtual void detectNewCameras();
+        virtual void detectNewCameras(std::vector<AbstractCamera*> *newCameras);
         virtual void getCamerasPropertiesList() const;
         virtual std::string getName() const;
     private:
-        struct FoundCamera{
-            FoundCamera(AbstractCamera* c, std::string n)
-                :camera(c), name(n){}
-            AbstractCamera* camera;
-            std::string name;
-        };
-        std::vector<FoundCamera> foundCameras;
+        std::vector<AbstractCamera*> foundCameras;
 };
 
 #endif // TESTCAMERAMANAGER_H

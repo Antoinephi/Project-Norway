@@ -3,7 +3,7 @@
 EmptyCameraManager::EmptyCameraManager()
     : AbstractCameraManager(true) {
 }
-void EmptyCameraManager::detectNewCameras(){
+void EmptyCameraManager::detectNewCameras(std::vector<AbstractCamera *> *newCameras){
     //Nothing here
 }
 void EmptyCameraManager::getCamerasPropertiesList() const{
