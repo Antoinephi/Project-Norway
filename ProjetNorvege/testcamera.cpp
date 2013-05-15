@@ -1,5 +1,6 @@
 #include "testcamera.h"
 #include <QPainter>
+#include <QDebug>
 #include <stdlib.h>
 
 TestCamera::TestCamera()
@@ -9,6 +10,7 @@ TestCamera::TestCamera()
 
 void TestCamera::setProperty(CameraManager::CameraProperty* p){
     //Nothing here
+    qDebug() << "setProperty";
 }
 void TestCamera::updateProperty(CameraManager::CameraProperty* p){
     //Nothing here

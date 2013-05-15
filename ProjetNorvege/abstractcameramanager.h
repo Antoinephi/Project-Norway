@@ -53,7 +53,8 @@ class AbstractCameraManager : public QObject
         QStandardItemModel cameraTree;
         QStandardItem newCameraList;
         QTreeWidget propertiesList;
-        QStandardItem* selectedCamera;
+        QStandardItem* selectedItem;
+        AbstractCamera* selectedCamera;
         struct activeCameraEntry{
             activeCameraEntry(AbstractCamera *c, QStandardItem* i)
                 : camera(c), window(new QMdiSubWindow()), treeItem(i){
@@ -75,6 +76,7 @@ class AbstractCameraManager : public QObject
         void cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked);
         bool cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera);
         QStandardItem* cameraTree_recursiveFirstCamera(QStandardItem* parent);
+        void cameraTree_recursiveSetProperty(QStandardItem* parent, CameraProperty* prop);
         AbstractCamera* getSelectedCamera();
 };
 
