@@ -74,15 +74,25 @@ AbstractCamera* AbstractCameraManager::getSelectedCamera(){
     return reinterpret_cast<AbstractCamera *>( selectedCamera->data(CameraRole).value<quintptr>() );
 }
 void AbstractCameraManager::on_propertyCheckbox_changed(int state){
+    if( selectedCamera == NULL ) return;
     CameraProperty* prop = reinterpret_cast<CameraProperty*>( sender()->property("CameraProperty").value<quintptr>() );
     qDebug() << sender() << prop->getName().c_str();
     prop->setAuto(state == Qt::Checked);
     getSelectedCamera()->setProperty(prop);
 
     //(de)activate slider
-    reinterpret_cast<QSlider*>( sender()->property("TreeWidgetSlider").value<quintptr>() )->setEnabled(state != Qt::Checked);
+    QSlider* slider =  reinterpret_cast<QSlider*>( sender()->property("TreeWidgetSlider").value<quintptr>() );
+    qDebug() << "Qslider" << slider;
+    if(state != Qt::Checked){
+        slider->setEnabled(true);
+        slider->setValue(prop->getValueToSlider());
+    }else{
+        slider->setEnabled(false);
+    }
+
 }
 void AbstractCameraManager::on_propertySlider_changed(int val){
+    if( selectedCamera == NULL ) return;
     CameraProperty* prop = reinterpret_cast<CameraProperty*>( sender()->property("CameraProperty").value<quintptr>() );
     prop->setValueFromSlider(val);
     getSelectedCamera()->setProperty(prop);
