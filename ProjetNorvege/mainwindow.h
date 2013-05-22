@@ -27,6 +27,12 @@ private slots:
     void on_updateImages_clicked();
     void on_updateProperties_clicked();
 
+    void on_actionUpdateImages_triggered();
+
+    void on_actionUpdateProperties_triggered();
+
+    void on_actionLiveView_toggled(bool arg1);
+
 private:
 	Ui::MainWindow *ui;
 	QAction *addGroup;

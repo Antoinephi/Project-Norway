@@ -82,8 +82,10 @@ void MainWindow::on_createGroup_triggered()
 
 void MainWindow::on_SelectCameras_currentIndexChanged(int index)
 {
-	if(selectedCameraManager >= 0)
+    if(selectedCameraManager >= 0){
+        cameraManagers.at(selectedCameraManager)->desactiveAllCameras();
 		cameraManagers.at(selectedCameraManager)->getPropertiesWidget()->hide();
+    }
 	selectedCameraManager = index;
 	AbstractCameraManager* cm = cameraManagers.at(selectedCameraManager);
 	ui->CameraTree->setModel(cm->getModel());
@@ -106,4 +108,19 @@ void MainWindow::on_updateImages_clicked()
 void MainWindow::on_updateProperties_clicked()
 {
     cameraManagers.at(selectedCameraManager)->updateProperties();
+}
+
+void MainWindow::on_actionUpdateImages_triggered()
+{
+    cameraManagers.at(selectedCameraManager)->updateImages();
+}
+
+void MainWindow::on_actionUpdateProperties_triggered()
+{
+    cameraManagers.at(selectedCameraManager)->updateProperties();
+}
+
+void MainWindow::on_actionLiveView_toggled(bool arg1)
+{
+
 }

@@ -132,7 +132,7 @@ QModelIndex AbstractCameraManager::addGroup(){
     return newGroup->index();
 }
 
-/* will be removed
+/* removed
 bool AbstractCameraManager::addNewCamera(std::string name, AbstractCamera *camera){
     //check if already detected
     if(cameraTree_recursiveSearch(cameraTree.invisibleRootItem(), camera)) return false;
@@ -212,6 +212,11 @@ QString AbstractCameraManager::cameraTree_itemClicked(const QModelIndex & index)
 //////////// Recursive in Camera List /////////////
 ///////////////////////////////////////////////////
 
+//uncheck all
+void AbstractCameraManager::desactiveAllCameras(){
+    cameraTree_recursiveCheck(cameraTree.invisibleRootItem(), Qt::Unchecked);
+}
+
 // check QStandardItem and its decendants
 void AbstractCameraManager::cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked){
     for(int i=0; i<parent->rowCount(); ++i){
@@ -222,19 +227,6 @@ void AbstractCameraManager::cameraTree_recursiveCheck(QStandardItem* parent, Qt:
     }
 }
 
-/* useless
-// search for an AbstractCamera in QStandardItem and its decendants
-// @return true if the AbstractCamera is found
-bool AbstractCameraManager::cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera){
-    QVariant data = parent->data(CameraRole);
-    //qDebug() << "cameraTree_recursiveSearch( " << parent->text() << ", " << camera << ") " << data.value<AbstractCamera*>();
-    if(data.isValid() &&  reinterpret_cast<AbstractCamera*>(data.value<quintptr>())->equalsTo(camera) ) return true;
-
-    for(int i=0; i<parent->rowCount(); ++i){
-        if(cameraTree_recursiveSearch(parent->child(i), camera)) return true;
-    }
-    return false;
-}*/
 
 // get first AbstractCamera in QStandardItem
 // @return first found AbstractCamera
