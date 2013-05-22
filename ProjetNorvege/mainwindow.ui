@@ -200,7 +200,10 @@
   </action>
   <action name="actionUpdateImages">
    <property name="text">
-    <string>UpdateImages</string>
+    <string>UpdateImages (Space)</string>
+   </property>
+   <property name="shortcut">
+    <string>Space</string>
    </property>
   </action>
   <action name="actionUpdateProperties">

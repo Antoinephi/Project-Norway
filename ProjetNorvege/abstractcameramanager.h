@@ -123,7 +123,7 @@ class AbstractCameraManager : public QObject
         AbstractCamera* selectedCamera;
         struct activeCameraEntry{
             activeCameraEntry(AbstractCamera *c, QStandardItem* i)
-                : camera(c), window(new QMdiSubWindow()), treeItem(i){
+                : camera(c), treeItem(i), window(new QMdiSubWindow()) {
                 window->setAttribute(Qt::WA_DeleteOnClose);
                 //window->setWindowFlags(window->windowFlags() & ~Qt::WindowMaximizeButtonHint & ~Qt::WindowMinimizeButtonHint);
                 window->setWindowFlags(Qt::Tool);

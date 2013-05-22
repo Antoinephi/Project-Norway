@@ -19,7 +19,7 @@ enum PropertiesWidgetPosition{
 };
 
 AbstractCameraManager::AbstractCameraManager(bool empty)
-    : cameraTree() , newCameraList("Detected Cameras"), propertiesList(), cameraProperties(), activeCameras(), selectedItem(NULL), selectedCamera(NULL) {
+    : cameraTree() , newCameraList("Detected Cameras"), propertiesList(), selectedItem(NULL), selectedCamera(NULL), activeCameras(), cameraProperties() {
 
     propertiesList.setRootIsDecorated(false);
     propertiesList.setColumnCount(4);
@@ -92,7 +92,7 @@ QModelIndex AbstractCameraManager::detectNewCamerasAndExpand(){
     qDebug() << "oldCameras" << oldCameras.size();
     qDebug() << "newCameras" << newCameras.size();
     //removing disconnected cameras
-    for(int i=0; i<oldCameras.size(); i++){
+    for(unsigned int i=0; i<oldCameras.size(); i++){
         QStandardItem* item = oldCameras.at(i);
         AbstractCamera* cam = reinterpret_cast<AbstractCamera *>( item->data(CameraRole).value<quintptr>() );
         qDebug() << "oldCameras(" << i << "):" << cam;
@@ -111,7 +111,7 @@ QModelIndex AbstractCameraManager::detectNewCamerasAndExpand(){
     }
     qDebug() << "newCameras" << newCameras.size();
     //adding new cameras
-    for(int i=0; i<newCameras.size(); i++){
+    for(unsigned int i=0; i<newCameras.size(); i++){
         AbstractCamera* cam = newCameras.at(i);
         QStandardItem *item = new QStandardItem(cam->getString().c_str());
         item->setData(QVariant::fromValue( reinterpret_cast<quintptr>(cam) ), CameraRole);
@@ -275,7 +275,7 @@ void AbstractCameraManager::cameraTree_getCameraList(QStandardItem* parent, std:
 
 void AbstractCameraManager::setProperties(std::vector<CameraProperty> &properties){
     cameraProperties = std::vector<CameraProperty>(properties);
-    for(int i=0; i<cameraProperties.size(); i++){
+    for(unsigned int i=0; i<cameraProperties.size(); i++){
         CameraProperty &property = cameraProperties.at(i);
         //qDebug() << property.getName().c_str() << reinterpret_cast<quintptr>(&property);
         QTreeWidgetItem* it = new QTreeWidgetItem();
