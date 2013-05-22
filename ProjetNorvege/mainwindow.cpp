@@ -99,16 +99,6 @@ void MainWindow::on_CameraTree_itemClicked(const QModelIndex & index){
 }
 
 
-void MainWindow::on_updateImages_clicked()
-{
-    cameraManagers.at(selectedCameraManager)->updateImages();
-}
-
-void MainWindow::on_updateProperties_clicked()
-{
-    cameraManagers.at(selectedCameraManager)->updateProperties();
-}
-
 void MainWindow::on_actionUpdateImages_triggered()
 {
     cameraManagers.at(selectedCameraManager)->updateImages();
@@ -123,3 +113,5 @@ void MainWindow::on_actionLiveView_toggled(bool arg1)
 {
 
 }
+
+
