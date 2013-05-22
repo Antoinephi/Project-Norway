@@ -114,27 +114,6 @@
        </attribute>
       </widget>
      </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QPushButton" name="updateImages">
-         <property name="text">
-          <string>Update Images</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="updateProperties">
-         <property name="text">
-          <string>Update Properties</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
     </layout>
    </widget>
   </widget>
@@ -176,6 +155,9 @@
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
    <property name="floatable">
     <bool>false</bool>
    </property>
@@ -185,9 +167,18 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionLiveView"/>
+   <addaction name="separator"/>
    <addaction name="actionMosaic"/>
+   <addaction name="separator"/>
+   <addaction name="actionUpdateImages"/>
+   <addaction name="actionUpdateProperties"/>
   </widget>
   <action name="actionQuitter">
+   <property name="icon">
+    <iconset resource="Ressources.qrc">
+     <normaloff>:/new/icons/quit.png</normaloff>:/new/icons/quit.png</iconset>
+   </property>
    <property name="text">
     <string>Quitter</string>
    </property>
@@ -196,6 +187,10 @@
    </property>
   </action>
   <action name="actionMosaic">
+   <property name="icon">
+    <iconset resource="Ressources.qrc">
+     <normaloff>:/new/icons/mosaic.png</normaloff>:/new/icons/mosaic.png</iconset>
+   </property>
    <property name="text">
     <string>Mosaic</string>
    </property>
@@ -203,7 +198,31 @@
     <string>Make a mosaic with camera views</string>
    </property>
   </action>
+  <action name="actionUpdateImages">
+   <property name="text">
+    <string>UpdateImages</string>
+   </property>
+  </action>
+  <action name="actionUpdateProperties">
+   <property name="text">
+    <string>UpdateProperties</string>
+   </property>
+  </action>
+  <action name="actionLiveView">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Ressources.qrc">
+     <normaloff>:/new/icons/liveview.png</normaloff>:/new/icons/liveview.png</iconset>
+   </property>
+   <property name="text">
+    <string>LiveView</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="Ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>

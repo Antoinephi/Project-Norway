@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/new/icons">
+        <file>mosaic.png</file>
+        <file>liveview.png</file>
+        <file>quit.png</file>
+    </qresource>
+</RCC>
