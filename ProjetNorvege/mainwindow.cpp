@@ -17,11 +17,12 @@
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), ui(new Ui::MainWindow),
       addGroup(new QAction("Add Group", this)), cameraManagers(), selectedCameraManager(-1),
+      //*
       propertiesIcons{
         QIcon(":/icons/camera.png").pixmap(16,16),
         QIcon(":/icons/folder.png").pixmap(16,16),
         QIcon(":/icons/folder_camera.png").pixmap(16,16)
-      }
+      }//*/
 
 {
     ui->setupUi(this);
@@ -36,6 +37,9 @@ MainWindow::MainWindow(QWidget *parent)
 		manager->setMainWindow(this);
 		ui->SelectCameras->addItem(manager->getName().c_str());
 	}
+
+    ui->SelectCameras->setFixedHeight( ui->Detect->sizeHint().height()-2 );
+
 	connect(ui->CameraTree, SIGNAL(clicked(const QModelIndex &)),
 			this, SLOT(on_CameraTree_itemClicked(const QModelIndex &)));
 	connect(addGroup, SIGNAL(triggered()),
@@ -148,13 +152,5 @@ void MainWindow::on_deleteGroup_clicked()
 {
     if( !ui->CameraTree->currentIndex().isValid() ) return;
     cameraManagers.at(selectedCameraManager)->removeGroup( ui->CameraTree->currentIndex() );
-    /*QStandardItem * item = cameraManagers.at(selectedCameraManager)->getModel()->itemFromIndex( ui->CameraTree->currentIndex() );
-    if( item->isEditable() ){
-        QStandardItem * parent = item->parent();
-        if( parent == NULL ) parent = item->model()->invisibleRootItem();
-
-
-        parent->removeRow( item->row() );
-        on_Detect_clicked();
-    }*/
+    on_CameraTree_itemClicked( ui->CameraTree->currentIndex() );
 }

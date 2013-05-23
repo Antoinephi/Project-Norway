@@ -10,6 +10,12 @@
     <height>604</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -72,7 +78,7 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>22</height>
+           <height>0</height>
           </size>
          </property>
          <property name="iconSize">
@@ -85,6 +91,15 @@
        </item>
        <item>
         <widget class="QPushButton" name="Detect">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -96,6 +111,9 @@
          </property>
          <property name="toolTip">
           <string>Detect new cameras</string>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
          </property>
          <property name="text">
           <string/>
@@ -158,6 +176,12 @@
          <property name="enabled">
           <bool>true</bool>
          </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="toolTip">
           <string>Add group</string>
          </property>
@@ -186,16 +210,22 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="editItem">
+        <widget class="QPushButton" name="deleteGroup">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="toolTip">
-          <string>Edit</string>
+          <string>Delete group</string>
          </property>
          <property name="text">
           <string/>
          </property>
          <property name="icon">
           <iconset resource="Ressources.qrc">
-           <normaloff>:/icons/edit.png</normaloff>:/icons/edit.png</iconset>
+           <normaloff>:/icons/folder_delete.png</normaloff>:/icons/folder_delete.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -206,16 +236,22 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="deleteGroup">
+        <widget class="QPushButton" name="editItem">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>2</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="toolTip">
-          <string>Delete group</string>
+          <string>Edit</string>
          </property>
          <property name="text">
           <string/>
          </property>
          <property name="icon">
           <iconset resource="Ressources.qrc">
-           <normaloff>:/icons/folder_delete.png</normaloff>:/icons/folder_delete.png</iconset>
+           <normaloff>:/icons/edit.png</normaloff>:/icons/edit.png</iconset>
          </property>
          <property name="iconSize">
           <size>
