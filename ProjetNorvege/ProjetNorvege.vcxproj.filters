@@ -45,6 +45,11 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="abstractcamera.cpp">
@@ -92,6 +97,9 @@
     <ClCompile Include="circularbuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_Ressources.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstractcamera.h">
@@ -132,5 +140,43 @@
     <CustomBuild Include="mainwindow.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="Ressources.qrc">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mosaic.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="liveview.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="quit.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="one.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="one_disabled.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="folder_delete.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="folder_add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="edit.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="folder_home.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="folder.png">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
