@@ -11,7 +11,9 @@
 
 using namespace FlyCapture2;
 
-
+/**
+ * @brief The FlyCameraManager class deals with all the Fly Capture Cameras
+ */
 
 class FlyCameraManager
 	: public AbstractCameraManager

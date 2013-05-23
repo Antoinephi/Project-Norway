@@ -7,6 +7,7 @@
 FlyCamera::FlyCamera() : AbstractCamera()
 {
     cam = new Camera();
+    cam->StartCapture();
 }
 
 Camera* FlyCamera::getCamera()
@@ -47,7 +48,6 @@ void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
 	Error error;
 	Property prop;
 	prop.type = getPropertyType(p);
-
     error = cam->GetProperty(&prop);
     if (error == PGRERROR_OK)
     {
@@ -78,7 +78,6 @@ FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProper
 
 QImage FlyCamera::retrieveImage()
 {
-    getCamera()->StartCapture();
     Image img;
     getCamera()->RetrieveBuffer(&img);
     unsigned char* picData = img.GetData();
@@ -91,7 +90,6 @@ QImage FlyCamera::retrieveImage()
             image.setPixel(j, i, qRgb(data, data, data));
 		}
 	}
-    getCamera()->StopCapture();
 	return image;
 }
 
@@ -112,8 +110,6 @@ std::string FlyCamera::getString(){
 
 	return name + " - " + ref;
 }
-
-
 
 FlyCamera::~FlyCamera()
 {

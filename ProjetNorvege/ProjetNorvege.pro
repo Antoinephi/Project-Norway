@@ -24,7 +24,9 @@ SOURCES += main.cpp\
     cameraproperty.cpp \
     flycameramanager.cpp \
     flycamera.cpp \
-    circularbuffer.cpp
+    circularbuffer.cpp \
+    iscamera.cpp \
+    iscameramanager.cpp
 
 HEADERS  += mainwindow.h \
     abstractcameramanager.h \
@@ -35,7 +37,9 @@ HEADERS  += mainwindow.h \
     cameraproperty.h \
     flycameramanager.h \
     flycamera.h \
-    circularbuffer.h
+    circularbuffer.h \
+    iscamera.h \
+    iscameramanager.h
 
 FORMS    += \
     mainwindow.ui
