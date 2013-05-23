@@ -17,13 +17,13 @@ class AbstractCamera
          * @brief setProperty set the camera according to that property
          * @param p property to set
          */
-        virtual void setProperty(CameraProperty* p) = 0;
+        virtual void setProperty(CameraManager::CameraProperty* p) = 0;
 
         /**
          * @brief updateProperty get the value of that property for that camera
          * @param p property to update
          */
-        virtual void updateProperty(CameraProperty* p) = 0;
+        virtual void updateProperty(CameraManager::CameraProperty* p) = 0;
 
         /**
          * @brief equalsTo compare 2 cameras

@@ -69,15 +69,40 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="Detect">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="cursor">
           <cursorShape>ArrowCursor</cursorShape>
          </property>
+         <property name="toolTip">
+          <string>Detect new cameras</string>
+         </property>
          <property name="text">
-          <string>Detect</string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="Ressources.qrc">
+           <normaloff>:/icons/add.png</normaloff>:/icons/add.png</iconset>
          </property>
         </widget>
        </item>
@@ -87,6 +112,9 @@
       <widget class="QTreeView" name="CameraTree">
        <property name="contextMenuPolicy">
         <enum>Qt::CustomContextMenu</enum>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::EditKeyPressed</set>
        </property>
        <property name="dragEnabled">
         <bool>true</bool>
@@ -103,7 +131,13 @@
        <property name="rootIsDecorated">
         <bool>true</bool>
        </property>
+       <property name="itemsExpandable">
+        <bool>true</bool>
+       </property>
        <property name="animated">
+        <bool>true</bool>
+       </property>
+       <property name="expandsOnDoubleClick">
         <bool>true</bool>
        </property>
        <attribute name="headerVisible">
@@ -113,6 +147,73 @@
         <number>0</number>
        </attribute>
       </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="addGroup">
+         <property name="toolTip">
+          <string>Add group</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="Ressources.qrc">
+           <normaloff>:/icons/folder_add.png</normaloff>:/icons/folder_add.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="editItem">
+         <property name="toolTip">
+          <string>Edit</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="Ressources.qrc">
+           <normaloff>:/icons/edit.png</normaloff>:/icons/edit.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="deleteGroup">
+         <property name="toolTip">
+          <string>Delete group</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="Ressources.qrc">
+           <normaloff>:/icons/folder_delete.png</normaloff>:/icons/folder_delete.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
@@ -168,16 +269,16 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionLiveView"/>
+   <addaction name="actionUpdateImages"/>
    <addaction name="separator"/>
    <addaction name="actionMosaic"/>
    <addaction name="separator"/>
-   <addaction name="actionUpdateImages"/>
    <addaction name="actionUpdateProperties"/>
   </widget>
   <action name="actionQuitter">
    <property name="icon">
     <iconset resource="Ressources.qrc">
-     <normaloff>:/new/icons/quit.png</normaloff>:/new/icons/quit.png</iconset>
+     <normaloff>:/icons/quit.png</normaloff>:/icons/quit.png</iconset>
    </property>
    <property name="text">
     <string>Quitter</string>
@@ -189,7 +290,7 @@
   <action name="actionMosaic">
    <property name="icon">
     <iconset resource="Ressources.qrc">
-     <normaloff>:/new/icons/mosaic.png</normaloff>:/new/icons/mosaic.png</iconset>
+     <normaloff>:/icons/mosaic.png</normaloff>:/icons/mosaic.png</iconset>
    </property>
    <property name="text">
     <string>Mosaic</string>
@@ -199,6 +300,10 @@
    </property>
   </action>
   <action name="actionUpdateImages">
+   <property name="icon">
+    <iconset resource="Ressources.qrc">
+     <normaloff>:/icons/one.png</normaloff>:/icons/one.png</iconset>
+   </property>
    <property name="text">
     <string>UpdateImages (Space)</string>
    </property>
@@ -217,7 +322,7 @@
    </property>
    <property name="icon">
     <iconset resource="Ressources.qrc">
-     <normaloff>:/new/icons/liveview.png</normaloff>:/new/icons/liveview.png</iconset>
+     <normaloff>:/icons/liveview.png</normaloff>:/icons/liveview.png</iconset>
    </property>
    <property name="text">
     <string>LiveView</string>

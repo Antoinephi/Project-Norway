@@ -4,6 +4,8 @@
 #include <string>
 #include "abstractcamera.h"
 
+using namespace CameraManager;
+
 class TestCamera : public AbstractCamera {
     public:
         TestCamera(std::string n);
