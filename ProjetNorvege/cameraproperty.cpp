@@ -3,7 +3,7 @@
 
 using namespace CameraManager;
 
-CameraProperty::CameraProperty(PropertyType type, float min, float max, int decimals, bool canAuto)
+CameraProperty::CameraProperty(CameraManager::PropertyType type, float min, float max, int decimals, bool canAuto)
     :type(type), min(min), max(max), decimals(decimals), canAuto(canAuto) {
 
 }

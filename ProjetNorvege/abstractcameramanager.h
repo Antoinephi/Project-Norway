@@ -108,7 +108,7 @@ class AbstractCameraManager : public QObject
          * @brief setProperties add properties tha can be set and retrieved to/from  cameras for this API
          * @param properties vector of CameraProperty
          */
-        void setProperties(std::vector<CameraProperty> &properties);
+        void setProperties(std::vector<CameraManager::CameraProperty> &properties);
     private slots: //events from GUI
         void on_CameraTree_itemChanged(QStandardItem* item);
         void on_subwindow_closing(QObject* window);
@@ -121,6 +121,7 @@ class AbstractCameraManager : public QObject
         QTreeWidget propertiesList;
         QStandardItem* selectedItem;
         AbstractCamera* selectedCamera;
+        QIcon folderIcon;
         struct activeCameraEntry{
             activeCameraEntry(AbstractCamera *c, QStandardItem* i)
                 : camera(c), treeItem(i), window(new QMdiSubWindow()) {
@@ -138,11 +139,11 @@ class AbstractCameraManager : public QObject
             QMdiSubWindow* window;
         };
         std::vector<activeCameraEntry> activeCameras;
-        std::vector<CameraProperty> cameraProperties;
+        std::vector<CameraManager::CameraProperty> cameraProperties;
         void cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked);
         //bool cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera);
         QStandardItem* cameraTree_recursiveFirstCamera(QStandardItem* parent);
-        void cameraTree_recursiveSetProperty(QStandardItem* parent, CameraProperty* prop);
+        void cameraTree_recursiveSetProperty(QStandardItem* parent, CameraManager::CameraProperty* prop);
         void cameraTree_getCameraList(QStandardItem* parent, std::vector<QStandardItem*> *list);
         AbstractCamera* getSelectedCamera();
 };

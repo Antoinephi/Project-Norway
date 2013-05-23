@@ -1,7 +1,15 @@
 <RCC>
-    <qresource prefix="/new/icons">
+    <qresource prefix="/icons">
         <file>mosaic.png</file>
         <file>liveview.png</file>
         <file>quit.png</file>
+        <file>one.png</file>
+        <file>one_disabled.png</file>
+        <file>add.png</file>
+        <file>folder_delete.png</file>
+        <file>folder_add.png</file>
+        <file>edit.png</file>
+        <file>folder_home.png</file>
+        <file>folder.png</file>
     </qresource>
 </RCC>
