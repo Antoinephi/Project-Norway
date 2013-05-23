@@ -14,16 +14,17 @@
 #include <QMdiSubWindow>
 #include <QTreeWidget>
 #include <QLabel>
+#include "mainwindow.h"
 #include "abstractcamera.h"
 #include "cameraproperty.h"
 
 class MainWindow;
 
-
 enum MyRoles {
     CameraGroupRole = Qt::UserRole + 1,
     CameraRole = Qt::UserRole + 1
 };
+
 
 class AbstractCameraManager : public QObject
 {
@@ -60,6 +61,12 @@ class AbstractCameraManager : public QObject
         QModelIndex addGroup();
 
         /**
+         * @brief removeGroup remove a group from the model
+         * @param index of the item to remove
+         */
+        void removeGroup(QModelIndex index);
+
+        /**
          * @brief activateCamera check the camera in the model, add it in the activeCameras vector and open a subwindow for it
          * @param camera pointer to the camera to add
          * @param item position of the camera in the model
@@ -75,9 +82,10 @@ class AbstractCameraManager : public QObject
         /**
          * @brief cameraTree_itemClicked select a camera or a group to edit its properties
          * @param index index of the item in the model
+         * @param icon icon corresponding to the type of element selected
          * @return String of the name of the camera or the group
          */
-        QString cameraTree_itemClicked(const QModelIndex & index);
+        void cameraTree_itemClicked(const QModelIndex & index, QString &string, int &icon, bool &editable, bool &deleteable);
 
         /**
          * @brief getModel get the model ( camera list )

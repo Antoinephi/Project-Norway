@@ -4,9 +4,18 @@
 #include <QMainWindow>
 #include "abstractcameramanager.h"
 
+
 namespace Ui {
 	class MainWindow;
+
+    enum PropertiesWidgetPosition{
+        PropertyName = 0, PropertyAuto = 1, PropertyValue = 2, PropertySlider = 3
+    };
+
 }
+
+class AbstractCameraManager;
+
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -37,6 +46,7 @@ private:
 	QAction *addGroup;
 	std::vector<AbstractCameraManager*> cameraManagers;
 	int selectedCameraManager;
+    QPixmap propertiesIcons[3];
 };
 
 #endif // MAINWINDOW_H

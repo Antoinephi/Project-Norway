@@ -11,5 +11,7 @@
         <file>edit.png</file>
         <file>folder_home.png</file>
         <file>folder.png</file>
+        <file>camera.png</file>
+        <file>folder_camera.png</file>
     </qresource>
 </RCC>
