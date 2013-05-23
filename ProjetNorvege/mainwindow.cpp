@@ -18,12 +18,12 @@ MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), ui(new Ui::MainWindow),
 	  addGroup(new QAction("Add Group", this)), cameraManagers(), selectedCameraManager(-1)
 {
+    ui->setupUi(this);
+
 	cameraManagers.push_back(new EmptyCameraManager());
 	cameraManagers.push_back(new TestCameraManager());
     cameraManagers.push_back(new FlyCameraManager());
 
-	ui->setupUi(this);
-	//ui->SelectCameras->addItem("Select");
 
 	for (unsigned int i=0 ; i < cameraManagers.size(); ++i){
 		AbstractCameraManager* manager = cameraManagers.at(i);
@@ -65,7 +65,7 @@ void MainWindow::on_actionMosaic_triggered()
 
 void MainWindow::on_CameraTree_customContextMenuRequested(const QPoint &pos)
 {
-	//QModelIndex index = ui->CameraTree->currentIndex();
+    //QModelIndex index = ui->CameraTree->currentIndex();
 	//if(ui->CameraTree->model()->hasChildren(index))
 
 	QMenu contextMenu(tr("Context menu"), this);
@@ -82,8 +82,10 @@ void MainWindow::on_createGroup_triggered()
 
 void MainWindow::on_SelectCameras_currentIndexChanged(int index)
 {
-	if(selectedCameraManager >= 0)
+    if(selectedCameraManager >= 0){
+        cameraManagers.at(selectedCameraManager)->desactiveAllCameras();
 		cameraManagers.at(selectedCameraManager)->getPropertiesWidget()->hide();
+    }
 	selectedCameraManager = index;
 	AbstractCameraManager* cm = cameraManagers.at(selectedCameraManager);
 	ui->CameraTree->setModel(cm->getModel());
@@ -98,12 +100,46 @@ void MainWindow::on_CameraTree_itemClicked(const QModelIndex & index){
 }
 
 
-void MainWindow::on_updateImages_clicked()
+void MainWindow::on_actionUpdateImages_triggered()
 {
     cameraManagers.at(selectedCameraManager)->updateImages();
 }
 
-void MainWindow::on_updateProperties_clicked()
+void MainWindow::on_actionUpdateProperties_triggered()
 {
     cameraManagers.at(selectedCameraManager)->updateProperties();
+}
+
+void MainWindow::on_actionLiveView_toggled(bool arg1)
+{
+    ui->actionUpdateImages->setEnabled(!arg1);
+}
+
+
+
+
+void MainWindow::on_addGroup_clicked()
+{
+    ui->CameraTree->edit( cameraManagers.at(selectedCameraManager)->addGroup() );
+}
+
+void MainWindow::on_editItem_clicked()
+{
+    ui->CameraTree->edit( ui->CameraTree->currentIndex() );
+}
+
+void MainWindow::on_deleteGroup_clicked()
+{
+    if( !ui->CameraTree->currentIndex().isValid() ) return;
+    QStandardItem * item = cameraManagers.at(selectedCameraManager)->getModel()->itemFromIndex( ui->CameraTree->currentIndex() );
+    if( item->isEditable() ){
+        QStandardItem * parent = item->parent();
+        //qDebug() << "Parent" << parent;
+        if( parent != NULL )
+            parent->removeRow( item->row() );
+        else
+            item->model()->invisibleRootItem()->removeRow( item->row() );
+
+        on_Detect_clicked();
+    }
 }

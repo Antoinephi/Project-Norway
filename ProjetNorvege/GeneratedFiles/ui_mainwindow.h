@@ -36,6 +36,9 @@ class Ui_MainWindow
 public:
     QAction *actionQuitter;
     QAction *actionMosaic;
+    QAction *actionUpdateImages;
+    QAction *actionUpdateProperties;
+    QAction *actionLiveView;
     QMdiArea *centralwidget;
     QMenuBar *menubar;
     QMenu *menuFichier;
@@ -48,8 +51,9 @@ public:
     QPushButton *Detect;
     QTreeView *CameraTree;
     QHBoxLayout *horizontalLayout_2;
-    QPushButton *updateImages;
-    QPushButton *updateProperties;
+    QPushButton *addGroup;
+    QPushButton *editItem;
+    QPushButton *deleteGroup;
     QDockWidget *PropertiesWidget;
     QWidget *dockWidgetContents_2;
     QVBoxLayout *verticalLayout_2;
@@ -66,8 +70,27 @@ public:
         MainWindow->setDockOptions(QMainWindow::AnimatedDocks);
         actionQuitter = new QAction(MainWindow);
         actionQuitter->setObjectName(QStringLiteral("actionQuitter"));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/icons/quit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionQuitter->setIcon(icon);
         actionMosaic = new QAction(MainWindow);
         actionMosaic->setObjectName(QStringLiteral("actionMosaic"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons/mosaic.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionMosaic->setIcon(icon1);
+        actionUpdateImages = new QAction(MainWindow);
+        actionUpdateImages->setObjectName(QStringLiteral("actionUpdateImages"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/icons/one.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionUpdateImages->setIcon(icon2);
+        actionUpdateProperties = new QAction(MainWindow);
+        actionUpdateProperties->setObjectName(QStringLiteral("actionUpdateProperties"));
+        actionLiveView = new QAction(MainWindow);
+        actionLiveView->setObjectName(QStringLiteral("actionLiveView"));
+        actionLiveView->setCheckable(true);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/icons/liveview.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionLiveView->setIcon(icon3);
         centralwidget = new QMdiArea(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         MainWindow->setCentralWidget(centralwidget);
@@ -99,12 +122,18 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(SelectCameras->sizePolicy().hasHeightForWidth());
         SelectCameras->setSizePolicy(sizePolicy);
+        SelectCameras->setMinimumSize(QSize(0, 22));
+        SelectCameras->setIconSize(QSize(16, 16));
 
         horizontalLayout->addWidget(SelectCameras);
 
         Detect = new QPushButton(dockWidgetContents);
         Detect->setObjectName(QStringLiteral("Detect"));
+        Detect->setMinimumSize(QSize(0, 0));
         Detect->setCursor(QCursor(Qt::ArrowCursor));
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Detect->setIcon(icon4);
 
         horizontalLayout->addWidget(Detect);
 
@@ -114,12 +143,15 @@ public:
         CameraTree = new QTreeView(dockWidgetContents);
         CameraTree->setObjectName(QStringLiteral("CameraTree"));
         CameraTree->setContextMenuPolicy(Qt::CustomContextMenu);
+        CameraTree->setEditTriggers(QAbstractItemView::EditKeyPressed);
         CameraTree->setDragEnabled(true);
         CameraTree->setDragDropMode(QAbstractItemView::InternalMove);
         CameraTree->setAlternatingRowColors(true);
         CameraTree->setAutoExpandDelay(200);
         CameraTree->setRootIsDecorated(true);
+        CameraTree->setItemsExpandable(true);
         CameraTree->setAnimated(true);
+        CameraTree->setExpandsOnDoubleClick(true);
         CameraTree->header()->setVisible(false);
         CameraTree->header()->setDefaultSectionSize(0);
 
@@ -128,15 +160,32 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(-1, 0, -1, -1);
-        updateImages = new QPushButton(dockWidgetContents);
-        updateImages->setObjectName(QStringLiteral("updateImages"));
+        addGroup = new QPushButton(dockWidgetContents);
+        addGroup->setObjectName(QStringLiteral("addGroup"));
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/icons/folder_add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addGroup->setIcon(icon5);
+        addGroup->setIconSize(QSize(24, 24));
 
-        horizontalLayout_2->addWidget(updateImages);
+        horizontalLayout_2->addWidget(addGroup);
 
-        updateProperties = new QPushButton(dockWidgetContents);
-        updateProperties->setObjectName(QStringLiteral("updateProperties"));
+        editItem = new QPushButton(dockWidgetContents);
+        editItem->setObjectName(QStringLiteral("editItem"));
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/icons/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        editItem->setIcon(icon6);
+        editItem->setIconSize(QSize(24, 24));
 
-        horizontalLayout_2->addWidget(updateProperties);
+        horizontalLayout_2->addWidget(editItem);
+
+        deleteGroup = new QPushButton(dockWidgetContents);
+        deleteGroup->setObjectName(QStringLiteral("deleteGroup"));
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/icons/folder_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        deleteGroup->setIcon(icon7);
+        deleteGroup->setIconSize(QSize(24, 24));
+
+        horizontalLayout_2->addWidget(deleteGroup);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -167,12 +216,18 @@ public:
         MainWindow->addDockWidget(static_cast<Qt::DockWidgetArea>(1), PropertiesWidget);
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QStringLiteral("toolBar"));
+        toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
         toolBar->setFloatable(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
 
         menubar->addAction(menuFichier->menuAction());
         menuFichier->addAction(actionQuitter);
+        toolBar->addAction(actionLiveView);
+        toolBar->addAction(actionUpdateImages);
+        toolBar->addSeparator();
         toolBar->addAction(actionMosaic);
+        toolBar->addSeparator();
+        toolBar->addAction(actionUpdateProperties);
 
         retranslateUi(MainWindow);
 
@@ -188,11 +243,28 @@ public:
 #ifndef QT_NO_TOOLTIP
         actionMosaic->setToolTip(QApplication::translate("MainWindow", "Make a mosaic with camera views", 0));
 #endif // QT_NO_TOOLTIP
+        actionUpdateImages->setText(QApplication::translate("MainWindow", "UpdateImages (Space)", 0));
+        actionUpdateImages->setShortcut(QApplication::translate("MainWindow", "Space", 0));
+        actionUpdateProperties->setText(QApplication::translate("MainWindow", "UpdateProperties", 0));
+        actionLiveView->setText(QApplication::translate("MainWindow", "LiveView", 0));
         menuFichier->setTitle(QApplication::translate("MainWindow", "Fichier", 0));
         CamerasWidget->setWindowTitle(QApplication::translate("MainWindow", "Cameras", 0));
-        Detect->setText(QApplication::translate("MainWindow", "Detect", 0));
-        updateImages->setText(QApplication::translate("MainWindow", "Update Images", 0));
-        updateProperties->setText(QApplication::translate("MainWindow", "Update Properties", 0));
+#ifndef QT_NO_TOOLTIP
+        Detect->setToolTip(QApplication::translate("MainWindow", "Detect new cameras", 0));
+#endif // QT_NO_TOOLTIP
+        Detect->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        addGroup->setToolTip(QApplication::translate("MainWindow", "Add group", 0));
+#endif // QT_NO_TOOLTIP
+        addGroup->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        editItem->setToolTip(QApplication::translate("MainWindow", "Edit", 0));
+#endif // QT_NO_TOOLTIP
+        editItem->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        deleteGroup->setToolTip(QApplication::translate("MainWindow", "Delete group", 0));
+#endif // QT_NO_TOOLTIP
+        deleteGroup->setText(QString());
         PropertiesWidget->setWindowTitle(QApplication::translate("MainWindow", "Properties", 0));
         label->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));

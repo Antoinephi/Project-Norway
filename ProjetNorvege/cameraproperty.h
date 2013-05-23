@@ -6,6 +6,7 @@
 #include <QString>
 
 namespace CameraManager {
+
 	enum PropertyType {
         BRIGHTNESS,
         GAIN,

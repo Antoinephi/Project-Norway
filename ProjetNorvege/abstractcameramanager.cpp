@@ -9,7 +9,9 @@
 using namespace CameraManager;
 
 Q_DECLARE_METATYPE(AbstractCamera *)
-Q_DECLARE_METATYPE(CameraProperty *)
+Q_DECLARE_METATYPE(CameraManager::CameraProperty *)
+
+using namespace CameraManager;
 
 enum PropertiesWidgetPosition{
     PropertyName = 0,
@@ -19,7 +21,7 @@ enum PropertiesWidgetPosition{
 };
 
 AbstractCameraManager::AbstractCameraManager(bool empty)
-    : cameraTree() , newCameraList("Detected Cameras"), propertiesList(), cameraProperties(), activeCameras(), selectedItem(NULL), selectedCamera(NULL) {
+    : cameraTree() , newCameraList("Detected Cameras"), propertiesList(), selectedItem(NULL), selectedCamera(NULL), folderIcon(":/icons/folder.png"), activeCameras(), cameraProperties() {
 
     propertiesList.setRootIsDecorated(false);
     propertiesList.setColumnCount(4);
@@ -30,6 +32,7 @@ AbstractCameraManager::AbstractCameraManager(bool empty)
     QObject::connect(&cameraTree, SIGNAL(itemChanged(QStandardItem*)),
             this, SLOT(on_CameraTree_itemChanged(QStandardItem*)));
     cameraTree.appendRow(&newCameraList);
+    newCameraList.setIcon( QIcon(":/icons/folder_home.png") );
     newCameraList.setCheckable(true);
     newCameraList.setDragEnabled(false);
     //newCameraList.setCheckState(Qt::Checked);
@@ -67,7 +70,7 @@ void AbstractCameraManager::updateProperties(){
     for( int i = propertiesList.topLevelItemCount()-1; i>=0; i--){
         QTreeWidgetItem* item = propertiesList.topLevelItem(i);
         QCheckBox* checkBox = qobject_cast<QCheckBox*>( propertiesList.itemWidget(item, PropertyAuto) );
-        CameraProperty * prop = reinterpret_cast<CameraProperty*>( checkBox->property("CameraProperty").value<quintptr>() );
+        CameraManager::CameraProperty * prop = reinterpret_cast<CameraManager::CameraProperty*>( checkBox->property("CameraProperty").value<quintptr>() );
         //qDebug() << "updating:" << prop->getName().c_str();
         selected->updateProperty(prop);
         item->setText(PropertyValue, prop->formatValue() );
@@ -92,7 +95,7 @@ QModelIndex AbstractCameraManager::detectNewCamerasAndExpand(){
     qDebug() << "oldCameras" << oldCameras.size();
     qDebug() << "newCameras" << newCameras.size();
     //removing disconnected cameras
-    for(int i=0; i<oldCameras.size(); i++){
+    for(unsigned int i=0; i<oldCameras.size(); i++){
         QStandardItem* item = oldCameras.at(i);
         AbstractCamera* cam = reinterpret_cast<AbstractCamera *>( item->data(CameraRole).value<quintptr>() );
         qDebug() << "oldCameras(" << i << "):" << cam;
@@ -111,7 +114,7 @@ QModelIndex AbstractCameraManager::detectNewCamerasAndExpand(){
     }
     qDebug() << "newCameras" << newCameras.size();
     //adding new cameras
-    for(int i=0; i<newCameras.size(); i++){
+    for(unsigned int i=0; i<newCameras.size(); i++){
         AbstractCamera* cam = newCameras.at(i);
         QStandardItem *item = new QStandardItem(cam->getString().c_str());
         item->setData(QVariant::fromValue( reinterpret_cast<quintptr>(cam) ), CameraRole);
@@ -128,25 +131,12 @@ QModelIndex AbstractCameraManager::detectNewCamerasAndExpand(){
 QModelIndex AbstractCameraManager::addGroup(){
     QStandardItem *newGroup = new QStandardItem("new Group");
     newGroup->setCheckable(true);
+    newGroup->setIcon(folderIcon);
+    qDebug() << "folderIcon" << folderIcon;
     cameraTree.appendRow(newGroup);
     return newGroup->index();
 }
 
-/* will be removed
-bool AbstractCameraManager::addNewCamera(std::string name, AbstractCamera *camera){
-    //check if already detected
-    if(cameraTree_recursiveSearch(cameraTree.invisibleRootItem(), camera)) return false;
-
-    //adding
-    QStandardItem *item = new QStandardItem(name.c_str());
-    item->setData(QVariant::fromValue( reinterpret_cast<quintptr>(camera) ), CameraRole);
-    //qDebug() << "setData " << camera << " data " << item->data(CameraRole).value<AbstractCamera *>();
-    item->setCheckable(true);
-    item->setCheckState(Qt::Unchecked);
-    item->setDropEnabled(false);
-    newCameraList.appendRow(item);
-    return true;
-}*/
 
 void AbstractCameraManager::activateCamera(AbstractCamera* camera, QStandardItem* item, bool active){
     qDebug() << "activateCamera( " << camera << ", " << active << ")";
@@ -190,6 +180,7 @@ void AbstractCameraManager::on_CameraTree_itemChanged(QStandardItem* item){
     }else{
         cameraTree_recursiveCheck(item, checked);
     }
+
 }
 
 
@@ -212,6 +203,11 @@ QString AbstractCameraManager::cameraTree_itemClicked(const QModelIndex & index)
 //////////// Recursive in Camera List /////////////
 ///////////////////////////////////////////////////
 
+//uncheck all
+void AbstractCameraManager::desactiveAllCameras(){
+    cameraTree_recursiveCheck(cameraTree.invisibleRootItem(), Qt::Unchecked);
+}
+
 // check QStandardItem and its decendants
 void AbstractCameraManager::cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked){
     for(int i=0; i<parent->rowCount(); ++i){
@@ -222,19 +218,6 @@ void AbstractCameraManager::cameraTree_recursiveCheck(QStandardItem* parent, Qt:
     }
 }
 
-/* useless
-// search for an AbstractCamera in QStandardItem and its decendants
-// @return true if the AbstractCamera is found
-bool AbstractCameraManager::cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera){
-    QVariant data = parent->data(CameraRole);
-    //qDebug() << "cameraTree_recursiveSearch( " << parent->text() << ", " << camera << ") " << data.value<AbstractCamera*>();
-    if(data.isValid() &&  reinterpret_cast<AbstractCamera*>(data.value<quintptr>())->equalsTo(camera) ) return true;
-
-    for(int i=0; i<parent->rowCount(); ++i){
-        if(cameraTree_recursiveSearch(parent->child(i), camera)) return true;
-    }
-    return false;
-}*/
 
 // get first AbstractCamera in QStandardItem
 // @return first found AbstractCamera
@@ -251,7 +234,7 @@ QStandardItem* AbstractCameraManager::cameraTree_recursiveFirstCamera(QStandardI
 }
 
 // set a property for all the AbstractCamera in QStandardItem and its decendants
-void AbstractCameraManager::cameraTree_recursiveSetProperty(QStandardItem* parent, CameraProperty* prop){
+void AbstractCameraManager::cameraTree_recursiveSetProperty(QStandardItem* parent, CameraManager::CameraProperty* prop){
     QVariant data = parent->data(CameraRole);
     if(data.isValid()){
         reinterpret_cast<AbstractCamera *>( data.value<quintptr>() )->setProperty(prop);
@@ -283,7 +266,7 @@ void AbstractCameraManager::cameraTree_getCameraList(QStandardItem* parent, std:
 
 void AbstractCameraManager::setProperties(std::vector<CameraProperty> &properties){
     cameraProperties = std::vector<CameraProperty>(properties);
-    for(int i=0; i<cameraProperties.size(); i++){
+    for(unsigned int i=0; i<cameraProperties.size(); i++){
         CameraProperty &property = cameraProperties.at(i);
         //qDebug() << property.getName().c_str() << reinterpret_cast<quintptr>(&property);
         QTreeWidgetItem* it = new QTreeWidgetItem();
