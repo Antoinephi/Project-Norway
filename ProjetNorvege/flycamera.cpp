@@ -7,7 +7,7 @@
 FlyCamera::FlyCamera() : AbstractCamera()
 {
     cam = new Camera();
-    cam->StartCapture();
+
 }
 
 Camera* FlyCamera::getCamera()
@@ -79,6 +79,7 @@ FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProper
 QImage FlyCamera::retrieveImage()
 {
     Image img;
+	getCamera()->StartCapture();
     getCamera()->RetrieveBuffer(&img);
     unsigned char* picData = img.GetData();
     unsigned int x = img.GetCols();
@@ -90,6 +91,7 @@ QImage FlyCamera::retrieveImage()
             image.setPixel(j, i, qRgb(data, data, data));
 		}
 	}
+	getCamera()->StopCapture();
 	return image;
 }
 
