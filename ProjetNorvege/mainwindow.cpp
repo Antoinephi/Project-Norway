@@ -16,9 +16,17 @@
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), ui(new Ui::MainWindow),
-	  addGroup(new QAction("Add Group", this)), cameraManagers(), selectedCameraManager(-1)
+      addGroup(new QAction("Add Group", this)), cameraManagers(), selectedCameraManager(-1),
+      //*
+      propertiesIcons{
+        QIcon(":/icons/camera.png").pixmap(16,16),
+        QIcon(":/icons/folder.png").pixmap(16,16),
+        QIcon(":/icons/folder_camera.png").pixmap(16,16)
+      }//*/
+
 {
     ui->setupUi(this);
+
 
 	cameraManagers.push_back(new EmptyCameraManager());
 	cameraManagers.push_back(new TestCameraManager());
@@ -30,6 +38,9 @@ MainWindow::MainWindow(QWidget *parent)
 		manager->setMainWindow(this);
 		ui->SelectCameras->addItem(manager->getName().c_str());
 	}
+
+    ui->SelectCameras->setFixedHeight( ui->Detect->sizeHint().height()-2 );
+
 	connect(ui->CameraTree, SIGNAL(clicked(const QModelIndex &)),
 			this, SLOT(on_CameraTree_itemClicked(const QModelIndex &)));
 	connect(addGroup, SIGNAL(triggered()),
@@ -96,7 +107,17 @@ void MainWindow::on_SelectCameras_currentIndexChanged(int index)
 
 //need to be moved to AbstractCameraManager
 void MainWindow::on_CameraTree_itemClicked(const QModelIndex & index){
-    ui->label->setText( cameraManagers.at(selectedCameraManager)->cameraTree_itemClicked(index) );
+    QString str = "";
+    bool editable, deleteable;
+    int icon = 0;
+    cameraManagers.at(selectedCameraManager)->cameraTree_itemClicked(index, str, icon, editable, deleteable);
+
+    ui->label->setText( str );
+    ui->editItem->setEnabled( editable );
+    ui->deleteGroup->setEnabled( deleteable );
+
+    if( icon>=0 && icon < 3 )
+        ui->propertiesIcon->setPixmap(propertiesIcons[icon]);
 }
 
 
@@ -131,15 +152,6 @@ void MainWindow::on_editItem_clicked()
 void MainWindow::on_deleteGroup_clicked()
 {
     if( !ui->CameraTree->currentIndex().isValid() ) return;
-    QStandardItem * item = cameraManagers.at(selectedCameraManager)->getModel()->itemFromIndex( ui->CameraTree->currentIndex() );
-    if( item->isEditable() ){
-        QStandardItem * parent = item->parent();
-        //qDebug() << "Parent" << parent;
-        if( parent != NULL )
-            parent->removeRow( item->row() );
-        else
-            item->model()->invisibleRootItem()->removeRow( item->row() );
-
-        on_Detect_clicked();
-    }
+    cameraManagers.at(selectedCameraManager)->removeGroup( ui->CameraTree->currentIndex() );
+    on_CameraTree_itemClicked( ui->CameraTree->currentIndex() );
 }
