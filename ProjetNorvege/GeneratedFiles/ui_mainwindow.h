@@ -23,6 +23,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QTreeView>
@@ -52,12 +53,16 @@ public:
     QTreeView *CameraTree;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *addGroup;
-    QPushButton *editItem;
     QPushButton *deleteGroup;
+    QPushButton *editItem;
     QDockWidget *PropertiesWidget;
     QWidget *dockWidgetContents_2;
     QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout_3;
+    QSpacerItem *horizontalSpacer;
+    QLabel *propertiesIcon;
     QLabel *label;
+    QSpacerItem *horizontalSpacer_2;
     QVBoxLayout *propertiesContainer;
     QToolBar *toolBar;
 
@@ -66,6 +71,11 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(711, 604);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+        MainWindow->setSizePolicy(sizePolicy);
         MainWindow->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
         MainWindow->setDockOptions(QMainWindow::AnimatedDocks);
         actionQuitter = new QAction(MainWindow);
@@ -117,20 +127,27 @@ public:
         horizontalLayout->setContentsMargins(-1, 0, -1, -1);
         SelectCameras = new QComboBox(dockWidgetContents);
         SelectCameras->setObjectName(QStringLiteral("SelectCameras"));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(SelectCameras->sizePolicy().hasHeightForWidth());
-        SelectCameras->setSizePolicy(sizePolicy);
-        SelectCameras->setMinimumSize(QSize(0, 22));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(SelectCameras->sizePolicy().hasHeightForWidth());
+        SelectCameras->setSizePolicy(sizePolicy1);
+        SelectCameras->setMinimumSize(QSize(0, 0));
         SelectCameras->setIconSize(QSize(16, 16));
 
         horizontalLayout->addWidget(SelectCameras);
 
         Detect = new QPushButton(dockWidgetContents);
         Detect->setObjectName(QStringLiteral("Detect"));
+        Detect->setEnabled(true);
+        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(Detect->sizePolicy().hasHeightForWidth());
+        Detect->setSizePolicy(sizePolicy2);
         Detect->setMinimumSize(QSize(0, 0));
         Detect->setCursor(QCursor(Qt::ArrowCursor));
+        Detect->setAutoFillBackground(false);
         QIcon icon4;
         icon4.addFile(QStringLiteral(":/icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
         Detect->setIcon(icon4);
@@ -162,30 +179,46 @@ public:
         horizontalLayout_2->setContentsMargins(-1, 0, -1, -1);
         addGroup = new QPushButton(dockWidgetContents);
         addGroup->setObjectName(QStringLiteral("addGroup"));
+        addGroup->setEnabled(true);
+        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(1);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(addGroup->sizePolicy().hasHeightForWidth());
+        addGroup->setSizePolicy(sizePolicy3);
         QIcon icon5;
         icon5.addFile(QStringLiteral(":/icons/folder_add.png"), QSize(), QIcon::Normal, QIcon::Off);
         addGroup->setIcon(icon5);
         addGroup->setIconSize(QSize(24, 24));
+        addGroup->setAutoDefault(false);
+        addGroup->setDefault(false);
+        addGroup->setFlat(false);
 
         horizontalLayout_2->addWidget(addGroup);
 
-        editItem = new QPushButton(dockWidgetContents);
-        editItem->setObjectName(QStringLiteral("editItem"));
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/icons/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        editItem->setIcon(icon6);
-        editItem->setIconSize(QSize(24, 24));
-
-        horizontalLayout_2->addWidget(editItem);
-
         deleteGroup = new QPushButton(dockWidgetContents);
         deleteGroup->setObjectName(QStringLiteral("deleteGroup"));
-        QIcon icon7;
-        icon7.addFile(QStringLiteral(":/icons/folder_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
-        deleteGroup->setIcon(icon7);
+        sizePolicy3.setHeightForWidth(deleteGroup->sizePolicy().hasHeightForWidth());
+        deleteGroup->setSizePolicy(sizePolicy3);
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/icons/folder_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        deleteGroup->setIcon(icon6);
         deleteGroup->setIconSize(QSize(24, 24));
 
         horizontalLayout_2->addWidget(deleteGroup);
+
+        editItem = new QPushButton(dockWidgetContents);
+        editItem->setObjectName(QStringLiteral("editItem"));
+        QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy4.setHorizontalStretch(2);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(editItem->sizePolicy().hasHeightForWidth());
+        editItem->setSizePolicy(sizePolicy4);
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/icons/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        editItem->setIcon(icon7);
+        editItem->setIconSize(QSize(24, 24));
+
+        horizontalLayout_2->addWidget(editItem);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -200,12 +233,31 @@ public:
         dockWidgetContents_2->setObjectName(QStringLiteral("dockWidgetContents_2"));
         verticalLayout_2 = new QVBoxLayout(dockWidgetContents_2);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer);
+
+        propertiesIcon = new QLabel(dockWidgetContents_2);
+        propertiesIcon->setObjectName(QStringLiteral("propertiesIcon"));
+        propertiesIcon->setText(QStringLiteral(""));
+
+        horizontalLayout_3->addWidget(propertiesIcon);
+
         label = new QLabel(dockWidgetContents_2);
         label->setObjectName(QStringLiteral("label"));
         label->setLayoutDirection(Qt::LeftToRight);
         label->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_2->addWidget(label);
+        horizontalLayout_3->addWidget(label);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_2);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_3);
 
         propertiesContainer = new QVBoxLayout();
         propertiesContainer->setObjectName(QStringLiteral("propertiesContainer"));
@@ -258,13 +310,13 @@ public:
 #endif // QT_NO_TOOLTIP
         addGroup->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        editItem->setToolTip(QApplication::translate("MainWindow", "Edit", 0));
-#endif // QT_NO_TOOLTIP
-        editItem->setText(QString());
-#ifndef QT_NO_TOOLTIP
         deleteGroup->setToolTip(QApplication::translate("MainWindow", "Delete group", 0));
 #endif // QT_NO_TOOLTIP
         deleteGroup->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        editItem->setToolTip(QApplication::translate("MainWindow", "Edit", 0));
+#endif // QT_NO_TOOLTIP
+        editItem->setText(QString());
         PropertiesWidget->setWindowTitle(QApplication::translate("MainWindow", "Properties", 0));
         label->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));
