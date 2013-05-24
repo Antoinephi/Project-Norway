@@ -84,9 +84,12 @@ class AbstractCameraManager : public QObject
         /**
          * @brief cameraTree_itemClicked select a camera or a group to edit its properties
          * @param index index of the item in the model
-         * @param icon icon corresponding to the type of element selected
-         * @return String of the name of the camera or the group
+         * @param string desccritive of the item
+         * @param icon corresponding to the type of element selected
+         * @param editable true if the item is editable
+         * @param deletable true if the item is deletable
          */
+        //--------------
         void cameraTree_itemClicked(const QModelIndex & index, QString &string, int &icon, bool &editable, bool &deleteable);
 
         /**
