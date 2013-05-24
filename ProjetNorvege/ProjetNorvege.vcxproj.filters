@@ -100,6 +100,12 @@
     <ClCompile Include="GeneratedFiles\qrc_Ressources.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="iscameramanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="iscamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstractcamera.h">
@@ -133,6 +139,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="circularbuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="iscamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="iscameramanager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

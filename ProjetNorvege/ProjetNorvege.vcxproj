@@ -156,6 +156,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="iscamera.cpp" />
+    <ClCompile Include="iscameramanager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="Release\moc_abstractcameramanager.cpp">
@@ -195,6 +197,8 @@
     <ClInclude Include="flycamera.h" />
     <ClInclude Include="flycameramanager.h" />
     <ClInclude Include="GeneratedFiles\ui_mainwindow.h" />
+    <ClInclude Include="iscamera.h" />
+    <ClInclude Include="iscameramanager.h" />
     <ClInclude Include="testcamera.h" />
     <ClInclude Include="testcameramanager.h" />
   </ItemGroup>
