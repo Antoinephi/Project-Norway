@@ -17,7 +17,6 @@
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), ui(new Ui::MainWindow),
       addGroup(new QAction("Add Group", this)), cameraManagers(), selectedCameraManager(-1)
-
 {
     propertiesIcons[0] = QIcon(":/icons/camera.png").pixmap(16,16);
     propertiesIcons[1] = QIcon(":/icons/folder.png").pixmap(16,16);
@@ -91,8 +90,10 @@ void MainWindow::on_createGroup_triggered()
 void MainWindow::on_SelectCameras_currentIndexChanged(int index)
 {
     if(selectedCameraManager >= 0){
-        cameraManagers.at(selectedCameraManager)->desactiveAllCameras();
-		cameraManagers.at(selectedCameraManager)->getPropertiesWidget()->hide();
+        AbstractCameraManager* camManager = cameraManagers.at(selectedCameraManager);
+        camManager->activateLiveView(false);
+        camManager->desactiveAllCameras();
+        camManager->getPropertiesWidget()->hide();
     }
 	selectedCameraManager = index;
 	AbstractCameraManager* cm = cameraManagers.at(selectedCameraManager);
@@ -100,6 +101,8 @@ void MainWindow::on_SelectCameras_currentIndexChanged(int index)
 	ui->propertiesContainer->addWidget(cm->getPropertiesWidget());
 	cm->getPropertiesWidget()->show();
     on_Detect_clicked();
+    if( ui->actionLiveView->isChecked() )
+        cm->activateLiveView( true );
 }
 
 //need to be moved to AbstractCameraManager
@@ -131,6 +134,7 @@ void MainWindow::on_actionUpdateProperties_triggered()
 void MainWindow::on_actionLiveView_toggled(bool arg1)
 {
     ui->actionUpdateImages->setEnabled(!arg1);
+    cameraManagers.at(selectedCameraManager)->activateLiveView( arg1 );
 }
 
 

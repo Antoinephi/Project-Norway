@@ -11,7 +11,7 @@ Q_DECLARE_METATYPE(CameraManager::CameraProperty *)
 using namespace CameraManager;
 
 AbstractCameraManager::AbstractCameraManager(bool empty)
-    : cameraTree() , newCameraList("Detected Cameras"), propertiesList(), selectedItem(NULL), selectedCamera(NULL), folderIcon(":/icons/folder.png"), activeCameras(), cameraProperties() {
+    : liveView(false), cameraTree() , newCameraList("Detected Cameras"), propertiesList(), selectedItem(NULL), selectedCamera(NULL), folderIcon(":/icons/folder.png"), activeCameras(), cameraProperties() {
 
     propertiesList.setRootIsDecorated(false);
     propertiesList.setColumnCount(4);
@@ -70,7 +70,24 @@ void AbstractCameraManager::updateProperties(){
         //reinterpret_cast<QSlider*>( checkBox->property("TreeWidgetSlider").value<quintptr>() )->setEnabled(prop->getAuto());
 
     }
+}
 
+void AbstractCameraManager::activateLiveView(bool active){
+    liveView = active;
+    if( active ){
+        for(int i=activeCameras.size()-1; i>=0; i--){
+            activeCameraEntry& camEntry = activeCameras.at(i);
+            QLabel* lbl = qobject_cast<QLabel *>( camEntry.window->widget() );
+            camEntry.camera->startCapture(lbl);
+            /*camEntry.thread = new CaptureThread(&camEntry);
+            camEntry.thread->start();*/
+        }
+    }else{
+        for(int i=activeCameras.size()-1; i>=0; i--){
+            activeCameraEntry& camEntry = activeCameras.at(i);
+            camEntry.camera->stopAutoCapture();
+        }
+    }
 }
 
 ///////////////////////////////////////////////////
@@ -115,9 +132,10 @@ QModelIndex AbstractCameraManager::detectNewCamerasAndExpand(){
         newCameraList.appendRow(item);
     }
 
-
     return newCameraList.index();
 }
+
+
 QModelIndex AbstractCameraManager::addGroup(){
     QStandardItem *newGroup = new QStandardItem("new Group");
     newGroup->setCheckable(true);
@@ -156,6 +174,7 @@ void AbstractCameraManager::activateCamera(AbstractCamera* camera, QStandardItem
         if(!active){ // desactivation
             //qDebug() << "desactivating Camera";
             activeCameraEntry* entry = &activeCameras.at(i);
+            entry->camera->stopAutoCapture();
             mainWindow->modifySubWindow(entry->window, false);
             activeCameras.erase(activeCameras.begin()+i);
         }else{
@@ -170,6 +189,8 @@ void AbstractCameraManager::activateCamera(AbstractCamera* camera, QStandardItem
             entry.window->setWindowTitle(item->text());
             mainWindow->modifySubWindow(entry.window, true);
             activeCameras.push_back(entry);
+            if( liveView )
+                entry.camera->startCapture( qobject_cast<QLabel *>( entry.window->widget() ) );
         }
     }
 }
@@ -197,7 +218,7 @@ void AbstractCameraManager::cameraTree_itemClicked(const QModelIndex & index, QS
     QStandardItem* clicked = getModel()->itemFromIndex(index);
     selectedItem = clicked;
     QStandardItem* first = cameraTree_recursiveFirstCamera(clicked);
-    selectedCamera = reinterpret_cast<AbstractCamera *>( selectedItem->data(CameraRole).value<quintptr>() );
+    selectedCamera = reinterpret_cast<AbstractCamera *>( first->data(CameraRole).value<quintptr>() );
     updateProperties();
 
     string = clicked->text();

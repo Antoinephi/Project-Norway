@@ -14,6 +14,8 @@
 #include <QMdiSubWindow>
 #include <QTreeWidget>
 #include <QLabel>
+#include <QThread>
+#include <QDebug>
 #include "mainwindow.h"
 #include "abstractcamera.h"
 #include "cameraproperty.h"
@@ -87,8 +89,9 @@ class AbstractCameraManager : public QObject
          * @param editable true if the item is editable
          * @param deletable true if the item is deletable
          */
-        //--------------
         void cameraTree_itemClicked(const QModelIndex & index, QString &string, int &icon, bool &editable, bool &deleteable);
+
+        void activateLiveView(bool active);
 
         /**
          * @brief getModel get the model ( camera list )
@@ -118,20 +121,21 @@ class AbstractCameraManager : public QObject
          * @param properties vector of CameraProperty
          */
         void setProperties(std::vector<CameraManager::CameraProperty> &properties);
-    private slots: //events from GUI
+    private slots:
         void on_CameraTree_itemChanged(QStandardItem* item);
         void on_subwindow_closing(QObject* window);
         void on_propertyCheckbox_changed(int state);
         void on_propertySlider_changed(int val);
     private:
         MainWindow* mainWindow;
+        bool liveView;
         QStandardItemModel cameraTree;
         QStandardItem newCameraList;
         QTreeWidget propertiesList;
         QStandardItem* selectedItem;
         AbstractCamera* selectedCamera;
         QIcon folderIcon;
-        struct activeCameraEntry{
+        struct activeCameraEntry{ public:
             activeCameraEntry(AbstractCamera *c, QStandardItem* i)
                 : camera(c), treeItem(i), window(new QMdiSubWindow()) {
                 window->setAttribute(Qt::WA_DeleteOnClose);
@@ -150,7 +154,6 @@ class AbstractCameraManager : public QObject
         std::vector<activeCameraEntry> activeCameras;
         std::vector<CameraManager::CameraProperty> cameraProperties;
         void cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked);
-        //bool cameraTree_recursiveSearch(QStandardItem* parent, AbstractCamera* camera);
         QStandardItem* cameraTree_recursiveFirstCamera(QStandardItem* parent);
         void cameraTree_recursiveSetProperty(QStandardItem* parent, CameraManager::CameraProperty* prop);
         void cameraTree_getCameraList(QStandardItem* parent, std::vector<QStandardItem*> *list);
