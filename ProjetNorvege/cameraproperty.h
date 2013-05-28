@@ -12,7 +12,8 @@ namespace CameraManager {
         GAIN,
         EXPOSURE,
         GAMMA,
-        SHUTTER
+        SHUTTER,
+        FRAMERATE
     };
 
 

@@ -24,40 +24,24 @@ class FlyCamera : public AbstractCamera
         FlyCamera();
         virtual ~FlyCamera();
 
-        /**
-         * @brief getCamera returns a camera object that correspond to a physical camera
-         * @return Camera
-         */
         Camera* getCamera();
-        /**
-         * @brief getGuid returns the unique number associated to a camera
-         * @return PGRGuid
-         */
+        
         PGRGuid* getGuid();
-        /**
-         * @brief getCameraInfo returns an object that contains all cameras informations
-         * @return CameraInfo
-         */
+        
         CameraInfo* getCameraInfo();
 
         void setProperty(CameraManager::CameraProperty *p);
 
         void updateProperty(CameraManager::CameraProperty *p);
-        /**
-         * @brief retrieveImage capture one image from the camera and convert it in QImage 32bits image
-         * @return QImage
-         */
+
+		void startAutoCapture();
+        void stopAutoCapture();
+		void sendFrame(QImage img);
+
         QImage retrieveImage();
-        /**
-         * @brief equalsTo
-         * @param c
-         * @return bool
-         */
+        
         bool equalsTo(AbstractCamera *c);
-        /**
-         * @brief getString return the type of Camera (Fly Capture Camera here)
-         * @return String
-         */
+        
 		std::string getString();
 
     private:
@@ -79,6 +63,9 @@ class FlyCamera : public AbstractCamera
          * @return
          */
 		FlyCapture2::PropertyType getPropertyType(CameraManager::CameraProperty *p);
+
+		
+        bool capturing;
 
 };
 

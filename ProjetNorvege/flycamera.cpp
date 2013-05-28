@@ -4,7 +4,8 @@
 #include <QRgb>
 
 
-FlyCamera::FlyCamera() : AbstractCamera()
+FlyCamera::FlyCamera()
+	: AbstractCamera(), capturing(false)
 {
     cam = new Camera();
 
@@ -74,6 +75,31 @@ FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProper
 		return SHUTTER;
 		break;
 	}
+}
+
+
+void FlyCamera::startAutoCapture(){
+    capturing = true;
+    qDebug() << "Starting autoCapture";
+    while(capturing){
+        // QThread::msleep(1000/framerate);
+
+        QImage img(400,400, QImage::Format_RGB32);
+        img.fill(Qt::green);
+        QPainter p;
+        p.begin(&img);
+        p.drawRect(1,1,397,397);
+        p.drawRect(rand()%100, rand()%100,rand()%300, rand()%300);
+        p.end();
+
+        sendFrame(img);
+    }
+    qDebug() << "Stoped autoCapture !";
+}
+
+void FlyCamera::stopAutoCapture(){
+    qDebug() << "Stoping autoCapture";
+    capturing = false;
 }
 
 QImage FlyCamera::retrieveImage()

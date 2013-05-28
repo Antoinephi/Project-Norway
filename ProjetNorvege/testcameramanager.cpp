@@ -7,16 +7,17 @@ TestCameraManager::TestCameraManager()
     foundCameras.push_back(new TestCamera("Camera2"));
     foundCameras.push_back(new TestCamera("Camera3"));
 
-	std::vector<CameraProperty> prop = std::vector<CameraProperty>();
-    prop.push_back(CameraProperty(CameraManager::BRIGHTNESS, 0, 255, 1, true));
-    prop.push_back(CameraProperty(CameraManager::GAIN, 0, 255, 1, true));
-    prop.push_back(CameraProperty(CameraManager::EXPOSURE, 0, 255, 1, true));
-    prop.push_back(CameraProperty(CameraManager::GAMMA, 0, 5, 0.01, false));
-    prop.push_back(CameraProperty(CameraManager::SHUTTER, 0, 255, 1, true));
-    for(int i=prop.size()-1; i>=0; i--){
-        prop.at(i).setValue(0.0);
+    std::vector<CameraProperty> props = std::vector<CameraProperty>();
+    props.push_back(CameraProperty(CameraManager::BRIGHTNESS, 0, 255, 0, true));
+    props.push_back(CameraProperty(CameraManager::GAIN, 0, 255, 0, true));
+    props.push_back(CameraProperty(CameraManager::EXPOSURE, 0, 255, 0, true));
+    props.push_back(CameraProperty(CameraManager::GAMMA, 0, 5, 2, false));
+    props.push_back(CameraProperty(CameraManager::SHUTTER, 0, 255, 0, true));
+    props.push_back(CameraProperty(CameraManager::FRAMERATE, 1, 30, 0, false));
+    for(int i=props.size()-1; i>=0; i--){
+        props.at(i).setValue(0.0);
     }
-	setProperties(prop);
+	setProperties(props);
 }
 
 void TestCameraManager::detectNewCameras(std::vector<AbstractCamera *> *newCameras){
