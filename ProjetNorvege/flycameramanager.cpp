@@ -2,11 +2,17 @@
 #include "flycamera.h"
 #include <sstream>
 #include <QImage>
+#include <QProcess>
 using namespace std;
 
 FlyCameraManager::FlyCameraManager()
 	: AbstractCameraManager()
 {
+	#if defined(WIN32) || defined(WIN64)
+		QProcess *myProcess = new QProcess(NULL);
+		myProcess->start("PGRIdleStateFix.exe", QStringList("enable") );
+	#endif
+
     std::vector<CameraProperty> prop = std::vector<CameraProperty>();
     prop.push_back(CameraProperty(CameraManager::BRIGHTNESS, 0, 255, 0, true));
     prop.push_back(CameraProperty(CameraManager::GAIN, 0, 12.041, 3, true));
