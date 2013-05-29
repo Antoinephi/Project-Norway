@@ -43,16 +43,18 @@ class AbstractCamera
 
         virtual void startAutoCapture() = 0;
         virtual void stopAutoCapture() = 0;
+
         //may be changed
         virtual QImage retrieveImage() = 0;
 
-        void sendFrame(QImage img);
+
         void startCapture(QLabel* label);
 
 
 
     protected:
         AbstractCamera();
+        void sendFrame(QImage img);
     private:
         QLabel* container;        
         class CaptureThread : public QThread {
