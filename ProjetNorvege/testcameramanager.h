@@ -10,7 +10,6 @@ class TestCameraManager : public AbstractCameraManager {
     public:
         TestCameraManager();
         virtual void detectNewCameras(std::vector<AbstractCamera*> *newCameras);
-        virtual void getCamerasPropertiesList() const;
         virtual std::string getName() const;
     private:
         std::vector<AbstractCamera*> foundCameras;
