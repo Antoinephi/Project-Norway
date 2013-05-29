@@ -75,24 +75,32 @@ FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProper
 		return SHUTTER;
 		break;
 	}
+
+	return BRIGHTNESS;
 }
 
 
 void FlyCamera::startAutoCapture(){
     capturing = true;
     qDebug() << "Starting autoCapture";
+	getCamera()->StartCapture();
+
+	Image img;
+
     while(capturing){
-        // QThread::msleep(1000/framerate);
+		getCamera()->RetrieveBuffer(&img);
+		unsigned char* picData = img.GetData();
+		unsigned int x = img.GetCols();
+		unsigned int y = img.GetRows();
+		QImage image(x, y, QImage::Format_RGB32);
+		for(unsigned int i = 0; i <y; i++){
+			for(unsigned int j = 0; j <x; j++) {
+				unsigned char data = picData[i*x+j];
+				image.setPixel(j, i, qRgb(data, data, data));
+			}
+		}
 
-        QImage img(400,400, QImage::Format_RGB32);
-        img.fill(Qt::green);
-        QPainter p;
-        p.begin(&img);
-        p.drawRect(1,1,397,397);
-        p.drawRect(rand()%100, rand()%100,rand()%300, rand()%300);
-        p.end();
-
-        sendFrame(img);
+		AbstractCamera::sendFrame(image);
     }
     qDebug() << "Stoped autoCapture !";
 }
@@ -100,6 +108,7 @@ void FlyCamera::startAutoCapture(){
 void FlyCamera::stopAutoCapture(){
     qDebug() << "Stoping autoCapture";
     capturing = false;
+	getCamera()->StopCapture();
 }
 
 QImage FlyCamera::retrieveImage()
