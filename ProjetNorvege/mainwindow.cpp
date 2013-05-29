@@ -18,9 +18,9 @@ MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), ui(new Ui::MainWindow),
       addGroup(new QAction("Add Group", this)), cameraManagers(), selectedCameraManager(-1)
 {
-    propertiesIcons[0] = QIcon(":/icons/camera.png").pixmap(16,16);
-    propertiesIcons[1] = QIcon(":/icons/folder.png").pixmap(16,16);
-    propertiesIcons[2] = QIcon(":/icons/folder_camera.png").pixmap(16,16);
+    propertiesIcons[0] = QIcon(":/icons/camera").pixmap(16,16);
+    propertiesIcons[1] = QIcon(":/icons/folder").pixmap(16,16);
+    propertiesIcons[2] = QIcon(":/icons/folder_camera").pixmap(16,16);
 
     ui->setupUi(this);
 

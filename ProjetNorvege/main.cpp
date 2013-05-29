@@ -4,8 +4,10 @@
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	MainWindow w;
+    MainWindow w;
+
     w.showMaximized();
-	
-	return a.exec();
+
+    int r = a.exec();
+    return r;
 }

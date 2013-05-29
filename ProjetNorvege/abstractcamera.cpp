@@ -22,5 +22,6 @@ void AbstractCamera::sendFrame(QImage img){
     //qDebug() << "Frame sended !";
     QPixmap pxmap = QPixmap::fromImage(img.scaled(container->size(), Qt::KeepAspectRatio));
     container->setPixmap(pxmap);
-    container->show();
+    //container->show();
+    //container->repaint();
 }

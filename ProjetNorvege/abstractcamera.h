@@ -41,18 +41,33 @@ class AbstractCamera
          */
         virtual std::string getString() = 0;
 
+        /**
+         * @brief startAutoCapture start callback based Liveview
+         */
         virtual void startAutoCapture() = 0;
+
+        /**
+         * @brief stopAutoCapture stop callback based Liveview
+         */
         virtual void stopAutoCapture() = 0;
-        //may be changed
+
+        /**
+         * @brief retrieveImage get one image from camera
+         * @return QImage image
+         */
         virtual QImage retrieveImage() = 0;
 
-        void sendFrame(QImage img);
+        /**
+         * @brief startCapture start liveview capture from manager
+         * @param label wil update the label with images from the camera
+         */
         void startCapture(QLabel* label);
 
 
 
     protected:
         AbstractCamera();
+        void sendFrame(QImage img);
     private:
         QLabel* container;        
         class CaptureThread : public QThread {

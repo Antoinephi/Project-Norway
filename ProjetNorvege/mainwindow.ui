@@ -120,7 +120,7 @@
          </property>
          <property name="icon">
           <iconset resource="Ressources.qrc">
-           <normaloff>:/icons/add.png</normaloff>:/icons/add.png</iconset>
+           <normaloff>:/icons/add</normaloff>:/icons/add</iconset>
          </property>
         </widget>
        </item>
@@ -190,7 +190,7 @@
          </property>
          <property name="icon">
           <iconset resource="Ressources.qrc">
-           <normaloff>:/icons/folder_add.png</normaloff>:/icons/folder_add.png</iconset>
+           <normaloff>:/icons/folder_add</normaloff>:/icons/folder_add</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -225,7 +225,7 @@
          </property>
          <property name="icon">
           <iconset resource="Ressources.qrc">
-           <normaloff>:/icons/folder_delete.png</normaloff>:/icons/folder_delete.png</iconset>
+           <normaloff>:/icons/folder_delete</normaloff>:/icons/folder_delete</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -251,7 +251,7 @@
          </property>
          <property name="icon">
           <iconset resource="Ressources.qrc">
-           <normaloff>:/icons/edit.png</normaloff>:/icons/edit.png</iconset>
+           <normaloff>:/icons/edit</normaloff>:/icons/edit</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -363,7 +363,7 @@
   <action name="actionQuitter">
    <property name="icon">
     <iconset resource="Ressources.qrc">
-     <normaloff>:/icons/quit.png</normaloff>:/icons/quit.png</iconset>
+     <normaloff>:/icons/quit</normaloff>:/icons/quit</iconset>
    </property>
    <property name="text">
     <string>Quitter</string>
@@ -375,7 +375,7 @@
   <action name="actionMosaic">
    <property name="icon">
     <iconset resource="Ressources.qrc">
-     <normaloff>:/icons/mosaic.png</normaloff>:/icons/mosaic.png</iconset>
+     <normaloff>:/icons/mosaic</normaloff>:/icons/mosaic</iconset>
    </property>
    <property name="text">
     <string>Mosaic</string>
@@ -387,7 +387,7 @@
   <action name="actionUpdateImages">
    <property name="icon">
     <iconset resource="Ressources.qrc">
-     <normaloff>:/icons/one.png</normaloff>:/icons/one.png</iconset>
+     <normaloff>:/icons/one</normaloff>:/icons/one</iconset>
    </property>
    <property name="text">
     <string>UpdateImages (Space)</string>
@@ -407,7 +407,7 @@
    </property>
    <property name="icon">
     <iconset resource="Ressources.qrc">
-     <normaloff>:/icons/liveview.png</normaloff>:/icons/liveview.png</iconset>
+     <normaloff>:/icons/liveview</normaloff>:/icons/liveview</iconset>
    </property>
    <property name="text">
     <string>LiveView</string>
