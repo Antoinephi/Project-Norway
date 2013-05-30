@@ -11,8 +11,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = ProjetNorvege
 TEMPLATE = app
 
-QMAKE_CXXFLAGS += -std=c++11
-
 
 
 
@@ -26,7 +24,6 @@ SOURCES += main.cpp\
     cameraproperty.cpp \
     flycameramanager.cpp \
     flycamera.cpp \
-    circularbuffer.cpp \
     iscamera.cpp \
     iscameramanager.cpp
 
@@ -39,7 +36,6 @@ HEADERS  += mainwindow.h \
     cameraproperty.h \
     flycameramanager.h \
     flycamera.h \
-    circularbuffer.h \
     iscamera.h \
     iscameramanager.h
 
