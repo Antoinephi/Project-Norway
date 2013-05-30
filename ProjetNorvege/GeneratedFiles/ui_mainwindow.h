@@ -81,17 +81,17 @@ public:
         actionQuitter = new QAction(MainWindow);
         actionQuitter->setObjectName(QStringLiteral("actionQuitter"));
         QIcon icon;
-        icon.addFile(QStringLiteral(":/icons/quit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/icons/quit"), QSize(), QIcon::Normal, QIcon::Off);
         actionQuitter->setIcon(icon);
         actionMosaic = new QAction(MainWindow);
         actionMosaic->setObjectName(QStringLiteral("actionMosaic"));
         QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons/mosaic.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QStringLiteral(":/icons/mosaic"), QSize(), QIcon::Normal, QIcon::Off);
         actionMosaic->setIcon(icon1);
         actionUpdateImages = new QAction(MainWindow);
         actionUpdateImages->setObjectName(QStringLiteral("actionUpdateImages"));
         QIcon icon2;
-        icon2.addFile(QStringLiteral(":/icons/one.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QStringLiteral(":/icons/one"), QSize(), QIcon::Normal, QIcon::Off);
         actionUpdateImages->setIcon(icon2);
         actionUpdateProperties = new QAction(MainWindow);
         actionUpdateProperties->setObjectName(QStringLiteral("actionUpdateProperties"));
@@ -99,7 +99,7 @@ public:
         actionLiveView->setObjectName(QStringLiteral("actionLiveView"));
         actionLiveView->setCheckable(true);
         QIcon icon3;
-        icon3.addFile(QStringLiteral(":/icons/liveview.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QStringLiteral(":/icons/liveview"), QSize(), QIcon::Normal, QIcon::Off);
         actionLiveView->setIcon(icon3);
         centralwidget = new QMdiArea(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
@@ -149,7 +149,7 @@ public:
         Detect->setCursor(QCursor(Qt::ArrowCursor));
         Detect->setAutoFillBackground(false);
         QIcon icon4;
-        icon4.addFile(QStringLiteral(":/icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon4.addFile(QStringLiteral(":/icons/add"), QSize(), QIcon::Normal, QIcon::Off);
         Detect->setIcon(icon4);
 
         horizontalLayout->addWidget(Detect);
@@ -186,7 +186,7 @@ public:
         sizePolicy3.setHeightForWidth(addGroup->sizePolicy().hasHeightForWidth());
         addGroup->setSizePolicy(sizePolicy3);
         QIcon icon5;
-        icon5.addFile(QStringLiteral(":/icons/folder_add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon5.addFile(QStringLiteral(":/icons/folder_add"), QSize(), QIcon::Normal, QIcon::Off);
         addGroup->setIcon(icon5);
         addGroup->setIconSize(QSize(24, 24));
         addGroup->setAutoDefault(false);
@@ -200,7 +200,7 @@ public:
         sizePolicy3.setHeightForWidth(deleteGroup->sizePolicy().hasHeightForWidth());
         deleteGroup->setSizePolicy(sizePolicy3);
         QIcon icon6;
-        icon6.addFile(QStringLiteral(":/icons/folder_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon6.addFile(QStringLiteral(":/icons/folder_delete"), QSize(), QIcon::Normal, QIcon::Off);
         deleteGroup->setIcon(icon6);
         deleteGroup->setIconSize(QSize(24, 24));
 
@@ -214,7 +214,7 @@ public:
         sizePolicy4.setHeightForWidth(editItem->sizePolicy().hasHeightForWidth());
         editItem->setSizePolicy(sizePolicy4);
         QIcon icon7;
-        icon7.addFile(QStringLiteral(":/icons/edit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon7.addFile(QStringLiteral(":/icons/edit"), QSize(), QIcon::Normal, QIcon::Off);
         editItem->setIcon(icon7);
         editItem->setIconSize(QSize(24, 24));
 

@@ -1,5 +1,5 @@
-#ifndef FLYCAMERA_H
-#define FLYCAMERA_H
+#ifndef ISCAMERA_H
+#define ISCAMERA_H
 
 #include "abstractcamera.h"
 #include <iostream>
@@ -15,14 +15,14 @@ using namespace FlyCapture2;
 using namespace std;
 
 /**
- * @brief The FlyCamera class, represent a FlyCapture Camera with all its settings
+ * @brief The IsCamera class, represent a Image Source Camera with all its settings
  */
 
-class FlyCamera : public AbstractCamera
+class IsCamera : public AbstractCamera
 {
     public:
-        FlyCamera();
-        virtual ~FlyCamera();
+        IsCamera();
+        virtual ~IsCamera();
 
         Camera* getCamera();
         

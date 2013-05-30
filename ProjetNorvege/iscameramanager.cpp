@@ -1,11 +1,11 @@
-#include "flycameramanager.h"
-#include "flycamera.h"
+#include "iscameramanager.h"
+#include "iscamera.h"
 #include <sstream>
 #include <QImage>
 #include <QProcess>
 using namespace std;
 
-FlyCameraManager::FlyCameraManager()
+IsCameraManager::IsCameraManager()
 	: AbstractCameraManager()
 {
 	#if defined(WIN32) || defined(WIN64)
@@ -15,10 +15,10 @@ FlyCameraManager::FlyCameraManager()
 
     std::vector<CameraProperty> prop = std::vector<CameraProperty>();
     prop.push_back(CameraProperty(CameraManager::BRIGHTNESS, 0, 255, 0, true));
-    prop.push_back(CameraProperty(CameraManager::GAIN, 0, 12.041, 3, true));
+    prop.push_back(CameraProperty(CameraManager::GAIN, 0, (float) 12.041, 3, true));
     prop.push_back(CameraProperty(CameraManager::EXPOSURE, 0, 62, 0, true));
     prop.push_back(CameraProperty(CameraManager::GAMMA, 0, 1, 0, false));
-    prop.push_back(CameraProperty(CameraManager::SHUTTER, 0, 33.174, 3, true));
+    prop.push_back(CameraProperty(CameraManager::SHUTTER, 0, (float) 33.174, 3, true));
 
     for(int i=prop.size()-1; i>=0; i--){
         prop.at(i).setValue(0.0);
@@ -26,13 +26,13 @@ FlyCameraManager::FlyCameraManager()
 	setProperties(prop);
 }
 
-FlyCameraManager::~FlyCameraManager()
+IsCameraManager::~IsCameraManager()
 {
     //dtor
 }
 
 
-void FlyCameraManager::detectNewCameras(std::vector<AbstractCamera*> *newCameras)
+void IsCameraManager::detectNewCameras(std::vector<AbstractCamera*> *newCameras)
 {
     busMgr.GetNumOfCameras(&numCameras);
     for(unsigned int i = 0; i<numCameras; i++){
@@ -45,12 +45,12 @@ void FlyCameraManager::detectNewCameras(std::vector<AbstractCamera*> *newCameras
     }
 }
 
-void FlyCameraManager::getCamerasPropertiesList() const
+void IsCameraManager::getCamerasPropertiesList() const
 {
     //Nothing here
 }
 
-string FlyCameraManager::getName() const
+string IsCameraManager::getName() const
 {
     return "FlyCapture Camera Manager";
 }

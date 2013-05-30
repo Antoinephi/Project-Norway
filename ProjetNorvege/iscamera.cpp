@@ -1,32 +1,32 @@
-#include "flycamera.h"
+#include "iscamera.h"
 #include <QDebug>
 #include <QPainter>
 #include <QRgb>
 
 
-FlyCamera::FlyCamera()
+IsCamera::IsCamera()
 	: AbstractCamera(), capturing(false)
 {
     cam = new Camera();
 
 }
 
-Camera* FlyCamera::getCamera()
+Camera* IsCamera::getCamera()
 {
     return cam;
 }
 
-PGRGuid* FlyCamera::getGuid()
+PGRGuid* IsCamera::getGuid()
 {
     return &guid;
 }
 
-CameraInfo* FlyCamera::getCameraInfo()
+CameraInfo* IsCamera::getCameraInfo()
 {
     return &camInfo;
 }
 
-void FlyCamera::setProperty(CameraManager::CameraProperty* p)
+void IsCamera::setProperty(CameraManager::CameraProperty* p)
 {
     Error error;
 	Property prop;
@@ -44,7 +44,7 @@ void FlyCamera::setProperty(CameraManager::CameraProperty* p)
 		cam->SetProperty(&prop);
     }
 }
-void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
+void IsCamera::updateProperty(CameraManager::CameraProperty* p)
 {
 	Error error;
 	Property prop;
@@ -56,7 +56,7 @@ void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
 		p->setValue(p->getDecimals() > 0 ? prop.absValue : prop.valueA);
     }
 }
-FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProperty* p)
+FlyCapture2::PropertyType IsCamera::getPropertyType(CameraManager::CameraProperty* p)
 {
 	switch(p->getType()){
 	case CameraManager::BRIGHTNESS:
@@ -80,7 +80,7 @@ FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProper
 }
 
 
-void FlyCamera::startAutoCapture(){
+void IsCamera::startAutoCapture(){
     capturing = true;
     qDebug() << "Starting autoCapture";
 	getCamera()->StartCapture();
@@ -105,13 +105,13 @@ void FlyCamera::startAutoCapture(){
     qDebug() << "Stoped autoCapture !";
 }
 
-void FlyCamera::stopAutoCapture(){
+void IsCamera::stopAutoCapture(){
     qDebug() << "Stoping autoCapture";
     capturing = false;
 	getCamera()->StopCapture();
 }
 
-QImage FlyCamera::retrieveImage()
+QImage IsCamera::retrieveImage()
 {
     Image img;
 	getCamera()->StartCapture();
@@ -131,24 +131,24 @@ QImage FlyCamera::retrieveImage()
 }
 
 
-bool FlyCamera::equalsTo(AbstractCamera *c){
-    return guid == *((FlyCamera *)c)->getGuid();
+bool IsCamera::equalsTo(AbstractCamera *c){
+    return true; // TODO
 }
 
 
 
 
 
-std::string FlyCamera::getString(){
-	string name = FlyCamera::getCameraInfo()->modelName;
+std::string IsCamera::getString(){
+	string name = IsCamera::getCameraInfo()->modelName;
 	ostringstream refTmp;
-	refTmp << FlyCamera::getCameraInfo()->serialNumber;
+	refTmp << IsCamera::getCameraInfo()->serialNumber;
 	string ref = refTmp.str();
 
 	return name + " - " + ref;
 }
 
-FlyCamera::~FlyCamera()
+IsCamera::~IsCamera()
 {
     //dtor
 }

@@ -1,7 +1,6 @@
-#ifndef FLYCAMERAMANAGER_H
-#define FLYCAMERAMANAGER_H
+#ifndef ISCAMERAMANAGER_H
+#define ISAMERAMANAGER_H
 
-#include "circularbuffer.h"
 #include "flycamera.h"
 #include <vector>
 #include <iostream>
@@ -15,17 +14,16 @@ using namespace FlyCapture2;
  * @brief The FlyCameraManager class deals with all the Fly Capture Cameras
  */
 
-class FlyCameraManager
+class IsCameraManager
 	: public AbstractCameraManager
 {
     public:
-        FlyCameraManager();
-        virtual ~FlyCameraManager();
+        IsCameraManager();
+        virtual ~IsCameraManager();
         virtual void detectNewCameras(std::vector<AbstractCamera*> *newCameras);
         std::string getName() const;
         void getCamerasPropertiesList() const;
 
-        CircularBuffer** camBuffer;
         unsigned int numCameras;
 
     private:
@@ -33,4 +31,4 @@ class FlyCameraManager
     Error error;
 };
 
-#endif // FLYCAMERAMANAGER_H
+#endif // ISCAMERAMANAGER_H
