@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     abstractcamera.cpp \
     testcamera.cpp \
     emptycameramanager.cpp \
-    cameraproperty.cpp
+    cameraproperty.cpp \
+    qvideowidget.cpp
 
 HEADERS  += mainwindow.h \
     abstractcameramanager.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     abstractcamera.h \
     testcamera.h \
     emptycameramanager.h \
-    cameraproperty.h
+    cameraproperty.h \
+    qvideowidget.h
 
 FORMS    += \
     mainwindow.ui

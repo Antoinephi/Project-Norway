@@ -30,10 +30,10 @@ namespace CameraManager {
         float getValue(){ return val; }
         float getDecimals(){ return decimals; }
 
-        void setValueFromSlider(int value){ val = value/pow(10, decimals); }
-        int getValueToSlider(){ return val*pow(10, decimals); }
-        int getMinToSlider(){ return min*pow(10, decimals); }
-        int getMaxToSLider(){ return max*pow(10, decimals); }
+        void setValueFromSlider(int value){ val = value/pow((float)10, decimals); }
+        int getValueToSlider(){ return val*pow((float)10, decimals); }
+        int getMinToSlider(){ return min*pow((float)10, decimals); }
+        int getMaxToSLider(){ return max*pow((float)10, decimals); }
         QString formatValue(){ return QString::number(val, 'f', decimals); }
 
         std::string getName();

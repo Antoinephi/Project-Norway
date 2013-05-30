@@ -22,8 +22,7 @@ void TestCamera::updateProperty(CameraProperty* p){
 QImage TestCamera::retrieveImage(){
     QImage img(400,400, QImage::Format_RGB32);
     img.fill(Qt::green);
-    QPainter p;
-    p.begin(&img);
+    QPainter p(&img);
     p.drawRect(1,1,397,397);
     p.drawRect(rand()%100, rand()%100,rand()%300, rand()%300);
     p.end();

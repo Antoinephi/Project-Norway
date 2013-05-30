@@ -7,7 +7,7 @@
 class EmptyCameraManager : public AbstractCameraManager {
     public:
         EmptyCameraManager();
-        virtual void detectNewCameras(std::vector<AbstractCamera*> *newCameras);
+        virtual void detectNewCameras(std::vector<AbstractCamera*> *);
         virtual void getCamerasPropertiesList() const;
         virtual std::string getName() const;
 };

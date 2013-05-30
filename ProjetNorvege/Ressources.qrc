@@ -13,5 +13,6 @@
         <file alias="folder">img/folder.png</file>
         <file alias="camera">img/camera.png</file>
         <file alias="folder_camera">img/folder_camera.png</file>
+        <file alias="crosshair">img/crosshair.png</file>
     </qresource>
 </RCC>
