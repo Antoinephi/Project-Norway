@@ -2,13 +2,14 @@
 #include <QPainter>
 #include <QMouseEvent>
 #include "qvideowidget.h"
+#include "mainwindow.h"
 
 QVideoWidget::QVideoWidget(QWidget *parent) :
     QWidget(parent),
     active(this->windowState() & Qt::WindowActive),
     mouseIn( underMouse() )
 {
-
+    setMouseTracking(Ui::crosshair);
 }
 
 
@@ -76,15 +77,16 @@ void QVideoWidget::resizeEvent(QResizeEvent *){
     //qDebug() << "ratio" << ratio;
     scaled = QRect(pos, tmp.size());
 }
-void QVideoWidget::enterEvent(QEvent *){
-}
+
+//void QVideoWidget::enterEvent(QEvent *){}
 void QVideoWidget::leaveEvent(QEvent *){
+    if(!Ui::crosshair) return;
     mouseIn = false;
     unsetCursor();
     update();
 }
 void QVideoWidget::mouseMoveEvent ( QMouseEvent * event ){
-    if(!active) return;
+    if(!Ui::crosshair) return;
     mouse = event->pos();
     bool tmp = mouseIn;
     mouseIn = scaled.contains(mouse);
@@ -100,8 +102,10 @@ void QVideoWidget::mouseMoveEvent ( QMouseEvent * event ){
 
 void QVideoWidget::changedState(Qt::WindowStates, Qt::WindowStates newState){
     active = newState & Qt::WindowActive;
-    setMouseTracking(active);
 }
 
+void QVideoWidget::activateCrosshair(bool state){
+    setMouseTracking(state);
+}
 
 

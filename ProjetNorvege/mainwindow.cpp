@@ -12,7 +12,7 @@
 #include "testcameramanager.h"
 #include "emptycameramanager.h"
 
-
+bool Ui::crosshair = false;
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), ui(new Ui::MainWindow),
@@ -155,4 +155,10 @@ void MainWindow::on_deleteGroup_clicked()
     if( !ui->CameraTree->currentIndex().isValid() ) return;
     cameraManagers.at(selectedCameraManager)->removeGroup( ui->CameraTree->currentIndex() );
     on_CameraTree_itemClicked( ui->CameraTree->currentIndex() );
+}
+
+void MainWindow::on_actionCrosshair_toggled(bool arg1)
+{
+    Ui::crosshair = arg1;
+    emit activateCrosshair(Ui::crosshair);
 }

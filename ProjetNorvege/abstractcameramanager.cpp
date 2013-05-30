@@ -189,6 +189,8 @@ void AbstractCameraManager::activateCamera(AbstractCamera* camera, QStandardItem
             entry.window->setWindowTitle(item->text());
             mainWindow->modifySubWindow(entry.window, true);
             activeCameras.push_back(entry);
+            QObject::connect(mainWindow, SIGNAL(activateCrosshair(bool)),
+                             qobject_cast<QVideoWidget*>(entry.window->widget()), SLOT(activateCrosshair(bool)) );
             if( liveView )
                 entry.camera->startCapture( qobject_cast<QVideoWidget *>( entry.window->widget() ) );
         }

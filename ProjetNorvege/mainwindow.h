@@ -12,6 +12,7 @@ namespace Ui {
         PropertyName = 0, PropertyAuto = 1, PropertyValue = 2, PropertySlider = 3
     };
 
+    extern bool crosshair;
 }
 
 class AbstractCameraManager;
@@ -25,7 +26,7 @@ public:
 
 	void modifySubWindow(QMdiSubWindow* in, bool add);
 	
-private slots:
+public slots:
 	void on_actionQuitter_triggered();
 	void on_Detect_clicked();
 	void on_CameraTree_customContextMenuRequested(const QPoint &pos);
@@ -40,6 +41,10 @@ private slots:
     void on_addGroup_clicked();
     void on_editItem_clicked();
     void on_deleteGroup_clicked();
+
+    void on_actionCrosshair_toggled(bool arg1);
+signals:
+    void activateCrosshair(bool);
 
 private:
 	Ui::MainWindow *ui;

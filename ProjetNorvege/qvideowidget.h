@@ -15,12 +15,13 @@ public:
 
 public slots:
     void changedState (Qt::WindowStates oldState, Qt::WindowStates newState);
+    void activateCrosshair(bool state);
 protected:
     void paintEvent (QPaintEvent * event);
     void resizeEvent (QResizeEvent * event);
 
     void mouseMoveEvent (QMouseEvent * event);
-    void enterEvent (QEvent *);
+    //void enterEvent (QEvent *);
     void leaveEvent (QEvent *);
 
 private:

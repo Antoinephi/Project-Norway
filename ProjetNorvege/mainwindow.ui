@@ -358,6 +358,8 @@
    <addaction name="separator"/>
    <addaction name="actionMosaic"/>
    <addaction name="separator"/>
+   <addaction name="actionCrosshair"/>
+   <addaction name="separator"/>
    <addaction name="actionUpdateProperties"/>
   </widget>
   <action name="actionQuitter">
@@ -411,6 +413,21 @@
    </property>
    <property name="text">
     <string>LiveView</string>
+   </property>
+  </action>
+  <action name="actionCrosshair">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Ressources.qrc">
+     <normaloff>:/icons/crosshair</normaloff>:/icons/crosshair</iconset>
+   </property>
+   <property name="text">
+    <string>crosshair</string>
+   </property>
+   <property name="toolTip">
+    <string>activate crosshair</string>
    </property>
   </action>
  </widget>
