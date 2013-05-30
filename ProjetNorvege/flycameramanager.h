@@ -1,7 +1,6 @@
 #ifndef FLYCAMERAMANAGER_H
 #define FLYCAMERAMANAGER_H
 
-#include "circularbuffer.h"
 #include "flycamera.h"
 #include <vector>
 #include <iostream>
@@ -25,7 +24,6 @@ class FlyCameraManager
         std::string getName() const;
         void getCamerasPropertiesList() const;
 
-        CircularBuffer** camBuffer;
         unsigned int numCameras;
 
     private:

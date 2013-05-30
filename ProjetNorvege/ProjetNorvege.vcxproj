@@ -146,7 +146,6 @@
     <ClCompile Include="abstractcamera.cpp" />
     <ClCompile Include="abstractcameramanager.cpp" />
     <ClCompile Include="cameraproperty.cpp" />
-    <ClCompile Include="circularbuffer.cpp" />
     <ClCompile Include="Debug\moc_abstractcameramanager.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -188,7 +187,6 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <ClInclude Include="cameraproperty.h" />
-    <ClInclude Include="circularbuffer.h" />
     <ClInclude Include="emptycameramanager.h" />
     <CustomBuild Include="mainwindow.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>

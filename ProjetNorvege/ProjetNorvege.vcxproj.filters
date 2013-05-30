@@ -94,9 +94,6 @@
     <ClCompile Include="flycameramanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="circularbuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_Ressources.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -136,9 +133,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="flycamera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="circularbuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="iscamera.h">
