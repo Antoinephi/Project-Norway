@@ -131,7 +131,7 @@ QImage IsCamera::retrieveImage()
 }
 
 
-bool IsCamera::equalsTo(AbstractCamera *c){
+bool IsCamera::equalsTo(AbstractCamera *){
     return true; // TODO
 }
 
