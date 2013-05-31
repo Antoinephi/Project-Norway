@@ -13,6 +13,7 @@ namespace Ui {
     };
 
     extern bool crosshair;
+    extern bool crosshairReal;
 }
 
 class AbstractCameraManager;
@@ -26,7 +27,7 @@ public:
 
 	void modifySubWindow(QMdiSubWindow* in, bool add);
 	
-public slots:
+private slots:
 	void on_actionQuitter_triggered();
 	void on_Detect_clicked();
 	void on_CameraTree_customContextMenuRequested(const QPoint &pos);
@@ -35,7 +36,7 @@ public slots:
 	void on_SelectCameras_currentIndexChanged(int index);
 	void on_CameraTree_itemClicked(const QModelIndex & index);
     void on_actionUpdateImages_triggered();
-    void on_actionUpdateProperties_triggered();
+    void on_updatePropertiesButton_clicked();
     void on_actionLiveView_toggled(bool arg1);
 
     void on_addGroup_clicked();
@@ -43,6 +44,8 @@ public slots:
     void on_deleteGroup_clicked();
 
     void on_actionCrosshair_toggled(bool arg1);
+    void on_actionCrosshairReal_toggled(bool arg1);
+
 signals:
     void activateCrosshair(bool);
 

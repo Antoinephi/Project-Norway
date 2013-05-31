@@ -1,9 +1,9 @@
 #include <QMessageBox>
+#include <QMenu>
 #include <QStandardItem>
 #include <QDebug>
 #include <QMdiArea>
 #include <QMdiSubWindow>
-
 #include <QWidgetItem>
 
 #include "mainwindow.h"
@@ -12,7 +12,8 @@
 #include "testcameramanager.h"
 #include "emptycameramanager.h"
 
-bool Ui::crosshair = false;
+bool Ui::crosshair = false, Ui::crosshairReal = false;
+
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), ui(new Ui::MainWindow),
@@ -126,11 +127,6 @@ void MainWindow::on_actionUpdateImages_triggered()
     cameraManagers.at(selectedCameraManager)->updateImages();
 }
 
-void MainWindow::on_actionUpdateProperties_triggered()
-{
-    cameraManagers.at(selectedCameraManager)->updateProperties();
-}
-
 void MainWindow::on_actionLiveView_toggled(bool arg1)
 {
     ui->actionUpdateImages->setEnabled(!arg1);
@@ -161,4 +157,14 @@ void MainWindow::on_actionCrosshair_toggled(bool arg1)
 {
     Ui::crosshair = arg1;
     emit activateCrosshair(Ui::crosshair);
+}
+
+void MainWindow::on_actionCrosshairReal_toggled(bool arg1)
+{
+    Ui::crosshairReal = arg1;
+}
+
+void MainWindow::on_updatePropertiesButton_clicked()
+{
+    cameraManagers.at(selectedCameraManager)->updateProperties();
 }

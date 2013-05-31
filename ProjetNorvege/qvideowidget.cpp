@@ -28,31 +28,48 @@ void QVideoWidget::paintEvent(QPaintEvent *) {
     QImage scaledImg;
     QPainter painter(this);
     if( mouseIn ){
-        //qDebug() << "mouse" << mouse;
-        QPoint posInImg = (mouse-scaled.topLeft()) * ratio;
+        QString sx("x:%1"), sy("y:%1");
+        if(Ui::crosshairReal){
+            QPoint pos = (mouse-scaled.topLeft()) * ratio;
+            sx = sx.arg(pos.x());
+            sy = sy.arg(pos.y());
 
-        QImage imgCopy = img.copy();
-        QPainter painterImg(&imgCopy);
-        painterImg.drawPixmap(posInImg-QPoint(15,15), QPixmap(":/icons/crosshair"));
-        painterImg.drawLine(0, posInImg.y(), posInImg.x()-15, posInImg.y());
-        painterImg.drawLine(posInImg.x()+16, posInImg.y(), imgCopy.width(), posInImg.y());
+            QImage imgCopy = img.copy();
+            QPainter painterImg(&imgCopy);
+            painterImg.drawPixmap(pos-QPoint(15, 15), QPixmap(":/icons/crosshair"));
+            painterImg.drawLine(0, pos.y(), pos.x()-15, pos.y());
+            painterImg.drawLine(pos.x()+16, pos.y(), imgCopy.width(), pos.y());
 
-        painterImg.drawLine(posInImg.x(), 0, posInImg.x(), posInImg.y()-15);
-        painterImg.drawLine(posInImg.x(), posInImg.y()+16, posInImg.x(), imgCopy.height());
-        painterImg.end();
+            painterImg.drawLine(pos.x(), 0, pos.x(), pos.y()-15);
+            painterImg.drawLine(pos.x(), pos.y()+16, pos.x(), imgCopy.height());
+            painterImg.end();
 
-        scaledImg = imgCopy.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            scaledImg = imgCopy.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            painter.drawImage(scaled.topLeft(), scaledImg);
+        }else{
+            QPointF pos = QPointF(mouse-scaled.topLeft()) * ratio;
+            sx = sx.arg(pos.x());
+            sy = sy.arg(pos.y());
 
-        painter.drawImage(scaled.topLeft(), scaledImg);
+            scaledImg = img.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            painter.drawImage(scaled.topLeft(), scaledImg);
+
+            painter.drawPixmap(mouse-QPoint(15, 15), QPixmap(":/icons/crosshair"));
+            painter.drawLine(scaled.left(), mouse.y(), mouse.x()-15, mouse.y());
+            painter.drawLine(mouse.x()+16, mouse.y(), scaled.right(), mouse.y());
+
+            painter.drawLine(mouse.x(), scaled.top(), mouse.x(), mouse.y()-15);
+            painter.drawLine(mouse.x(), mouse.y()+16, mouse.x(), scaled.bottom());
+        }
         /*painter.drawText( mouse+QPoint(5,-5-painter.font().pixelSize()),
                           QString("%1,%2").arg(posInImg.x()).arg(posInImg.y())
                           );*/
         QFont font(painter.font());
         font.setPixelSize(15);
         painter.setFont(font);
-        painter.fillRect( 0, 0, 50, 35, Qt::white );
-        painter.drawText( 1, 16, QString("x:%1").arg(posInImg.x()) );
-        painter.drawText( 1, 32, QString("y:%1").arg(posInImg.y()) );
+        painter.fillRect( 0, 0, 70, 35, Qt::white );
+        painter.drawText( 1, 16, sx );
+        painter.drawText( 1, 32, sy );
     }else{
         /*if( active )
             scaledImg = img.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
