@@ -5,28 +5,36 @@
 #include <stdlib.h>
 
 TestCamera::TestCamera(std::string n)
-    : AbstractCamera(), n(n), capturing(false), framerate(5) {
+    : AbstractCamera(), n(n), capturing(false), framerate(5), brightness(255), crop(400) {
     srand(42);
 }
 
 void TestCamera::setProperty(CameraProperty* p){
-    //Nothing here
-    qDebug() << "setProperty";
-    if(p->getType() == CameraManager::FRAMERATE) framerate = p->getValue();
+    switch(p->getType()){
+        case CameraManager::FRAMERATE: framerate = p->getValue();
+            break;
+        case CameraManager::BRIGHTNESS: brightness = p->getValue();
+            break;
+        case CameraManager::CROP: crop = p->getValue();
+            break;
+        default: break;
+    }
 }
 void TestCamera::updateProperty(CameraProperty* p){
-    //Nothing here
-    if(p->getType() == CameraManager::FRAMERATE) p->setValue(framerate);
+    p->setAuto(false);
+    switch(p->getType()){
+        case CameraManager::FRAMERATE: p->setValue(framerate);
+            break;
+        case CameraManager::BRIGHTNESS: p->setValue(brightness);
+            break;
+        case CameraManager::CROP: p->setValue(crop);
+            break;
+        default: break;
+    }
 }
 
 QImage TestCamera::retrieveImage(){
-    QImage img(400,400, QImage::Format_RGB32);
-    img.fill(Qt::green);
-    QPainter p(&img);
-    p.drawRect(1,1,397,397);
-    p.drawRect(rand()%100, rand()%100,rand()%300, rand()%300);
-    p.end();
-    return img;
+    return generateImage();
 }
 
 void TestCamera::startAutoCapture(){
@@ -35,20 +43,36 @@ void TestCamera::startAutoCapture(){
     while(capturing){
         QThread::msleep(1000/framerate);
 
-        QImage img(400,400, QImage::Format_RGB32);
-        img.fill(Qt::green);
-        QPainter p;
-        p.begin(&img);
-        p.drawRect(1,1,397,397);
-        p.drawRect(rand()%100, rand()%100,rand()%300, rand()%300);
-        p.end();
-
-        sendFrame(img);
+        sendFrame( generateImage() );
     }
-    qDebug() << "Stoped autoCapture !";
+    qDebug() << "Stopped autoCapture !";
 }
 
 void TestCamera::stopAutoCapture(){
-    qDebug() << "Stoping autoCapture";
+    qDebug() << "Stopping autoCapture";
     capturing = false;
+}
+
+void TestCamera::generateBack(){
+    back = QImage(crop, crop, QImage::Format_RGB32);
+    back.fill(QColor(0,brightness,0));
+    QPainter p(&back);
+    p.setPen(Qt::gray);
+    for(int i=0; i<crop; i+=10){
+        p.drawLine(0, i, crop, i);
+        p.drawLine(i, 0, i, crop);
+    }
+    p.end();
+}
+
+QImage TestCamera::generateImage(){
+    if( crop != back.width() ) generateBack();
+    QImage img( back );
+    QPainter p(&img);
+    p.setPen(Qt::red);
+    p.drawRect(QRect( QPoint(rand()%100, rand()%100), QPoint(crop-rand()%100, crop-rand()%100) ));
+    p.setPen(Qt::blue);
+    p.drawRect(QRect( QPoint(rand()%100, rand()%100), QPoint(crop-rand()%100, crop-rand()%100) ));
+    p.end();
+    return img;
 }

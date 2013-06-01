@@ -6,6 +6,7 @@
 
 QVideoWidget::QVideoWidget(QWidget *parent) :
     QWidget(parent),
+    lastSize(0, 0),
     active(this->windowState() & Qt::WindowActive),
     mouseIn( underMouse() )
 {
@@ -15,8 +16,8 @@ QVideoWidget::QVideoWidget(QWidget *parent) :
 
 void QVideoWidget::setImage(QImage image){
     img = image;
-    if(scaled.isNull())
-        resizeEvent(NULL);
+    if(lastSize != img.size())
+        resizeEvent();
     update();
     //qApp->processEvents();
 }
@@ -74,7 +75,7 @@ void QVideoWidget::paintEvent(QPaintEvent *) {
         /*if( active )
             scaledImg = img.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
         else//*/
-            scaledImg = img.scaled(this->size(), Qt::KeepAspectRatio, Qt::FastTransformation);
+            scaledImg = img.scaled(this->size(), Qt::KeepAspectRatio, Ui::forceHighQuality ? Qt::SmoothTransformation : Qt::FastTransformation);
         painter.drawImage(scaled.topLeft(), scaledImg);
     }
     painter.end();
@@ -91,8 +92,9 @@ void QVideoWidget::resizeEvent(QResizeEvent *){
         pos = QPoint( 0, (this->height()-tmp.height())/2 );
         ratio = (float)img.height() / tmp.height();
     }
-    //qDebug() << "ratio" << ratio;
+    qDebug() << "ratio" << ratio;
     scaled = QRect(pos, tmp.size());
+    lastSize = img.size();
 }
 
 //void QVideoWidget::enterEvent(QEvent *){}

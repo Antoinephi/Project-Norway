@@ -18,7 +18,7 @@ public slots:
     void activateCrosshair(bool state);
 protected:
     void paintEvent (QPaintEvent * event);
-    void resizeEvent (QResizeEvent * event);
+    void resizeEvent (QResizeEvent * event = NULL);
 
     void mouseMoveEvent (QMouseEvent * event);
     //void enterEvent (QEvent *);
@@ -26,6 +26,7 @@ protected:
 
 private:
     QImage img;
+    QSize lastSize;
     QRect scaled;
     float ratio;
     bool active, mouseIn;

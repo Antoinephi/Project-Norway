@@ -12,7 +12,7 @@
 #include "testcameramanager.h"
 #include "emptycameramanager.h"
 
-bool Ui::crosshair = false, Ui::crosshairReal = false;
+bool Ui::crosshair = false, Ui::crosshairReal = false, Ui::forceHighQuality = false;
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -167,4 +167,9 @@ void MainWindow::on_actionCrosshairReal_toggled(bool arg1)
 void MainWindow::on_updatePropertiesButton_clicked()
 {
     cameraManagers.at(selectedCameraManager)->updateProperties();
+}
+
+void MainWindow::on_actionHighQuality_toggled(bool arg1)
+{
+    Ui::forceHighQuality = arg1;
 }

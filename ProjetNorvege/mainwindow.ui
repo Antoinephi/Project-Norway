@@ -356,6 +356,7 @@
    <addaction name="actionCrosshairReal"/>
    <addaction name="separator"/>
    <addaction name="actionMosaic"/>
+   <addaction name="actionHighQuality"/>
   </widget>
   <action name="actionMosaic">
    <property name="icon">
@@ -427,6 +428,28 @@
    </property>
    <property name="toolTip">
     <string>real coordonates instead of precise ones</string>
+   </property>
+  </action>
+  <action name="actionHighQuality">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Ressources.qrc">
+     <normaloff>:/icons/quality_low</normaloff>
+     <normalon>:/icons/quality_high</normalon>:/icons/quality_low</iconset>
+   </property>
+   <property name="text">
+    <string>highQuality</string>
+   </property>
+   <property name="toolTip">
+    <string>force high quality resizing, CPU intensive</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
    </property>
   </action>
  </widget>

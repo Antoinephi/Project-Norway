@@ -12,8 +12,7 @@ namespace Ui {
         PropertyName = 0, PropertyAuto = 1, PropertyValue = 2, PropertySlider = 3
     };
 
-    extern bool crosshair;
-    extern bool crosshairReal;
+    extern bool crosshair, crosshairReal, forceHighQuality;
 }
 
 class AbstractCameraManager;
@@ -45,6 +44,7 @@ private slots:
 
     void on_actionCrosshair_toggled(bool arg1);
     void on_actionCrosshairReal_toggled(bool arg1);
+    void on_actionHighQuality_toggled(bool arg1);
 
 signals:
     void activateCrosshair(bool);

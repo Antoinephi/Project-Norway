@@ -68,7 +68,13 @@ class AbstractCamera
 
     protected:
         AbstractCamera();
+
+        /**
+         * @brief sendFrame send a new QImage for the view
+         * @param img QImage grabbed from the camera
+         */
         void sendFrame(QImage img);
+
     private:
         QVideoWidget* container;
         class CaptureThread : public QThread {

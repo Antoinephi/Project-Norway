@@ -63,13 +63,14 @@ void AbstractCameraManager::updateProperties(){
         QTreeWidgetItem* item = propertiesList.topLevelItem(i);
         QCheckBox* checkBox = qobject_cast<QCheckBox*>( propertiesList.itemWidget(item, Ui::PropertyAuto) );
         CameraManager::CameraProperty * prop = reinterpret_cast<CameraManager::CameraProperty*>( checkBox->property("CameraProperty").value<quintptr>() );
+        QSlider* slider = reinterpret_cast<QSlider*>( checkBox->property("TreeWidgetSlider").value<quintptr>() );
         //qDebug() << "updating:" << prop->getName().c_str();
+
         selected->updateProperty(prop);
         item->setText(Ui::PropertyValue, prop->formatValue() );
         checkBox->setChecked(prop->getAuto());
-
-        //(de)activate slider
-        //reinterpret_cast<QSlider*>( checkBox->property("TreeWidgetSlider").value<quintptr>() )->setEnabled(prop->getAuto());
+        slider->setValue(prop->getValueToSlider());
+        slider->setEnabled(prop->getAuto());
 
     }
 }
