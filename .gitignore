@@ -168,5 +168,6 @@ pip-log.txt
 *-Release
 
 #MSVC
-GeneratedFiles/
+ProjetNorvege/GeneratedFiles/
+ProjetNorvege/Win32/
 
