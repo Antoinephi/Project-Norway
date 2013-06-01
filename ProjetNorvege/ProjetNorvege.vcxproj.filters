@@ -103,6 +103,15 @@
     <ClCompile Include="iscamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Release\moc_qvideowidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_qvideowidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="qvideowidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstractcamera.h">
@@ -148,6 +157,9 @@
     </CustomBuild>
     <CustomBuild Include="Ressources.qrc">
       <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="qvideowidget.h">
+      <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

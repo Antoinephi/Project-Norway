@@ -14,7 +14,6 @@
 #include "flycameramanager.h"
 
 bool Ui::crosshair = false, Ui::crosshairReal = false, Ui::forceHighQuality = false;
->>>>>>> origin/QT_only
 
 
 MainWindow::MainWindow(QWidget *parent)

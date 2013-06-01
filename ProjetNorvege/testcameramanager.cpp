@@ -8,7 +8,7 @@ TestCameraManager::TestCameraManager()
         foundCameras.push_back(new TestCamera(
             QString("Camera%1")
                 #ifdef _MSC_VER
-                toLocal8Bit().constData()
+                .toLocal8Bit().constData()
                 #else
                 .arg(i).toStdString()
                 #endif
