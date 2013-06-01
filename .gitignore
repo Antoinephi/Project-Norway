@@ -166,3 +166,7 @@ pip-log.txt
 # Qt
 *-Debug
 *-Release
+
+#MSVC
+GeneratedFiles/
+
