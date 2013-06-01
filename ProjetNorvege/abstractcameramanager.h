@@ -139,7 +139,6 @@ class AbstractCameraManager : public QObject
             activeCameraEntry(AbstractCamera *c, QStandardItem* i)
                 : camera(c), treeItem(i), window(new QMdiSubWindow()) {
                 window->setAttribute(Qt::WA_DeleteOnClose);
-                //window->setWindowFlags(window->windowFlags() & ~Qt::WindowMaximizeButtonHint & ~Qt::WindowMinimizeButtonHint);
                 window->setWindowFlags(Qt::Tool);
                 QVideoWidget* videoWidget = new QVideoWidget();
                 videoWidget->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
