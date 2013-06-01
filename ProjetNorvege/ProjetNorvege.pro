@@ -13,6 +13,8 @@ TEMPLATE = app
 
 QMAKE_CXXFLAGS += -std=c++11
 
+win32:QMAKE_LFLAGS+=/INCREMENTAL:NO
+
 
 
 

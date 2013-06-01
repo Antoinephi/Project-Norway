@@ -15,9 +15,12 @@ QVideoWidget::QVideoWidget(QWidget *parent) :
 
 
 void QVideoWidget::setImage(QImage image){
-    img = image;
+    mutex.lock();
+    img = image.copy();
+    image = QImage();
+    mutex.unlock();
     if(lastSize != img.size())
-        resizeEvent();
+        resizeEvent();    
     update();
     //qApp->processEvents();
 }
@@ -35,7 +38,9 @@ void QVideoWidget::paintEvent(QPaintEvent *) {
             sx = sx.arg(pos.x());
             sy = sy.arg(pos.y());
 
+            mutex.lock();
             QImage imgCopy = img.copy();
+            mutex.unlock();
             QPainter painterImg(&imgCopy);
             painterImg.drawPixmap(pos-QPoint(15, 15), QPixmap(":/icons/crosshair"));
             painterImg.drawLine(0, pos.y(), pos.x()-15, pos.y());
@@ -52,7 +57,9 @@ void QVideoWidget::paintEvent(QPaintEvent *) {
             sx = sx.arg(pos.x());
             sy = sy.arg(pos.y());
 
+            mutex.lock();
             scaledImg = img.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            mutex.unlock();
             painter.drawImage(scaled.topLeft(), scaledImg);
 
             painter.drawPixmap(mouse-QPoint(15, 15), QPixmap(":/icons/crosshair"));

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QThread>
+#include <QMutex>
 
 class QVideoWidget : public QWidget
 {
@@ -26,6 +27,7 @@ protected:
 
 private:
     QImage img;
+    QMutex mutex;
     QSize lastSize;
     QRect scaled;
     float ratio;
