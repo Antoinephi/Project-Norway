@@ -13,10 +13,10 @@
 #include <QMdiArea>
 #include <QMdiSubWindow>
 #include <QTreeWidget>
-#include <QLabel>
 #include <QThread>
 #include <QDebug>
 #include "mainwindow.h"
+#include "qvideowidget.h"
 #include "abstractcamera.h"
 #include "cameraproperty.h"
 
@@ -141,12 +141,13 @@ class AbstractCameraManager : public QObject
             activeCameraEntry(AbstractCamera *c, QStandardItem* i)
                 : camera(c), treeItem(i), window(new QMdiSubWindow()) {
                 window->setAttribute(Qt::WA_DeleteOnClose);
-                //window->setWindowFlags(window->windowFlags() & ~Qt::WindowMaximizeButtonHint & ~Qt::WindowMinimizeButtonHint);
                 window->setWindowFlags(Qt::Tool);
-                QLabel* lbl = new QLabel();
-                lbl->setAlignment(Qt::AlignCenter);
-                lbl->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-                window->setWidget(lbl);
+                QVideoWidget* videoWidget = new QVideoWidget();
+                videoWidget->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+                window->setWidget(videoWidget);
+                window->resize(400, 300);
+                QObject::connect(window, SIGNAL(windowStateChanged(Qt::WindowStates, Qt::WindowStates)),
+                                 videoWidget, SLOT(changedState(Qt::WindowStates, Qt::WindowStates)) );
             }
             //~activeCameraEntry(){ delete window; }
             AbstractCamera* camera;

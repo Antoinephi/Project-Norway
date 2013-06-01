@@ -22,6 +22,7 @@ SOURCES += main.cpp\
     testcamera.cpp \
     emptycameramanager.cpp \
     cameraproperty.cpp \
+    qvideowidget.cpp \
     flycameramanager.cpp \
     flycamera.cpp \
     iscamera.cpp \
@@ -33,7 +34,7 @@ HEADERS  += mainwindow.h \
     abstractcamera.h \
     testcamera.h \
     emptycameramanager.h \
-    cameraproperty.h \
+    qvideowidget.h \
     flycameramanager.h \
     flycamera.h \
     iscamera.h \

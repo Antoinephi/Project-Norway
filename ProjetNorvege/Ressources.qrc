@@ -13,5 +13,9 @@
         <file alias="folder">img/folder.png</file>
         <file alias="camera">img/camera.png</file>
         <file alias="folder_camera">img/folder_camera.png</file>
+        <file alias="crosshair">img/crosshair.png</file>
+        <file alias="liveview_on">img/liveview_on.png</file>
+        <file alias="quality_high">img/quality_high.png</file>
+        <file alias="quality_low">img/quality_low.png</file>
     </qresource>
 </RCC>

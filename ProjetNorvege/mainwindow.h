@@ -12,6 +12,7 @@ namespace Ui {
         PropertyName = 0, PropertyAuto = 1, PropertyValue = 2, PropertySlider = 3
     };
 
+    extern bool crosshair, crosshairReal, forceHighQuality;
 }
 
 class AbstractCameraManager;
@@ -34,12 +35,19 @@ private slots:
 	void on_SelectCameras_currentIndexChanged(int index);
 	void on_CameraTree_itemClicked(const QModelIndex & index);
     void on_actionUpdateImages_triggered();
-    void on_actionUpdateProperties_triggered();
+    void on_updatePropertiesButton_clicked();
     void on_actionLiveView_toggled(bool arg1);
 
     void on_addGroup_clicked();
     void on_editItem_clicked();
     void on_deleteGroup_clicked();
+
+    void on_actionCrosshair_toggled(bool arg1);
+    void on_actionCrosshairReal_toggled(bool arg1);
+    void on_actionHighQuality_toggled(bool arg1);
+
+signals:
+    void activateCrosshair(bool);
 
 private:
 	Ui::MainWindow *ui;

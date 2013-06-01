@@ -9,6 +9,7 @@
 using namespace CameraManager;
 
 Q_DECLARE_METATYPE(AbstractCamera *)
+Q_DECLARE_METATYPE(QVideoWidget *)
 Q_DECLARE_METATYPE(CameraManager::CameraProperty *)
 
 using namespace CameraManager;
@@ -48,12 +49,13 @@ void AbstractCameraManager::updateImages(){
     for(int i=activeCameras.size()-1; i>=0; i--){
         activeCameraEntry& camEntry = activeCameras.at(i);
         //qDebug() << camEntry.window->widget();
-        QLabel* lbl = qobject_cast<QLabel *>( camEntry.window->widget() );
+        QVideoWidget* videoWidget = qobject_cast<QVideoWidget *>( camEntry.window->widget() );
         //qDebug() << "setting img in widget" << lbl;
         //qDebug() << camEntry.window->size();
-        QPixmap pxmap = QPixmap::fromImage(camEntry.camera->retrieveImage().scaled(lbl->size(), Qt::KeepAspectRatio));
-        lbl->setPixmap(pxmap);
-        lbl->show();
+        /*QPixmap pxmap = QPixmap::fromImage(camEntry.camera->retrieveImage().scaled(lbl->size(), Qt::KeepAspectRatio));
+        videoWidget->setPixmap(pxmap);
+        videoWidget->show();*/
+        videoWidget->setImage(camEntry.camera->retrieveImage());
     }
 }
 
@@ -64,13 +66,14 @@ void AbstractCameraManager::updateProperties(){
         QTreeWidgetItem* item = propertiesList.topLevelItem(i);
         QCheckBox* checkBox = qobject_cast<QCheckBox*>( propertiesList.itemWidget(item, Ui::PropertyAuto) );
         CameraManager::CameraProperty * prop = reinterpret_cast<CameraManager::CameraProperty*>( checkBox->property("CameraProperty").value<quintptr>() );
+        QSlider* slider = reinterpret_cast<QSlider*>( checkBox->property("TreeWidgetSlider").value<quintptr>() );
         //qDebug() << "updating:" << prop->getName().c_str();
+
         selected->updateProperty(prop);
         item->setText(Ui::PropertyValue, prop->formatValue() );
         checkBox->setChecked(prop->getAuto());
-
-        //(de)activate slider
-        //reinterpret_cast<QSlider*>( checkBox->property("TreeWidgetSlider").value<quintptr>() )->setEnabled(prop->getAuto());
+        slider->setValue(prop->getValueToSlider());
+        slider->setEnabled(prop->getAuto());
 
     }
 }
@@ -80,10 +83,8 @@ void AbstractCameraManager::activateLiveView(bool active){
     if( active ){
         for(int i=activeCameras.size()-1; i>=0; i--){
             activeCameraEntry& camEntry = activeCameras.at(i);
-            QLabel* lbl = qobject_cast<QLabel *>( camEntry.window->widget() );
-            camEntry.camera->startCapture(lbl);
-            /*camEntry.thread = new CaptureThread(&camEntry);
-            camEntry.thread->start();*/
+            QVideoWidget* videoWidget = qobject_cast<QVideoWidget *>( camEntry.window->widget() );
+            camEntry.camera->startCapture(videoWidget);
         }
     }else{
         for(int i=activeCameras.size()-1; i>=0; i--){
@@ -192,8 +193,10 @@ void AbstractCameraManager::activateCamera(AbstractCamera* camera, QStandardItem
             entry.window->setWindowTitle(item->text());
             mainWindow->modifySubWindow(entry.window, true);
             activeCameras.push_back(entry);
+            QObject::connect(mainWindow, SIGNAL(activateCrosshair(bool)),
+                             qobject_cast<QVideoWidget*>(entry.window->widget()), SLOT(activateCrosshair(bool)) );
             if( liveView )
-                entry.camera->startCapture( qobject_cast<QLabel *>( entry.window->widget() ) );
+                entry.camera->startCapture( qobject_cast<QVideoWidget *>( entry.window->widget() ) );
         }
     }
 }

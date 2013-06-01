@@ -9,10 +9,11 @@
 
 #include <string>
 #include <QImage>
-#include <QLabel>
 #include <QThread>
 #include <QDebug>
 #include "cameraproperty.h"
+#include "qvideowidget.h"
+
 class AbstractCamera
 {
     public:
@@ -61,15 +62,21 @@ class AbstractCamera
          * @brief startCapture start liveview capture from manager
          * @param label wil update the label with images from the camera
          */
-        void startCapture(QLabel* label);
+        void startCapture(QVideoWidget* videoWidget);
 
 
 
     protected:
         AbstractCamera();
+
+        /**
+         * @brief sendFrame send a new QImage for the view
+         * @param img QImage grabbed from the camera
+         */
         void sendFrame(QImage img);
+
     private:
-        QLabel* container;        
+        QVideoWidget* container;
         class CaptureThread : public QThread {
             public :
                 CaptureThread(AbstractCamera* cam) : QThread() { c = cam; }

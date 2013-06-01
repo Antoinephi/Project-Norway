@@ -26,23 +26,6 @@
    <set>QMainWindow::AnimatedDocks</set>
   </property>
   <widget class="QMdiArea" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>711</width>
-     <height>19</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFichier">
-    <property name="title">
-     <string>Fichier</string>
-    </property>
-    <addaction name="actionQuitter"/>
-   </widget>
-   <addaction name="menuFichier"/>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QDockWidget" name="CamerasWidget">
    <property name="styleSheet">
@@ -334,12 +317,25 @@
      <item>
       <layout class="QVBoxLayout" name="propertiesContainer"/>
      </item>
+     <item>
+      <widget class="QPushButton" name="updatePropertiesButton">
+       <property name="text">
+        <string>UpdateProperties</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
     <string>toolBar</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true"/>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
    </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonIconOnly</enum>
@@ -356,22 +352,12 @@
    <addaction name="actionLiveView"/>
    <addaction name="actionUpdateImages"/>
    <addaction name="separator"/>
-   <addaction name="actionMosaic"/>
+   <addaction name="actionCrosshair"/>
+   <addaction name="actionCrosshairReal"/>
    <addaction name="separator"/>
-   <addaction name="actionUpdateProperties"/>
+   <addaction name="actionMosaic"/>
+   <addaction name="actionHighQuality"/>
   </widget>
-  <action name="actionQuitter">
-   <property name="icon">
-    <iconset resource="Ressources.qrc">
-     <normaloff>:/icons/quit</normaloff>:/icons/quit</iconset>
-   </property>
-   <property name="text">
-    <string>Quitter</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Q</string>
-   </property>
-  </action>
   <action name="actionMosaic">
    <property name="icon">
     <iconset resource="Ressources.qrc">
@@ -396,21 +382,74 @@
     <string>Space</string>
    </property>
   </action>
-  <action name="actionUpdateProperties">
-   <property name="text">
-    <string>UpdateProperties</string>
-   </property>
-  </action>
   <action name="actionLiveView">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="icon">
     <iconset resource="Ressources.qrc">
-     <normaloff>:/icons/liveview</normaloff>:/icons/liveview</iconset>
+     <normaloff>:/icons/liveview</normaloff>
+     <normalon>:/icons/liveview_on</normalon>:/icons/liveview</iconset>
    </property>
    <property name="text">
     <string>LiveView</string>
+   </property>
+  </action>
+  <action name="actionCrosshair">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Ressources.qrc">
+     <normaloff>:/icons/crosshair</normaloff>:/icons/crosshair</iconset>
+   </property>
+   <property name="text">
+    <string>crosshair</string>
+   </property>
+   <property name="toolTip">
+    <string>activate crosshair</string>
+   </property>
+  </action>
+  <action name="actionQuitter">
+   <property name="icon">
+    <iconset resource="Ressources.qrc">
+     <normaloff>:/icons/quit</normaloff>:/icons/quit</iconset>
+   </property>
+   <property name="text">
+    <string>quitter</string>
+   </property>
+  </action>
+  <action name="actionCrosshairReal">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Real</string>
+   </property>
+   <property name="toolTip">
+    <string>real coordonates instead of precise ones</string>
+   </property>
+  </action>
+  <action name="actionHighQuality">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Ressources.qrc">
+     <normaloff>:/icons/quality_low</normaloff>
+     <normalon>:/icons/quality_high</normalon>:/icons/quality_low</iconset>
+   </property>
+   <property name="text">
+    <string>highQuality</string>
+   </property>
+   <property name="toolTip">
+    <string>force high quality resizing, CPU intensive</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
    </property>
   </action>
  </widget>
