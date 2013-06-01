@@ -70,7 +70,7 @@ void AbstractCameraManager::updateProperties(){
         item->setText(Ui::PropertyValue, prop->formatValue() );
         checkBox->setChecked(prop->getAuto());
         slider->setValue(prop->getValueToSlider());
-        slider->setEnabled(prop->getAuto());
+        slider->setEnabled(!prop->getAuto());
 
     }
 }
@@ -257,11 +257,13 @@ void AbstractCameraManager::desactiveAllCameras(){
 
 // check QStandardItem and its decendants
 void AbstractCameraManager::cameraTree_recursiveCheck(QStandardItem* parent, Qt::CheckState checked){
+    qDebug() << "recursivecheck(" << checked << ") on " << parent->text();
     for(int i=0; i<parent->rowCount(); ++i){
          QStandardItem* currItem = parent->child(i);
-         if(currItem->checkState() != checked){
+         if(currItem->checkState() != checked)
              currItem->setCheckState(checked);
-         }
+         else
+             cameraTree_recursiveCheck(currItem, checked);
     }
 }
 
