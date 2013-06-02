@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QThread>
+#include <QMutex>
 
 class QVideoWidget : public QWidget
 {
@@ -13,9 +14,13 @@ public:
 
     void setImage (QImage image);
 
+signals:
+    void forceUpdate();
 public slots:
     void changedState (Qt::WindowStates oldState, Qt::WindowStates newState);
     void activateCrosshair(bool state);
+    void receiveUpdate();
+
 protected:
     void paintEvent (QPaintEvent * event);
     void resizeEvent (QResizeEvent * event = NULL);
@@ -26,6 +31,7 @@ protected:
 
 private:
     QImage img;
+    QMutex mutex;
     QSize lastSize;
     QRect scaled;
     float ratio;

@@ -9,6 +9,7 @@ namespace CameraManager {
 
 	enum PropertyType {
         BRIGHTNESS,
+        HUE,
         GAIN,
         EXPOSURE,
         GAMMA,

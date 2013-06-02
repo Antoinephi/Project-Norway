@@ -11,6 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = ProjetNorvege
 TEMPLATE = app
 
+win32:QMAKE_LFLAGS+=/INCREMENTAL:NO
 
 
 

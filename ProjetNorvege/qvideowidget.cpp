@@ -11,15 +11,23 @@ QVideoWidget::QVideoWidget(QWidget *parent) :
     mouseIn( underMouse() )
 {
     setMouseTracking(Ui::crosshair);
+    connect( this, SIGNAL(forceUpdate()), this, SLOT(receiveUpdate()) );
 }
 
-
+void QVideoWidget::receiveUpdate(){
+    //trick to pass the update to the main thread...
+    update();
+}
 void QVideoWidget::setImage(QImage image){
-    img = image;
+    if(image.isNull()) return;
+    mutex.lock();
+    img = image.copy();
+    image = QImage();
+    mutex.unlock();
     if(lastSize != img.size())
         resizeEvent();
-    update();
-    //qApp->processEvents();
+
+    emit forceUpdate();
 }
 
 
@@ -35,7 +43,9 @@ void QVideoWidget::paintEvent(QPaintEvent *) {
             sx = sx.arg(pos.x());
             sy = sy.arg(pos.y());
 
+            mutex.lock();
             QImage imgCopy = img.copy();
+            mutex.unlock();
             QPainter painterImg(&imgCopy);
             painterImg.drawPixmap(pos-QPoint(15, 15), QPixmap(":/icons/crosshair"));
             painterImg.drawLine(0, pos.y(), pos.x()-15, pos.y());
@@ -52,7 +62,9 @@ void QVideoWidget::paintEvent(QPaintEvent *) {
             sx = sx.arg(pos.x());
             sy = sy.arg(pos.y());
 
+            mutex.lock();
             scaledImg = img.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            mutex.unlock();
             painter.drawImage(scaled.topLeft(), scaledImg);
 
             painter.drawPixmap(mouse-QPoint(15, 15), QPixmap(":/icons/crosshair"));
@@ -62,9 +74,7 @@ void QVideoWidget::paintEvent(QPaintEvent *) {
             painter.drawLine(mouse.x(), scaled.top(), mouse.x(), mouse.y()-15);
             painter.drawLine(mouse.x(), mouse.y()+16, mouse.x(), scaled.bottom());
         }
-        /*painter.drawText( mouse+QPoint(5,-5-painter.font().pixelSize()),
-                          QString("%1,%2").arg(posInImg.x()).arg(posInImg.y())
-                          );*/
+
         QFont font(painter.font());
         font.setPixelSize(15);
         painter.setFont(font);
@@ -72,10 +82,9 @@ void QVideoWidget::paintEvent(QPaintEvent *) {
         painter.drawText( 1, 16, sx );
         painter.drawText( 1, 32, sy );
     }else{
-        /*if( active )
-            scaledImg = img.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-        else//*/
-            scaledImg = img.scaled(this->size(), Qt::KeepAspectRatio, Ui::forceHighQuality ? Qt::SmoothTransformation : Qt::FastTransformation);
+        mutex.lock();
+        scaledImg = img.scaled(this->size(), Qt::KeepAspectRatio, Ui::forceHighQuality ? Qt::SmoothTransformation : Qt::FastTransformation);
+        mutex.unlock();
         painter.drawImage(scaled.topLeft(), scaledImg);
     }
     painter.end();
@@ -83,7 +92,9 @@ void QVideoWidget::paintEvent(QPaintEvent *) {
 
 void QVideoWidget::resizeEvent(QResizeEvent *){
     if( img.isNull() ) return;
+    mutex.lock();
     QImage tmp = img.scaled(this->size(), Qt::KeepAspectRatio, Qt::FastTransformation);
+    mutex.unlock();
     QPoint pos;
     if( tmp.height() == this->height() ){
         pos = QPoint( (this->width()-tmp.width())/2 , 0 );
@@ -92,7 +103,7 @@ void QVideoWidget::resizeEvent(QResizeEvent *){
         pos = QPoint( 0, (this->height()-tmp.height())/2 );
         ratio = (float)img.height() / tmp.height();
     }
-    qDebug() << "ratio" << ratio;
+    //qDebug() << "ratio" << ratio;
     scaled = QRect(pos, tmp.size());
     lastSize = img.size();
 }
