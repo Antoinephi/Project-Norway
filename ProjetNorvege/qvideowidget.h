@@ -14,9 +14,13 @@ public:
 
     void setImage (QImage image);
 
+signals:
+    void forceUpdate();
 public slots:
     void changedState (Qt::WindowStates oldState, Qt::WindowStates newState);
     void activateCrosshair(bool state);
+    void receiveUpdate();
+
 protected:
     void paintEvent (QPaintEvent * event);
     void resizeEvent (QResizeEvent * event = NULL);

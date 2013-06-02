@@ -19,7 +19,7 @@ class TestCamera : public AbstractCamera {
     private:
         std::string n;
         bool capturing;
-        int framerate, brightness, crop;
+        int framerate, brightness, hue, crop;
         QImage back;
 
         QImage generateImage();

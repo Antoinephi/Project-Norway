@@ -11,19 +11,23 @@ QVideoWidget::QVideoWidget(QWidget *parent) :
     mouseIn( underMouse() )
 {
     setMouseTracking(Ui::crosshair);
+    connect( this, SIGNAL(forceUpdate()), this, SLOT(receiveUpdate()) );
 }
 
-
+void QVideoWidget::receiveUpdate(){
+    //trick to pass the update to the main thread...
+    update();
+}
 void QVideoWidget::setImage(QImage image){
     if(image.isNull()) return;
     mutex.lock();
     img = image.copy();
-    image = QImage();    
+    image = QImage();
     mutex.unlock();
     if(lastSize != img.size())
         resizeEvent();
-    update();
-    //qApp->processEvents();
+
+    emit forceUpdate();
 }
 
 
@@ -70,9 +74,7 @@ void QVideoWidget::paintEvent(QPaintEvent *) {
             painter.drawLine(mouse.x(), scaled.top(), mouse.x(), mouse.y()-15);
             painter.drawLine(mouse.x(), mouse.y()+16, mouse.x(), scaled.bottom());
         }
-        /*painter.drawText( mouse+QPoint(5,-5-painter.font().pixelSize()),
-                          QString("%1,%2").arg(posInImg.x()).arg(posInImg.y())
-                          );*/
+
         QFont font(painter.font());
         font.setPixelSize(15);
         painter.setFont(font);

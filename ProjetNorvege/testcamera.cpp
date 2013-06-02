@@ -5,8 +5,9 @@
 #include <stdlib.h>
 
 TestCamera::TestCamera(std::string n)
-    : AbstractCamera(), n(n), capturing(false), framerate(5), brightness(255), crop(400) {
+    : AbstractCamera(), n(n), capturing(false), framerate(5), brightness(128), hue(120), crop(400) {
     srand(42);
+    generateBack();
 }
 
 void TestCamera::setProperty(CameraProperty* p){
@@ -14,8 +15,13 @@ void TestCamera::setProperty(CameraProperty* p){
         case CameraManager::FRAMERATE: framerate = p->getValue();
             break;
         case CameraManager::BRIGHTNESS: brightness = p->getValue();
+            generateBack();
+            break;
+        case CameraManager::HUE: hue = p->getValue();
+            generateBack();
             break;
         case CameraManager::CROP: crop = p->getValue();
+            generateBack();
             break;
         default: break;
     }
@@ -26,6 +32,8 @@ void TestCamera::updateProperty(CameraProperty* p){
         case CameraManager::FRAMERATE: p->setValue(framerate);
             break;
         case CameraManager::BRIGHTNESS: p->setValue(brightness);
+            break;
+        case CameraManager::HUE: p->setValue(hue);
             break;
         case CameraManager::CROP: p->setValue(crop);
             break;
@@ -55,7 +63,9 @@ void TestCamera::stopAutoCapture(){
 
 void TestCamera::generateBack(){
     back = QImage(crop, crop, QImage::Format_RGB32);
-    back.fill(QColor(0,brightness,0));
+    QColor b;
+    b.setHsl(hue,255, brightness);
+    back.fill(b);
     QPainter p(&back);
     p.setPen(Qt::gray);
     for(int i=0; i<crop; i+=10){
@@ -66,10 +76,12 @@ void TestCamera::generateBack(){
 }
 
 QImage TestCamera::generateImage(){
-    if( crop != back.width() ) generateBack();
+    //if( crop != back.width() ) generateBack();
     QImage img( back );
     QPainter p(&img);
     p.setPen(Qt::red);
+    p.drawRect(QRect( QPoint(rand()%100, rand()%100), QPoint(crop-rand()%100, crop-rand()%100) ));
+    p.setPen(Qt::green);
     p.drawRect(QRect( QPoint(rand()%100, rand()%100), QPoint(crop-rand()%100, crop-rand()%100) ));
     p.setPen(Qt::blue);
     p.drawRect(QRect( QPoint(rand()%100, rand()%100), QPoint(crop-rand()%100, crop-rand()%100) ));

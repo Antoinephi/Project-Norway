@@ -18,6 +18,7 @@ std::string CameraProperty::getName(){
         case CameraManager::SHUTTER : return "shutter";
         case CameraManager::FRAMERATE : return "framerate";
         case CameraManager::CROP : return "crop";
+        case CameraManager::HUE : return "hue";
     }
     return "unknown type";
 }

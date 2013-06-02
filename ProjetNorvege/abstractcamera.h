@@ -65,7 +65,6 @@ class AbstractCamera
         void startCapture(QVideoWidget* videoWidget);
 
 
-
     protected:
         AbstractCamera();
 
