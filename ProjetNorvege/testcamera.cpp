@@ -76,7 +76,6 @@ void TestCamera::generateBack(){
 }
 
 QImage TestCamera::generateImage(){
-    //if( crop != back.width() ) generateBack();
     QImage img( back );
     QPainter p(&img);
     p.setPen(Qt::red);
