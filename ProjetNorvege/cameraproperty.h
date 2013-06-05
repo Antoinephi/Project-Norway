@@ -19,7 +19,8 @@ namespace CameraManager {
         CROP,
         PANX,
         PANY,
-        PAN
+        PAN,
+        AUTOTRIGGER
     };
 
 

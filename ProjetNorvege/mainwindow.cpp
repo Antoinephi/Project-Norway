@@ -17,7 +17,7 @@ bool Ui::crosshair = false, Ui::crosshairReal = false, Ui::forceHighQuality = fa
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), ui(new Ui::MainWindow),
-      addGroup(new QAction("Add Group", this)), cameraManagers(), selectedCameraManager(-1)
+    cameraManagers(), selectedCameraManager(-1)
 {
     propertiesIcons[0] = QIcon(":/icons/camera").pixmap(16,16);
     propertiesIcons[1] = QIcon(":/icons/folder").pixmap(16,16);
@@ -40,8 +40,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 	connect(ui->CameraTree, SIGNAL(clicked(const QModelIndex &)),
 			this, SLOT(on_CameraTree_itemClicked(const QModelIndex &)));
-	connect(addGroup, SIGNAL(triggered()),
-			this, SLOT(on_createGroup_triggered()));
 }
 MainWindow::~MainWindow()
 {
@@ -74,16 +72,6 @@ void MainWindow::on_actionMosaic_triggered()
 	ui->centralwidget->tileSubWindows();
 }
 
-void MainWindow::on_CameraTree_customContextMenuRequested(const QPoint &pos)
-{
-    //QModelIndex index = ui->CameraTree->currentIndex();
-	//if(ui->CameraTree->model()->hasChildren(index))
-
-	QMenu contextMenu(tr("Context menu"), this);
-
-	contextMenu.addAction(addGroup);
-	contextMenu.exec(ui->CameraTree->viewport()->mapToGlobal(pos));
-}
 void MainWindow::on_createGroup_triggered()
 {
 	ui->CameraTree->edit( cameraManagers.at(selectedCameraManager)->addGroup() );
@@ -118,6 +106,7 @@ void MainWindow::on_CameraTree_itemClicked(const QModelIndex & index){
 
     ui->label->setText( str );
     ui->editItem->setEnabled( editable );
+    ui->resetItem->setEnabled( editable );
     ui->deleteGroup->setEnabled( deleteable );
 
     if( icon>=0 && icon < 3 )
@@ -148,6 +137,10 @@ void MainWindow::on_editItem_clicked()
 {
     ui->CameraTree->edit( ui->CameraTree->currentIndex() );
 }
+void MainWindow::on_resetItem_clicked()
+{
+    cameraManagers.at(selectedCameraManager)->resetItem( ui->CameraTree->currentIndex() );
+}
 
 void MainWindow::on_deleteGroup_clicked()
 {
@@ -176,3 +169,5 @@ void MainWindow::on_actionHighQuality_toggled(bool arg1)
 {
     Ui::forceHighQuality = arg1;
 }
+
+

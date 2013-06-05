@@ -69,6 +69,12 @@ class AbstractCameraManager : public QObject
         void removeGroup(QModelIndex index);
 
         /**
+         * @brief resetitem reset the name of a camera
+         * @param index of the camera
+         */
+        void resetItem(QModelIndex index);
+
+        /**
          * @brief activateCamera check the camera in the model, add it in the activeCameras vector and open a subwindow for it
          * @param camera pointer to the camera to add
          * @param item position of the camera in the model
