@@ -74,8 +74,11 @@ FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProper
 	case CameraManager::SHUTTER:
 		return SHUTTER;
 		break;
-     case CameraManager::PAN:
+    case CameraManager::PAN:
         return PAN;
+        break;
+    case CameraManager::FRAMERATE:
+        return FRAME_RATE;
         break;
 	}
 
