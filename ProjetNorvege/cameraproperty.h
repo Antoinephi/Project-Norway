@@ -15,7 +15,12 @@ namespace CameraManager {
         GAMMA,
         SHUTTER,
         FRAMERATE,
-        CROP
+        CROPX,
+        CROPY,
+        CROP,
+        PANX,
+        PANY,
+        PAN
     };
 
 

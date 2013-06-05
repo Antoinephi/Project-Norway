@@ -223,9 +223,8 @@ void AbstractCameraManager::on_CameraTree_itemChanged(QStandardItem* item){
 void AbstractCameraManager::cameraTree_itemClicked(const QModelIndex & index, QString &string, int &icon, bool &editable, bool &deleteable){
     QStandardItem* clicked = getModel()->itemFromIndex(index);
     selectedItem = clicked;
-    QStandardItem* first = cameraTree_recursiveFirstCamera(clicked);
-    selectedCamera = reinterpret_cast<AbstractCamera *>( first->data(CameraRole).value<quintptr>() );
-    updateProperties();
+    QStandardItem* first = NULL;
+
 
     string = clicked->text();
     editable = true;
@@ -233,12 +232,14 @@ void AbstractCameraManager::cameraTree_itemClicked(const QModelIndex & index, QS
     if( clicked->data(CameraRole).isValid() ){
         icon = 0;
         deleteable = false;
+        first = clicked;
     }else{
         if( clicked == &newCameraList ){
             qDebug() << "clicked == newCameraList";
             editable = false;
             deleteable = false;
         }
+        first = cameraTree_recursiveFirstCamera(clicked);
         if( first == NULL )
             icon = 1;
         else{
@@ -246,6 +247,8 @@ void AbstractCameraManager::cameraTree_itemClicked(const QModelIndex & index, QS
             string = clicked->text() + " ("+ first->text() + ")";
         }
     }
+    selectedCamera = (first == NULL) ? NULL : reinterpret_cast<AbstractCamera *>( first->data(CameraRole).value<quintptr>() );
+    updateProperties();
 }
 
 
