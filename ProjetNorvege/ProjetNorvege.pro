@@ -39,7 +39,8 @@ HEADERS  += mainwindow.h \
     flycameramanager.h \
     flycamera.h \
     iscamera.h \
-    iscameramanager.h
+    iscameramanager.h \
+    cameraproperty.h
 
 FORMS    += \
     mainwindow.ui
