@@ -24,6 +24,7 @@ std::string CameraProperty::getName(){
         case CameraManager::PAN : return "pan";
         case CameraManager::PANX : return "pan";
         case CameraManager::PANY : return "pan";
+        case CameraManager::AUTOTRIGGER : return "automatic Trigger";
     }
     return "unknown type";
 }
