@@ -21,6 +21,8 @@ FlyCameraManager::FlyCameraManager()
     prop.push_back(CameraProperty(CameraManager::SHUTTER, 0, (float) 33.174, 3, true));
     prop.push_back(CameraProperty(CameraManager::PAN, 0, 112, 0, true));
     prop.push_back(CameraProperty(CameraManager::FRAMERATE, 4, 30, 1, true));
+    prop.push_back(CameraProperty(CameraManager::AUTOTRIGGER, 0, 0, 0, true));
+
 
 
     for(int i=prop.size()-1; i>=0; i--){

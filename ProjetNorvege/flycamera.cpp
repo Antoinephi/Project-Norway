@@ -28,10 +28,23 @@ CameraInfo* FlyCamera::getCameraInfo()
 
 void FlyCamera::setProperty(CameraManager::CameraProperty* p)
 {
+    if(p->getType() == CameraManager::AUTOTRIGGER){
+        TriggerMode triggerMode;
+
+        cam->GetTriggerMode(&triggerMode);
+
+        triggerMode.onOff = p->getAuto();
+        triggerMode.mode = 0;
+        triggerMode.parameter = 0;
+        triggerMode.source = 0;
+        cam->SetTriggerMode(&triggerMode);
+
+    } else {
+
     Error error;
 	Property prop;
 	prop.type = getPropertyType(p);
-	
+    qDebug() << "setProp" << p->getName().c_str() << p->getAuto();
     error = cam->GetProperty(&prop);
     if (error == PGRERROR_OK)
     {
@@ -43,6 +56,8 @@ void FlyCamera::setProperty(CameraManager::CameraProperty* p)
 		
 		cam->SetProperty(&prop);
     }
+   }
+
 }
 void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
 {
@@ -79,6 +94,9 @@ FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProper
         break;
     case CameraManager::FRAMERATE:
         return FRAME_RATE;
+        break;
+    case CameraManager::AUTOTRIGGER:
+        return TRIGGER_MODE;
         break;
 	}
 
