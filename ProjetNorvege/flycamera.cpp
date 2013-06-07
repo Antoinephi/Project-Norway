@@ -28,21 +28,21 @@ CameraInfo* FlyCamera::getCameraInfo()
 
 void FlyCamera::setProperty(CameraManager::CameraProperty* p)
 {
-    if(p->getType() == CameraManager::AUTOTRIGGER){
+    if(p->getType() == CameraManager::AUTOTRIGGER)
+    {
         TriggerMode triggerMode;
 
         cam->GetTriggerMode(&triggerMode);
-
         triggerMode.onOff = !p->getAuto();
         triggerMode.mode = 0;
         triggerMode.parameter = 0;
         triggerMode.source = 0;
         cam->SetTriggerMode(&triggerMode);
 
-    } else {
-
+    }else
+    {
     Error error;
-	Property prop;
+    Property prop;
 	prop.type = getPropertyType(p);
     qDebug() << "setProp" << p->getName().c_str() << p->getAuto();
     error = cam->GetProperty(&prop);
@@ -61,14 +61,23 @@ void FlyCamera::setProperty(CameraManager::CameraProperty* p)
 }
 void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
 {
-	Error error;
-	Property prop;
-	prop.type = getPropertyType(p);
-    error = cam->GetProperty(&prop);
-    if (error == PGRERROR_OK)
+    if(p->getType() == CameraManager::AUTOTRIGGER)
     {
-		p->setAuto(prop.autoManualMode);
-		p->setValue(p->getDecimals() > 0 ? prop.absValue : prop.valueA);
+        TriggerMode triggerMode;
+        cam->GetTriggerMode(&triggerMode);
+        p->setAuto(triggerMode.onOff ? true:false);
+
+    }else
+    {
+        Error error;
+        Property prop;
+        prop.type = getPropertyType(p);
+        error = cam->GetProperty(&prop);
+        if (error == PGRERROR_OK)
+        {
+            p->setAuto(prop.autoManualMode);
+            p->setValue(p->getDecimals() > 0 ? prop.absValue : prop.valueA);
+        }
     }
 }
 FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProperty* p)
@@ -135,10 +144,28 @@ void FlyCamera::stopAutoCapture(){
 	getCamera()->StopCapture();
 }
 
+bool FireSoftwareTrigger( Camera* pCam )
+{
+    const unsigned int k_softwareTrigger = 0x62C;
+    const unsigned int k_fireVal = 0x80000000;
+    Error error;
+
+    error = pCam->WriteRegister( k_softwareTrigger, k_fireVal );
+    if (error != PGRERROR_OK)
+    {
+        return false;
+    }
+
+    return true;
+}
+
+
 QImage FlyCamera::retrieveImage()
 {
     TriggerMode triggerMode;
+    TriggerMode oldTrigger;
 
+    cam->GetTriggerMode(&oldTrigger);
     triggerMode.onOff = true;
     triggerMode.mode = 0;
     triggerMode.parameter = 0;
@@ -146,7 +173,8 @@ QImage FlyCamera::retrieveImage()
     cam->SetTriggerMode(&triggerMode);
 
     Image img;
-	getCamera()->StartCapture();
+    getCamera()->StartCapture();
+    FireSoftwareTrigger(cam);
     getCamera()->RetrieveBuffer(&img);
     unsigned char* picData = img.GetData();
     unsigned int x = img.GetCols();
@@ -158,9 +186,9 @@ QImage FlyCamera::retrieveImage()
             image.setPixel(j, i, qRgb(data, data, data));
 		}
 	}
-	getCamera()->StopCapture();
     triggerMode.onOff = false;
     cam->SetTriggerMode(&triggerMode);
+	getCamera()->StopCapture();  
 	return image;
 }
 
