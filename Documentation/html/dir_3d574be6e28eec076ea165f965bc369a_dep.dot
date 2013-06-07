@@ -1,0 +1,6 @@
+digraph "C:/Users/V1rgul/GitHub/Project-Norway/ProjetNorvege" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  dir_3d574be6e28eec076ea165f965bc369a [shape=box, label="ProjetNorvege", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_3d574be6e28eec076ea165f965bc369a.html"];
+}

@@ -1,3 +1,7 @@
+/**
+ * \file cameraproperty.h
+ * \author Virgile Wozny
+ */
 #ifndef CAMERAPROPERTY_H
 #define CAMERAPROPERTY_H
 
@@ -24,10 +28,21 @@ namespace CameraManager {
         AUTOTRIGGER
     };
 
-
+	/**
+	 * CameraProperty
+	 * \brief memorize one property (value and auto mode) that will be exchanged between the manager end the cameras
+	 */
     class CameraProperty
 	{
 	public:
+        /**
+         * @brief Contructor
+         * @param type type of the property
+         * @param min minimum value for that property
+         * @param max maximum value for that property
+         * @param decimals number of decimal for that property (used for the slider)
+         * @param canAuto true if that property can be set to auto (will desactivate the slider)
+         */
 		CameraProperty(PropertyType type, float min, float max, int decimals = 0, bool canAuto = false);
 		PropertyType getType(){ return type; }
 		void setAuto(bool a){ isAuto = a; }

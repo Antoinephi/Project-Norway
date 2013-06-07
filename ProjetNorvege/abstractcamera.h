@@ -1,7 +1,6 @@
 /**
- * AbstractCamera
- * Class that need to be subclassed for each camera API
- * used to exchange CameraProperty between the application and the API
+ * \file abstractcamera.h
+ * \author Virgile Wozny
  */
 
 #ifndef ABSTRACTCAMERA_H
@@ -14,53 +13,58 @@
 #include "cameraproperty.h"
 #include "qvideowidget.h"
 
+
+/**
+ * AbstractCamera
+ * \brief Class that need to be subclassed for each camera API. It is used to exchange CameraProperty between the application and the API, to lauch auto capture and receive frames.
+ */
 class AbstractCamera
 {
     public:
         /**
-         * @brief setProperty set the camera according to that property
+         * @brief (Pure virtual) set the camera according to that property
          * @param p property to set
          */
         virtual void setProperty(CameraManager::CameraProperty* p) = 0;
 
         /**
-         * @brief updateProperty get the value of that property for that camera
+         * @brief (Pure virtual) get the value of that property for that camera
          * @param p property to update
          */
         virtual void updateProperty(CameraManager::CameraProperty* p) = 0;
 
         /**
-         * @brief equalsTo compare 2 cameras
+         * @brief compare 2 cameras
          * @param c camera to compare
          * @return true if the cameras are physically the same
          */
         virtual bool equalsTo(AbstractCamera* c);
 
         /**
-         * @brief getString get the name corresponding to the camera model and id
+         * @brief (Pure virtual) get the name corresponding to the camera model and id
          * @return String containing these informations
          */
         virtual std::string getString() = 0;
 
         /**
-         * @brief startAutoCapture start callback based Liveview
+         * @brief (Pure virtual) start callback based Liveview
          */
         virtual void startAutoCapture() = 0;
 
         /**
-         * @brief stopAutoCapture stop callback based Liveview
+         * @brief (Pure virtual) stopAutoCapture stop callback based Liveview
          */
         virtual void stopAutoCapture() = 0;
 
         /**
-         * @brief retrieveImage get one image from camera
+         * @brief (Pure virtual) get one image from camera
          * @return QImage image
          */
         virtual QImage retrieveImage() = 0;
 
         /**
-         * @brief startCapture start liveview capture from manager
-         * @param label wil update the label with images from the camera
+         * @brief start liveview capture from manager
+         * @param videoWidget QvideoWidget that will receive the frames
          */
         void startCapture(QVideoWidget* videoWidget);
 

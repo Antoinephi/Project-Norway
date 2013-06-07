@@ -75,12 +75,6 @@ void MainWindow::on_actionMosaic_triggered()
 	ui->centralwidget->tileSubWindows();
 }
 
-void MainWindow::on_createGroup_triggered()
-{
-	ui->CameraTree->edit( cameraManagers.at(selectedCameraManager)->addGroup() );
-}
-
-
 
 void MainWindow::on_SelectCameras_currentIndexChanged(int index)
 {

@@ -50,11 +50,6 @@ void FlyCameraManager::detectNewCameras(std::vector<AbstractCamera*> *newCameras
     }
 }
 
-void FlyCameraManager::getCamerasPropertiesList() const
-{
-    //Nothing here
-}
-
 string FlyCameraManager::getName() const
 {
     return "FlyCapture Camera Manager";

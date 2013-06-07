@@ -1,0 +1,85 @@
+\hypertarget{class_is_camera_manager}{\section{Is\-Camera\-Manager Class Reference}
+\label{class_is_camera_manager}\index{Is\-Camera\-Manager@{Is\-Camera\-Manager}}
+}
+
+
+The \hyperlink{class_fly_camera_manager}{Fly\-Camera\-Manager} class deals with all the Fly Capture Cameras.  
+
+
+
+
+{\ttfamily \#include $<$iscameramanager.\-h$>$}
+
+Inheritance diagram for Is\-Camera\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_is_camera_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_is_camera_manager_a4b65e770537668dffca47cbf6af34dfb}{detect\-New\-Cameras} (std\-::vector$<$ \hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$ $>$ $\ast$new\-Cameras)
+\begin{DoxyCompactList}\small\item\em (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
+std\-::string \hyperlink{class_is_camera_manager_a86228372c8903914acc3764e9358163b}{get\-Name} () const 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the name of the Manager \end{DoxyCompactList}\item 
+\hypertarget{class_is_camera_manager_a505c0eef8802a84ecc777112d4fcdc32}{void {\bfseries get\-Cameras\-Properties\-List} () const }\label{class_is_camera_manager_a505c0eef8802a84ecc777112d4fcdc32}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_is_camera_manager_a526b595eafb56059b9f8a5fc5d2d5d89}{unsigned int {\bfseries num\-Cameras}}\label{class_is_camera_manager_a526b595eafb56059b9f8a5fc5d2d5d89}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_fly_camera_manager}{Fly\-Camera\-Manager} class deals with all the Fly Capture Cameras. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_is_camera_manager_a4b65e770537668dffca47cbf6af34dfb}{\index{Is\-Camera\-Manager@{Is\-Camera\-Manager}!detect\-New\-Cameras@{detect\-New\-Cameras}}
+\index{detect\-New\-Cameras@{detect\-New\-Cameras}!IsCameraManager@{Is\-Camera\-Manager}}
+\subsubsection[{detect\-New\-Cameras}]{\setlength{\rightskip}{0pt plus 5cm}void Is\-Camera\-Manager\-::detect\-New\-Cameras (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ {\bf Abstract\-Camera} $\ast$ $>$ $\ast$}]{new\-Cameras}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_manager_a4b65e770537668dffca47cbf6af34dfb}
+
+
+(Pure virtual) detect new cameras 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\-Cameras} & (modified by the function) will be filled with all the camera connected to the computer, even ones already connected \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_abstract_camera_manager_a8e215b2531fd8c18551382dc8f571817}{Abstract\-Camera\-Manager}.
+
+\hypertarget{class_is_camera_manager_a86228372c8903914acc3764e9358163b}{\index{Is\-Camera\-Manager@{Is\-Camera\-Manager}!get\-Name@{get\-Name}}
+\index{get\-Name@{get\-Name}!IsCameraManager@{Is\-Camera\-Manager}}
+\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}string Is\-Camera\-Manager\-::get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_manager_a86228372c8903914acc3764e9358163b}
+
+
+(Pure virtual) get the name of the Manager 
+
+\begin{DoxyReturn}{Returns}
+String containing the name manager 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_abstract_camera_manager_a6e4b041842471b9ed42ddd5c9ab260d1}{Abstract\-Camera\-Manager}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/iscameramanager.\-h\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/iscameramanager.\-cpp\end{DoxyCompactItemize}

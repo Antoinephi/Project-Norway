@@ -1,0 +1,189 @@
+\hypertarget{class_abstract_camera}{\section{Abstract\-Camera Class Reference}
+\label{class_abstract_camera}\index{Abstract\-Camera@{Abstract\-Camera}}
+}
+
+
+Class that need to be subclassed for each camera A\-P\-I. It is used to exchange Camera\-Property between the application and the A\-P\-I, to lauch auto capture and receive frames.  
+
+
+
+
+{\ttfamily \#include $<$abstractcamera.\-h$>$}
+
+Inheritance diagram for Abstract\-Camera\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_abstract_camera}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_abstract_camera_a8b50d3e4925cfe74ed383376ba02bb5e}{set\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Manager\-::\-Camera\-Property} $\ast$p)=0
+\begin{DoxyCompactList}\small\item\em (Pure virtual) set the camera according to that property \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_abstract_camera_acb48ab701cd02e78604a3ca1c695b1cf}{update\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Manager\-::\-Camera\-Property} $\ast$p)=0
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the value of that property for that camera \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_abstract_camera_a244917ab081c18caf389473847871dd6}{equals\-To} (\hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$c)
+\begin{DoxyCompactList}\small\item\em compare 2 cameras \end{DoxyCompactList}\item 
+virtual std\-::string \hyperlink{class_abstract_camera_a75dc6b53d5a8717944d5e8ded9609611}{get\-String} ()=0
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the name corresponding to the camera model and id \end{DoxyCompactList}\item 
+\hypertarget{class_abstract_camera_a2f47d9877c5308856f42c94723faca33}{virtual void \hyperlink{class_abstract_camera_a2f47d9877c5308856f42c94723faca33}{start\-Auto\-Capture} ()=0}\label{class_abstract_camera_a2f47d9877c5308856f42c94723faca33}
+
+\begin{DoxyCompactList}\small\item\em (Pure virtual) start callback based Liveview \end{DoxyCompactList}\item 
+\hypertarget{class_abstract_camera_a08bd5e2c3f8a92187f36e1f6322eccb5}{virtual void \hyperlink{class_abstract_camera_a08bd5e2c3f8a92187f36e1f6322eccb5}{stop\-Auto\-Capture} ()=0}\label{class_abstract_camera_a08bd5e2c3f8a92187f36e1f6322eccb5}
+
+\begin{DoxyCompactList}\small\item\em (Pure virtual) stop\-Auto\-Capture stop callback based Liveview \end{DoxyCompactList}\item 
+virtual Q\-Image \hyperlink{class_abstract_camera_aec58ab298b618632fd422cadd11bae17}{retrieve\-Image} ()=0
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get one image from camera \end{DoxyCompactList}\item 
+void \hyperlink{class_abstract_camera_a19c1e4a98de744a5b8567b4764ceabe0}{start\-Capture} (\hyperlink{class_q_video_widget}{Q\-Video\-Widget} $\ast$video\-Widget)
+\begin{DoxyCompactList}\small\item\em start liveview capture from manager \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_abstract_camera_a8fa5df9ffe74c0df6e1b8d74b6bf3b9d}{send\-Frame} (Q\-Image img)
+\begin{DoxyCompactList}\small\item\em send\-Frame send a new Q\-Image for the view \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that need to be subclassed for each camera A\-P\-I. It is used to exchange Camera\-Property between the application and the A\-P\-I, to lauch auto capture and receive frames. 
+
+\hyperlink{class_abstract_camera}{Abstract\-Camera} 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_abstract_camera_a244917ab081c18caf389473847871dd6}{\index{Abstract\-Camera@{Abstract\-Camera}!equals\-To@{equals\-To}}
+\index{equals\-To@{equals\-To}!AbstractCamera@{Abstract\-Camera}}
+\subsubsection[{equals\-To}]{\setlength{\rightskip}{0pt plus 5cm}bool Abstract\-Camera\-::equals\-To (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\-Camera} $\ast$}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_abstract_camera_a244917ab081c18caf389473847871dd6}
+
+
+compare 2 cameras 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & camera to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the cameras are physically the same 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_is_camera_acb734c645fa0c5e4ffc64001b87daa0d}{Is\-Camera}, and \hyperlink{class_fly_camera_a8121735229105485f73289a36bd41042}{Fly\-Camera}.
+
+\hypertarget{class_abstract_camera_a75dc6b53d5a8717944d5e8ded9609611}{\index{Abstract\-Camera@{Abstract\-Camera}!get\-String@{get\-String}}
+\index{get\-String@{get\-String}!AbstractCamera@{Abstract\-Camera}}
+\subsubsection[{get\-String}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\-::string Abstract\-Camera\-::get\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_abstract_camera_a75dc6b53d5a8717944d5e8ded9609611}
+
+
+(Pure virtual) get the name corresponding to the camera model and id 
+
+\begin{DoxyReturn}{Returns}
+String containing these informations 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_is_camera_af0791bc3cdb5d552fb6f73285b467408}{Is\-Camera}, \hyperlink{class_fly_camera_a97938fec7396d02574383f7db50d9e58}{Fly\-Camera}, and \hyperlink{class_test_camera_a5ddb007a4c0c44e06b24787298f1c97c}{Test\-Camera}.
+
+\hypertarget{class_abstract_camera_aec58ab298b618632fd422cadd11bae17}{\index{Abstract\-Camera@{Abstract\-Camera}!retrieve\-Image@{retrieve\-Image}}
+\index{retrieve\-Image@{retrieve\-Image}!AbstractCamera@{Abstract\-Camera}}
+\subsubsection[{retrieve\-Image}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-Image Abstract\-Camera\-::retrieve\-Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_abstract_camera_aec58ab298b618632fd422cadd11bae17}
+
+
+(Pure virtual) get one image from camera 
+
+\begin{DoxyReturn}{Returns}
+Q\-Image image 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_is_camera_abd737cee4788d70a4614d8ea6ea883d2}{Is\-Camera}, \hyperlink{class_fly_camera_a0e935d2f7d21e31e470670ff5b6740e1}{Fly\-Camera}, and \hyperlink{class_test_camera_a283bd75f1b9500e35ba7aa252c2df14e}{Test\-Camera}.
+
+\hypertarget{class_abstract_camera_a8fa5df9ffe74c0df6e1b8d74b6bf3b9d}{\index{Abstract\-Camera@{Abstract\-Camera}!send\-Frame@{send\-Frame}}
+\index{send\-Frame@{send\-Frame}!AbstractCamera@{Abstract\-Camera}}
+\subsubsection[{send\-Frame}]{\setlength{\rightskip}{0pt plus 5cm}void Abstract\-Camera\-::send\-Frame (
+\begin{DoxyParamCaption}
+\item[{Q\-Image}]{img}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_abstract_camera_a8fa5df9ffe74c0df6e1b8d74b6bf3b9d}
+
+
+send\-Frame send a new Q\-Image for the view 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & Q\-Image grabbed from the camera \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_abstract_camera_a8b50d3e4925cfe74ed383376ba02bb5e}{\index{Abstract\-Camera@{Abstract\-Camera}!set\-Property@{set\-Property}}
+\index{set\-Property@{set\-Property}!AbstractCamera@{Abstract\-Camera}}
+\subsubsection[{set\-Property}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Abstract\-Camera\-::set\-Property (
+\begin{DoxyParamCaption}
+\item[{{\bf Camera\-Manager\-::\-Camera\-Property} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_abstract_camera_a8b50d3e4925cfe74ed383376ba02bb5e}
+
+
+(Pure virtual) set the camera according to that property 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & property to set \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_is_camera_a70c90a32bde9fcc3c594a526c7cba33c}{Is\-Camera}, \hyperlink{class_fly_camera_ad9d4102cab167f0d5739b2af808c43ee}{Fly\-Camera}, and \hyperlink{class_test_camera_a92507f0e4601f93912b06297e4b59d99}{Test\-Camera}.
+
+\hypertarget{class_abstract_camera_a19c1e4a98de744a5b8567b4764ceabe0}{\index{Abstract\-Camera@{Abstract\-Camera}!start\-Capture@{start\-Capture}}
+\index{start\-Capture@{start\-Capture}!AbstractCamera@{Abstract\-Camera}}
+\subsubsection[{start\-Capture}]{\setlength{\rightskip}{0pt plus 5cm}void Abstract\-Camera\-::start\-Capture (
+\begin{DoxyParamCaption}
+\item[{{\bf Q\-Video\-Widget} $\ast$}]{video\-Widget}
+\end{DoxyParamCaption}
+)}}\label{class_abstract_camera_a19c1e4a98de744a5b8567b4764ceabe0}
+
+
+start liveview capture from manager 
+
+
+\begin{DoxyParams}{Parameters}
+{\em video\-Widget} & Qvideo\-Widget that will receive the frames \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_abstract_camera_acb48ab701cd02e78604a3ca1c695b1cf}{\index{Abstract\-Camera@{Abstract\-Camera}!update\-Property@{update\-Property}}
+\index{update\-Property@{update\-Property}!AbstractCamera@{Abstract\-Camera}}
+\subsubsection[{update\-Property}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Abstract\-Camera\-::update\-Property (
+\begin{DoxyParamCaption}
+\item[{{\bf Camera\-Manager\-::\-Camera\-Property} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_abstract_camera_acb48ab701cd02e78604a3ca1c695b1cf}
+
+
+(Pure virtual) get the value of that property for that camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & property to update \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_is_camera_a5e2c484168c627eb79d61658e880300d}{Is\-Camera}, \hyperlink{class_fly_camera_a8f87a0d8ccbee558e629189e2c8ab271}{Fly\-Camera}, and \hyperlink{class_test_camera_a6b0c9e25baafe0a8d211b32851cb67b3}{Test\-Camera}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/\hyperlink{abstractcamera_8h}{abstractcamera.\-h}\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/abstractcamera.\-cpp\end{DoxyCompactItemize}

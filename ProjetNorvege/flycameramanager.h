@@ -19,16 +19,15 @@ class FlyCameraManager
 {
     public:
         FlyCameraManager();
-        virtual ~FlyCameraManager();
+        ~FlyCameraManager();
+
         virtual void detectNewCameras(std::vector<AbstractCamera*> *newCameras);
+
         std::string getName() const;
-        void getCamerasPropertiesList() const;
-
-        unsigned int numCameras;
-
     private:
-    BusManager busMgr;
-    Error error;
+		unsigned int numCameras;
+		BusManager busMgr;
+		Error error;
 };
 
 #endif // FLYCAMERAMANAGER_H

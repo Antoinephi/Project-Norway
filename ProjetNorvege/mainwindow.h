@@ -1,3 +1,8 @@
+/**
+ * \file mainwindow.h
+ * \author Virgile Wozny
+ */
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -17,6 +22,10 @@ namespace Ui {
 
 class AbstractCameraManager;
 
+/**
+ * MainWindow
+ * \brief handle ui events.
+ */
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
@@ -26,26 +35,26 @@ public:
 
 	void modifySubWindow(QMdiSubWindow* in, bool add);
 	
-private slots:
+public slots:
 	void on_actionQuitter_triggered();
-	void on_Detect_clicked();
+	
+	void on_actionLiveView_toggled(bool arg1);
+	void on_actionUpdateImages_triggered();
+	void on_actionCrosshair_toggled(bool arg1);
+    void on_actionCrosshairReal_toggled(bool arg1);
 	void on_actionMosaic_triggered();
-	void on_createGroup_triggered();
+    void on_actionHighQuality_toggled(bool arg1);		
+
 	void on_SelectCameras_currentIndexChanged(int index);
+	void on_Detect_clicked();
 	void on_CameraTree_itemClicked(const QModelIndex & index);
-    void on_actionUpdateImages_triggered();
-    void on_updatePropertiesButton_clicked();
-    void on_actionLiveView_toggled(bool arg1);
 
     void on_addGroup_clicked();
+	void on_deleteGroup_clicked();
     void on_editItem_clicked();
-    void on_deleteGroup_clicked();
+	void on_resetItem_clicked();    
 
-    void on_actionCrosshair_toggled(bool arg1);
-    void on_actionCrosshairReal_toggled(bool arg1);
-    void on_actionHighQuality_toggled(bool arg1);
-
-    void on_resetItem_clicked();
+	void on_updatePropertiesButton_clicked();
 
 signals:
     void activateCrosshair(bool);

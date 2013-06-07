@@ -1,3 +1,9 @@
+/**
+ * \file qvideowidget.h
+ * \author Virgile Wozny
+ */
+
+
 #ifndef QVIDEOWIDGET_H
 #define QVIDEOWIDGET_H
 
@@ -5,6 +11,10 @@
 #include <QThread>
 #include <QMutex>
 
+/**
+ * QVideoWidget
+ * \brief display images from cameras, handle resizing and crosshair display.
+ */
 class QVideoWidget : public QWidget
 {
     Q_OBJECT
