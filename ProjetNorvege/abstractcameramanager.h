@@ -1,6 +1,6 @@
 /**
- * AbstractCameraManager
- * \brief Class that need to be subclassed for each camera API. It is used to list and display Cameras, properties and liveview
+ * \file abstractcameramanager.h
+ * \author Virgile Wozny
  */
 #ifndef ABSTRACTCAMERAMANAGER_H
 #define ABSTRACTCAMERAMANAGER_H
@@ -28,7 +28,10 @@ enum MyRoles {
     CameraRole = Qt::UserRole + 1
 };
 
-
+/**
+ * AbstractCameraManager
+ * \brief Class that need to be subclassed for each camera API. It is used to list and display Cameras, properties and liveview.
+ */
 class AbstractCameraManager : public QObject
 {
     Q_OBJECT

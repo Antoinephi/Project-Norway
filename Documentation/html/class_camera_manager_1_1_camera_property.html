@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('class_camera_manager_1_1_camera_proper
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -111,11 +111,16 @@ $(document).ready(function(){initNavTree('class_camera_manager_1_1_camera_proper
 <div class="title">CameraManager::CameraProperty Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>memorize one property (value and auto mode) that will be exchanged between the manager end the cameras  
+ <a href="class_camera_manager_1_1_camera_property.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="cameraproperty_8h_source.html">cameraproperty.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aad0857fede2af9835a8199171972db23"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad0857fede2af9835a8199171972db23"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CameraProperty</b> (PropertyType type, float min, float max, int decimals=0, bool canAuto=false)</td></tr>
+<tr class="memitem:aad0857fede2af9835a8199171972db23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_manager_1_1_camera_property.html#aad0857fede2af9835a8199171972db23">CameraProperty</a> (PropertyType type, float min, float max, int decimals=0, bool canAuto=false)</td></tr>
+<tr class="memdesc:aad0857fede2af9835a8199171972db23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contructor.  <a href="#aad0857fede2af9835a8199171972db23">More...</a><br/></td></tr>
 <tr class="separator:aad0857fede2af9835a8199171972db23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abba29ee03832b7036f2d828223a5e26d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abba29ee03832b7036f2d828223a5e26d"></a>
 PropertyType&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> ()</td></tr>
@@ -157,6 +162,66 @@ QString&#160;</td><td class="memItemRight" valign="bottom"><b>formatValue</b> ()
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> ()</td></tr>
 <tr class="separator:a6cf265bfe49e74d23d946e4d8a6b8f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>memorize one property (value and auto mode) that will be exchanged between the manager end the cameras </p>
+<p><a class="el" href="class_camera_manager_1_1_camera_property.html" title="memorize one property (value and auto mode) that will be exchanged between the manager end the camera...">CameraProperty</a> </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="aad0857fede2af9835a8199171972db23"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CameraProperty::CameraProperty </td>
+          <td>(</td>
+          <td class="paramtype">CameraManager::PropertyType&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>decimals</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>canAuto</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Contructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>type of the property </td></tr>
+    <tr><td class="paramname">min</td><td>minimum value for that property </td></tr>
+    <tr><td class="paramname">max</td><td>maximum value for that property </td></tr>
+    <tr><td class="paramname">decimals</td><td>number of decimal for that property (used for the slider) </td></tr>
+    <tr><td class="paramname">canAuto</td><td>true if that property can be set to auto (will desactivate the slider) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/V1rgul/GitHub/Project-Norway/ProjetNorvege/<a class="el" href="cameraproperty_8h_source.html">cameraproperty.h</a></li>
 <li>C:/Users/V1rgul/GitHub/Project-Norway/ProjetNorvege/cameraproperty.cpp</li>
@@ -167,7 +232,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> ()
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>CameraManager</b></li><li class="navelem"><a class="el" href="class_camera_manager_1_1_camera_property.html">CameraProperty</a></li>
-    <li class="footer">Generated on Fri Jun 7 2013 16:18:10 for Camera Manager by
+    <li class="footer">Generated on Fri Jun 7 2013 16:49:47 for Camera Manager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

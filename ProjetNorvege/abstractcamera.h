@@ -1,6 +1,5 @@
 /**
- * AbstractCamera
- * \brief Class that need to be subclassed for each camera API. It is used to exchange CameraProperty between the application and the API, to lauch auto capture and receive frames.
+ * \file abstractcamera.h
  * \author Virgile Wozny
  */
 
@@ -14,6 +13,11 @@
 #include "cameraproperty.h"
 #include "qvideowidget.h"
 
+
+/**
+ * AbstractCamera
+ * \brief Class that need to be subclassed for each camera API. It is used to exchange CameraProperty between the application and the API, to lauch auto capture and receive frames.
+ */
 class AbstractCamera
 {
     public:

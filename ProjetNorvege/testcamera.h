@@ -1,3 +1,9 @@
+/**
+ * \file testcamera.h
+ * \author Virgile Wozny
+ */
+
+
 #ifndef TESTCAMERA_H
 #define TESTCAMERA_H
 
@@ -7,6 +13,10 @@
 
 using namespace CameraManager;
 
+/**
+ * TestCamera
+ * \brief to test ui without real cameras.
+ */
 class TestCamera : public AbstractCamera {
     public:
         TestCamera(std::string n);

@@ -1,3 +1,8 @@
+/**
+ * \file mainwindow.h
+ * \author Virgile Wozny
+ */
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -17,6 +22,10 @@ namespace Ui {
 
 class AbstractCameraManager;
 
+/**
+ * MainWindow
+ * \brief handle ui events.
+ */
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT

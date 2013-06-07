@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('emptycameramanager_8h_source.html','')
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -105,28 +105,29 @@ $(document).ready(function(){initNavTree('emptycameramanager_8h_source.html','')
 <div class="title">emptycameramanager.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef EMPTYCAMERAMANAGER_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EMPTYCAMERAMANAGER_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;abstractcamera.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;abstractcameramanager.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="code" href="class_empty_camera_manager.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_empty_camera_manager.html">EmptyCameraManager</a> : <span class="keyword">public</span> <a class="code" href="class_abstract_camera_manager.html">AbstractCameraManager</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="class_empty_camera_manager.html">EmptyCameraManager</a>();</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_empty_camera_manager.html#ae32a44d1576763cf49d46dba3aef0007" title="(Pure virtual) detect new cameras ">detectNewCameras</a>(std::vector&lt;AbstractCamera*&gt; *);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> getCamerasPropertiesList() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">virtual</span> std::string <a class="code" href="class_empty_camera_manager.html#acd29e9bb06b9839e5c94b6ffe5ee86a9" title="(Pure virtual) get the name of the Manager ">getName</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif // EMPTYCAMERAMANAGER_H</span></div>
+<a href="emptycameramanager_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef EMPTYCAMERAMANAGER_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EMPTYCAMERAMANAGER_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="abstractcamera_8h.html">abstractcamera.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="abstractcameramanager_8h.html">abstractcameramanager.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="class_empty_camera_manager.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_empty_camera_manager.html" title="empty camera manager named &quot;Select&quot;. ">EmptyCameraManager</a> : <span class="keyword">public</span> <a class="code" href="class_abstract_camera_manager.html" title="Class that need to be subclassed for each camera API. It is used to list and display Cameras...">AbstractCameraManager</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="class_empty_camera_manager.html" title="empty camera manager named &quot;Select&quot;. ">EmptyCameraManager</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_empty_camera_manager.html#ae32a44d1576763cf49d46dba3aef0007" title="(Pure virtual) detect new cameras ">detectNewCameras</a>(std::vector&lt;AbstractCamera*&gt; *);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> getCamerasPropertiesList() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">virtual</span> std::string <a class="code" href="class_empty_camera_manager.html#acd29e9bb06b9839e5c94b6ffe5ee86a9" title="(Pure virtual) get the name of the Manager ">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif // EMPTYCAMERAMANAGER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_3d574be6e28eec076ea165f965bc369a.html">ProjetNorvege</a></li><li class="navelem"><b>emptycameramanager.h</b></li>
-    <li class="footer">Generated on Fri Jun 7 2013 16:18:10 for Camera Manager by
+    <li class="navelem"><a class="el" href="dir_3d574be6e28eec076ea165f965bc369a.html">ProjetNorvege</a></li><li class="navelem"><a class="el" href="emptycameramanager_8h.html">emptycameramanager.h</a></li>
+    <li class="footer">Generated on Fri Jun 7 2013 16:49:46 for Camera Manager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>
