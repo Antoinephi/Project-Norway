@@ -20,18 +20,9 @@ Inheritance diagram for Fly\-Camera\-Manager\-:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 virtual void \hyperlink{class_fly_camera_manager_aab72966a50baaf966817c7f1265341a8}{detect\-New\-Cameras} (std\-::vector$<$ \hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$ $>$ $\ast$new\-Cameras)
-\begin{DoxyCompactList}\small\item\em detect\-New\-Cameras (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
 std\-::string \hyperlink{class_fly_camera_manager_a1c865e44bde9cc91829c3e875081396d}{get\-Name} () const 
-\begin{DoxyCompactList}\small\item\em get\-Name (Pure virtual) get the name of the Manager \end{DoxyCompactList}\item 
-\hypertarget{class_fly_camera_manager_acf0d67c5a686a2d48ebd0e20a303165e}{void {\bfseries get\-Cameras\-Properties\-List} () const }\label{class_fly_camera_manager_acf0d67c5a686a2d48ebd0e20a303165e}
-
-\end{DoxyCompactItemize}
-\subsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{class_fly_camera_manager_a5cc684ab1703825f8a84a4deee52d76c}{unsigned int {\bfseries num\-Cameras}}\label{class_fly_camera_manager_a5cc684ab1703825f8a84a4deee52d76c}
-
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the name of the Manager \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
@@ -48,11 +39,11 @@ The \hyperlink{class_fly_camera_manager}{Fly\-Camera\-Manager} class deals with 
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_fly_camera_manager_aab72966a50baaf966817c7f1265341a8}
 
 
-detect\-New\-Cameras (Pure virtual) detect new cameras 
+(Pure virtual) detect new cameras 
 
 
 \begin{DoxyParams}{Parameters}
-{\em new\-Cameras} & wich will need to be filled with all the camera connected to the computer \\
+{\em new\-Cameras} & (modified by the function) will be filled with all the camera connected to the computer, even ones already connected \\
 \hline
 \end{DoxyParams}
 
@@ -68,7 +59,7 @@ Implements \hyperlink{class_abstract_camera_manager_a8e215b2531fd8c18551382dc8f5
 ) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_fly_camera_manager_a1c865e44bde9cc91829c3e875081396d}
 
 
-get\-Name (Pure virtual) get the name of the Manager 
+(Pure virtual) get the name of the Manager 
 
 \begin{DoxyReturn}{Returns}
 String containing the name manager 

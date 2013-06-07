@@ -11,9 +11,9 @@ Inheritance diagram for Test\-Camera\-Manager\-:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 virtual void \hyperlink{class_test_camera_manager_a06c6f51030a289253f2ea214d1475c26}{detect\-New\-Cameras} (std\-::vector$<$ \hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$ $>$ $\ast$new\-Cameras)
-\begin{DoxyCompactList}\small\item\em detect\-New\-Cameras (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
 virtual std\-::string \hyperlink{class_test_camera_manager_adb2da700417695044c0bf1ba2ab21cf3}{get\-Name} () const 
-\begin{DoxyCompactList}\small\item\em get\-Name (Pure virtual) get the name of the Manager \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the name of the Manager \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
@@ -27,11 +27,11 @@ virtual std\-::string \hyperlink{class_test_camera_manager_adb2da700417695044c0b
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_test_camera_manager_a06c6f51030a289253f2ea214d1475c26}
 
 
-detect\-New\-Cameras (Pure virtual) detect new cameras 
+(Pure virtual) detect new cameras 
 
 
 \begin{DoxyParams}{Parameters}
-{\em new\-Cameras} & wich will need to be filled with all the camera connected to the computer \\
+{\em new\-Cameras} & (modified by the function) will be filled with all the camera connected to the computer, even ones already connected \\
 \hline
 \end{DoxyParams}
 
@@ -47,7 +47,7 @@ Implements \hyperlink{class_abstract_camera_manager_a8e215b2531fd8c18551382dc8f5
 ) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_test_camera_manager_adb2da700417695044c0bf1ba2ab21cf3}
 
 
-get\-Name (Pure virtual) get the name of the Manager 
+(Pure virtual) get the name of the Manager 
 
 \begin{DoxyReturn}{Returns}
 String containing the name manager 

@@ -1,7 +1,6 @@
 /**
  * AbstractCameraManager
- * Class that need to be subclassed for each camera API
- * used to list and display Cameras, properties and liveview
+ * \brief Class that need to be subclassed for each camera API. It is used to list and display Cameras, properties and liveview
  */
 #ifndef ABSTRACTCAMERAMANAGER_H
 #define ABSTRACTCAMERAMANAGER_H
@@ -36,20 +35,20 @@ class AbstractCameraManager : public QObject
     public:
         // Pure virtual -> to implement
         /**
-         * @brief detectNewCameras (Pure virtual) detect new cameras
-         * @param newCameras wich will need to be filled with all the camera connected to the computer
+         * @brief (Pure virtual) detect new cameras
+         * @param newCameras (modified by the function) will be filled with all the camera connected to the computer, even ones already connected
          */
         virtual void detectNewCameras(std::vector<AbstractCamera*> *newCameras) = 0;
 
         /**
-         * @brief getName (Pure virtual) get the name of the Manager
+         * @brief (Pure virtual) get the name of the Manager
          * @return String containing the name manager
          */
         virtual std::string getName() const = 0;
 
         //do not reimplement
         /**
-         * @brief detectNewCamerasAndExpand detect new cameras
+         * @brief detect new cameras
          * @return the index in the model corresponding to the "Detected Cameras" group, in order to expand it in the view
          */
         QModelIndex detectNewCamerasAndExpand();
@@ -59,25 +58,25 @@ class AbstractCameraManager : public QObject
         void updateProperties();
 
         /**
-         * @brief addGroup add a empty group of cameras in the model
+         * @brief add a empty group of cameras in the model
          * @return the index in the model corresponding to this group, in order to select it
          */
         QModelIndex addGroup();
 
         /**
-         * @brief removeGroup remove a group from the model
+         * @brief remove a group from the model
          * @param index of the item to remove
          */
         void removeGroup(QModelIndex index);
 
         /**
-         * @brief resetitem reset the name of a camera
+         * @brief reset the name of a camera
          * @param index of the camera
          */
         void resetItem(QModelIndex index);
 
         /**
-         * @brief activateCamera check the camera in the model, add it in the activeCameras vector and open a subwindow for it
+         * @brief check the camera in the model, add it in the activeCameras vector and open a subwindow for it
          * @param camera pointer to the camera to add
          * @param item position of the camera in the model
          * @param active true to activate, false to desactivate
@@ -85,47 +84,47 @@ class AbstractCameraManager : public QObject
         void activateCamera(AbstractCamera* camera, QStandardItem* item, bool active);
 
         /**
-         * @brief desactiveAllCameras used to close all liveviews from this manager
+         * @brief used to close all liveviews from this manager
          */
         void desactiveAllCameras();
 
         /**
-         * @brief cameraTree_itemClicked select a camera or a group to edit its properties
+         * @brief select a camera or a group to edit its properties
          * @param index index of the item in the model
-         * @param string desccritive of the item
-         * @param icon corresponding to the type of element selected
-         * @param editable true if the item is editable
-         * @param deletable true if the item is deletable
+         * @param string (modified by the function) desccritive of the item
+         * @param icon (modified by the function) corresponding to the type of element selected
+         * @param editable (modified by the function) true if the item is editable
+         * @param deletable (modified by the function) true if the item is deletable
          */
         void cameraTree_itemClicked(const QModelIndex & index, QString &string, int &icon, bool &editable, bool &deleteable);
 
         void activateLiveView(bool active);
 
         /**
-         * @brief getModel get the model ( camera list )
+         * @brief get the model ( camera list )
          * @return pointer to the model
          */
         QStandardItemModel* getModel();
 
         /**
-         * @brief getPropertiesWidget get the model of the properties
+         * @brief get the model of the properties
          * @return pointer to the widget
          */
         QTreeWidget* getPropertiesWidget();
 
         /**
-         * @brief setMainWindow to set the needed cross reference
+         * @brief to set the needed cross reference, called once after construction
          * @param window pointer to the main window
          */
         void setMainWindow(MainWindow* window);        
     protected:
         /**
-         * @brief AbstractCameraManager constructor
+         * @brief constructor
          * @param empty true if the manager is an emty manager
          */
         AbstractCameraManager(bool empty=false);
         /**
-         * @brief setProperties add properties tha can be set and retrieved to/from  cameras for this API
+         * @brief add properties that can be set and retrieved to/from  cameras for this API
          * @param properties vector of CameraProperty
          */
         void setProperties(std::vector<CameraManager::CameraProperty> &properties);

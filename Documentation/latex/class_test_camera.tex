@@ -14,19 +14,19 @@ Inheritance diagram for Test\-Camera\-:\begin{figure}[H]
 
 \item 
 void \hyperlink{class_test_camera_a92507f0e4601f93912b06297e4b59d99}{set\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Property} $\ast$p)
-\begin{DoxyCompactList}\small\item\em set\-Property set the camera according to that property \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) set the camera according to that property \end{DoxyCompactList}\item 
 void \hyperlink{class_test_camera_a6b0c9e25baafe0a8d211b32851cb67b3}{update\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Property} $\ast$p)
-\begin{DoxyCompactList}\small\item\em update\-Property get the value of that property for that camera \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the value of that property for that camera \end{DoxyCompactList}\item 
 std\-::string \hyperlink{class_test_camera_a5ddb007a4c0c44e06b24787298f1c97c}{get\-String} ()
-\begin{DoxyCompactList}\small\item\em get\-String get the name corresponding to the camera model and id \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the name corresponding to the camera model and id \end{DoxyCompactList}\item 
 Q\-Image \hyperlink{class_test_camera_a283bd75f1b9500e35ba7aa252c2df14e}{retrieve\-Image} ()
-\begin{DoxyCompactList}\small\item\em retrieve\-Image get one image from camera \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get one image from camera \end{DoxyCompactList}\item 
 \hypertarget{class_test_camera_a095498b65800c150009292e73f765621}{void \hyperlink{class_test_camera_a095498b65800c150009292e73f765621}{start\-Auto\-Capture} ()}\label{class_test_camera_a095498b65800c150009292e73f765621}
 
-\begin{DoxyCompactList}\small\item\em start\-Auto\-Capture start callback based Liveview \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) start callback based Liveview \end{DoxyCompactList}\item 
 \hypertarget{class_test_camera_a52f8f0ee49d83d927878cc2dd64a0af1}{void \hyperlink{class_test_camera_a52f8f0ee49d83d927878cc2dd64a0af1}{stop\-Auto\-Capture} ()}\label{class_test_camera_a52f8f0ee49d83d927878cc2dd64a0af1}
 
-\begin{DoxyCompactList}\small\item\em stop\-Auto\-Capture stop callback based Liveview \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em (Pure virtual) stop\-Auto\-Capture stop callback based Liveview \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
@@ -40,7 +40,7 @@ Q\-Image \hyperlink{class_test_camera_a283bd75f1b9500e35ba7aa252c2df14e}{retriev
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_test_camera_a5ddb007a4c0c44e06b24787298f1c97c}
 
 
-get\-String get the name corresponding to the camera model and id 
+(Pure virtual) get the name corresponding to the camera model and id 
 
 \begin{DoxyReturn}{Returns}
 String containing these informations 
@@ -58,7 +58,7 @@ Implements \hyperlink{class_abstract_camera_a75dc6b53d5a8717944d5e8ded9609611}{A
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_test_camera_a283bd75f1b9500e35ba7aa252c2df14e}
 
 
-retrieve\-Image get one image from camera 
+(Pure virtual) get one image from camera 
 
 \begin{DoxyReturn}{Returns}
 Q\-Image image 
@@ -76,7 +76,7 @@ Implements \hyperlink{class_abstract_camera_aec58ab298b618632fd422cadd11bae17}{A
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_test_camera_a92507f0e4601f93912b06297e4b59d99}
 
 
-set\-Property set the camera according to that property 
+(Pure virtual) set the camera according to that property 
 
 
 \begin{DoxyParams}{Parameters}
@@ -96,7 +96,7 @@ Implements \hyperlink{class_abstract_camera_a8b50d3e4925cfe74ed383376ba02bb5e}{A
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_test_camera_a6b0c9e25baafe0a8d211b32851cb67b3}
 
 
-update\-Property get the value of that property for that camera 
+(Pure virtual) get the value of that property for that camera 
 
 
 \begin{DoxyParams}{Parameters}

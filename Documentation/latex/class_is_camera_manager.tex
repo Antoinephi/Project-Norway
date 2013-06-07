@@ -20,9 +20,9 @@ Inheritance diagram for Is\-Camera\-Manager\-:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 virtual void \hyperlink{class_is_camera_manager_a4b65e770537668dffca47cbf6af34dfb}{detect\-New\-Cameras} (std\-::vector$<$ \hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$ $>$ $\ast$new\-Cameras)
-\begin{DoxyCompactList}\small\item\em detect\-New\-Cameras (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
 std\-::string \hyperlink{class_is_camera_manager_a86228372c8903914acc3764e9358163b}{get\-Name} () const 
-\begin{DoxyCompactList}\small\item\em get\-Name (Pure virtual) get the name of the Manager \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the name of the Manager \end{DoxyCompactList}\item 
 \hypertarget{class_is_camera_manager_a505c0eef8802a84ecc777112d4fcdc32}{void {\bfseries get\-Cameras\-Properties\-List} () const }\label{class_is_camera_manager_a505c0eef8802a84ecc777112d4fcdc32}
 
 \end{DoxyCompactItemize}
@@ -48,11 +48,11 @@ The \hyperlink{class_fly_camera_manager}{Fly\-Camera\-Manager} class deals with 
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_manager_a4b65e770537668dffca47cbf6af34dfb}
 
 
-detect\-New\-Cameras (Pure virtual) detect new cameras 
+(Pure virtual) detect new cameras 
 
 
 \begin{DoxyParams}{Parameters}
-{\em new\-Cameras} & wich will need to be filled with all the camera connected to the computer \\
+{\em new\-Cameras} & (modified by the function) will be filled with all the camera connected to the computer, even ones already connected \\
 \hline
 \end{DoxyParams}
 
@@ -68,7 +68,7 @@ Implements \hyperlink{class_abstract_camera_manager_a8e215b2531fd8c18551382dc8f5
 ) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_manager_a86228372c8903914acc3764e9358163b}
 
 
-get\-Name (Pure virtual) get the name of the Manager 
+(Pure virtual) get the name of the Manager 
 
 \begin{DoxyReturn}{Returns}
 String containing the name manager 

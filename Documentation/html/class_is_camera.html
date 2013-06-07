@@ -122,7 +122,7 @@ Inheritance diagram for IsCamera:</div>
  <div class="center">
   <img src="class_is_camera.png" usemap="#IsCamera_map" alt=""/>
   <map id="IsCamera_map" name="IsCamera_map">
-<area href="class_abstract_camera.html" alt="AbstractCamera" shape="rect" coords="0,0,103,24"/>
+<area href="class_abstract_camera.html" title="Class that need to be subclassed for each camera API. It is used to exchange CameraProperty between t..." alt="AbstractCamera" shape="rect" coords="0,0,103,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -138,34 +138,34 @@ PGRGuid *&#160;</td><td class="memItemRight" valign="bottom"><b>getGuid</b> ()</
 CameraInfo *&#160;</td><td class="memItemRight" valign="bottom"><b>getCameraInfo</b> ()</td></tr>
 <tr class="separator:acfd929b7612162a9897f0be21b2bea4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70c90a32bde9fcc3c594a526c7cba33c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_is_camera.html#a70c90a32bde9fcc3c594a526c7cba33c">setProperty</a> (<a class="el" href="class_camera_manager_1_1_camera_property.html">CameraManager::CameraProperty</a> *p)</td></tr>
-<tr class="memdesc:a70c90a32bde9fcc3c594a526c7cba33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">setProperty set the camera according to that property  <a href="#a70c90a32bde9fcc3c594a526c7cba33c">More...</a><br/></td></tr>
+<tr class="memdesc:a70c90a32bde9fcc3c594a526c7cba33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Pure virtual) set the camera according to that property  <a href="#a70c90a32bde9fcc3c594a526c7cba33c">More...</a><br/></td></tr>
 <tr class="separator:a70c90a32bde9fcc3c594a526c7cba33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e2c484168c627eb79d61658e880300d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_is_camera.html#a5e2c484168c627eb79d61658e880300d">updateProperty</a> (<a class="el" href="class_camera_manager_1_1_camera_property.html">CameraManager::CameraProperty</a> *p)</td></tr>
-<tr class="memdesc:a5e2c484168c627eb79d61658e880300d"><td class="mdescLeft">&#160;</td><td class="mdescRight">updateProperty get the value of that property for that camera  <a href="#a5e2c484168c627eb79d61658e880300d">More...</a><br/></td></tr>
+<tr class="memdesc:a5e2c484168c627eb79d61658e880300d"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Pure virtual) get the value of that property for that camera  <a href="#a5e2c484168c627eb79d61658e880300d">More...</a><br/></td></tr>
 <tr class="separator:a5e2c484168c627eb79d61658e880300d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad272b7a566ab9d226c96b331a0e8b5ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad272b7a566ab9d226c96b331a0e8b5ab"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_is_camera.html#ad272b7a566ab9d226c96b331a0e8b5ab">startAutoCapture</a> ()</td></tr>
-<tr class="memdesc:ad272b7a566ab9d226c96b331a0e8b5ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">startAutoCapture start callback based Liveview <br/></td></tr>
+<tr class="memdesc:ad272b7a566ab9d226c96b331a0e8b5ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Pure virtual) start callback based Liveview <br/></td></tr>
 <tr class="separator:ad272b7a566ab9d226c96b331a0e8b5ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71a1959c599bb6f296dc59965a41b8c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71a1959c599bb6f296dc59965a41b8c7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_is_camera.html#a71a1959c599bb6f296dc59965a41b8c7">stopAutoCapture</a> ()</td></tr>
-<tr class="memdesc:a71a1959c599bb6f296dc59965a41b8c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">stopAutoCapture stop callback based Liveview <br/></td></tr>
+<tr class="memdesc:a71a1959c599bb6f296dc59965a41b8c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Pure virtual) stopAutoCapture stop callback based Liveview <br/></td></tr>
 <tr class="separator:a71a1959c599bb6f296dc59965a41b8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc1229819c8d296c6f25cb358f6e1650"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc1229819c8d296c6f25cb358f6e1650"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sendFrame</b> (QImage img)</td></tr>
 <tr class="separator:acc1229819c8d296c6f25cb358f6e1650"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd737cee4788d70a4614d8ea6ea883d2"><td class="memItemLeft" align="right" valign="top">QImage&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_is_camera.html#abd737cee4788d70a4614d8ea6ea883d2">retrieveImage</a> ()</td></tr>
-<tr class="memdesc:abd737cee4788d70a4614d8ea6ea883d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieveImage get one image from camera  <a href="#abd737cee4788d70a4614d8ea6ea883d2">More...</a><br/></td></tr>
+<tr class="memdesc:abd737cee4788d70a4614d8ea6ea883d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Pure virtual) get one image from camera  <a href="#abd737cee4788d70a4614d8ea6ea883d2">More...</a><br/></td></tr>
 <tr class="separator:abd737cee4788d70a4614d8ea6ea883d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb734c645fa0c5e4ffc64001b87daa0d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_is_camera.html#acb734c645fa0c5e4ffc64001b87daa0d">equalsTo</a> (<a class="el" href="class_abstract_camera.html">AbstractCamera</a> *c)</td></tr>
-<tr class="memdesc:acb734c645fa0c5e4ffc64001b87daa0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">equalsTo compare 2 cameras  <a href="#acb734c645fa0c5e4ffc64001b87daa0d">More...</a><br/></td></tr>
+<tr class="memdesc:acb734c645fa0c5e4ffc64001b87daa0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">compare 2 cameras  <a href="#acb734c645fa0c5e4ffc64001b87daa0d">More...</a><br/></td></tr>
 <tr class="separator:acb734c645fa0c5e4ffc64001b87daa0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0791bc3cdb5d552fb6f73285b467408"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_is_camera.html#af0791bc3cdb5d552fb6f73285b467408">getString</a> ()</td></tr>
-<tr class="memdesc:af0791bc3cdb5d552fb6f73285b467408"><td class="mdescLeft">&#160;</td><td class="mdescRight">getString get the name corresponding to the camera model and id  <a href="#af0791bc3cdb5d552fb6f73285b467408">More...</a><br/></td></tr>
+<tr class="memdesc:af0791bc3cdb5d552fb6f73285b467408"><td class="mdescLeft">&#160;</td><td class="mdescRight">(Pure virtual) get the name corresponding to the camera model and id  <a href="#af0791bc3cdb5d552fb6f73285b467408">More...</a><br/></td></tr>
 <tr class="separator:af0791bc3cdb5d552fb6f73285b467408"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_abstract_camera"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_abstract_camera')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_abstract_camera.html">AbstractCamera</a></td></tr>
 <tr class="memitem:a19c1e4a98de744a5b8567b4764ceabe0 inherit pub_methods_class_abstract_camera"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_abstract_camera.html#a19c1e4a98de744a5b8567b4764ceabe0">startCapture</a> (<a class="el" href="class_q_video_widget.html">QVideoWidget</a> *videoWidget)</td></tr>
-<tr class="memdesc:a19c1e4a98de744a5b8567b4764ceabe0 inherit pub_methods_class_abstract_camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">startCapture start liveview capture from manager  <a href="#a19c1e4a98de744a5b8567b4764ceabe0">More...</a><br/></td></tr>
+<tr class="memdesc:a19c1e4a98de744a5b8567b4764ceabe0 inherit pub_methods_class_abstract_camera"><td class="mdescLeft">&#160;</td><td class="mdescRight">start liveview capture from manager  <a href="#a19c1e4a98de744a5b8567b4764ceabe0">More...</a><br/></td></tr>
 <tr class="separator:a19c1e4a98de744a5b8567b4764ceabe0 inherit pub_methods_class_abstract_camera"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -200,7 +200,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>equalsTo compare 2 cameras </p>
+<p>compare 2 cameras </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">c</td><td>camera to compare </td></tr>
@@ -234,7 +234,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>getString get the name corresponding to the camera model and id </p>
+<p>(Pure virtual) get the name corresponding to the camera model and id </p>
 <dl class="section return"><dt>Returns</dt><dd>String containing these informations </dd></dl>
 
 <p>Implements <a class="el" href="class_abstract_camera.html#a75dc6b53d5a8717944d5e8ded9609611">AbstractCamera</a>.</p>
@@ -262,7 +262,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>retrieveImage get one image from camera </p>
+<p>(Pure virtual) get one image from camera </p>
 <dl class="section return"><dt>Returns</dt><dd>QImage image </dd></dl>
 
 <p>Implements <a class="el" href="class_abstract_camera.html#aec58ab298b618632fd422cadd11bae17">AbstractCamera</a>.</p>
@@ -291,7 +291,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>setProperty set the camera according to that property </p>
+<p>(Pure virtual) set the camera according to that property </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p</td><td>property to set </td></tr>
@@ -325,7 +325,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>updateProperty get the value of that property for that camera </p>
+<p>(Pure virtual) get the value of that property for that camera </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p</td><td>property to update </td></tr>
@@ -347,7 +347,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_is_camera.html">IsCamera</a></li>
-    <li class="footer">Generated on Fri Jun 7 2013 15:34:25 for Camera Manager by
+    <li class="footer">Generated on Fri Jun 7 2013 16:18:10 for Camera Manager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

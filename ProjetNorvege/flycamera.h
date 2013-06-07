@@ -22,26 +22,21 @@ class FlyCamera : public AbstractCamera
 {
     public:
         FlyCamera();
-        virtual ~FlyCamera();
+        ~FlyCamera();
 
-        Camera* getCamera();
-        
-        PGRGuid* getGuid();
-        
+        Camera* getCamera();        
+        PGRGuid* getGuid();        
         CameraInfo* getCameraInfo();
 
         void setProperty(CameraManager::CameraProperty *p);
-
         void updateProperty(CameraManager::CameraProperty *p);
 
 		void startAutoCapture();
         void stopAutoCapture();
-		void sendFrame(QImage img);
 
         QImage retrieveImage();
         
-        bool equalsTo(AbstractCamera *c);
-        
+        bool equalsTo(AbstractCamera *c);        
 		std::string getString();
 
     private:

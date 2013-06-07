@@ -8,7 +8,6 @@ var class_fly_camera =
     [ "getGuid", "class_fly_camera.html#ae5b32f2f930f8903fde35a5aeeb059b6", null ],
     [ "getString", "class_fly_camera.html#a97938fec7396d02574383f7db50d9e58", null ],
     [ "retrieveImage", "class_fly_camera.html#a0e935d2f7d21e31e470670ff5b6740e1", null ],
-    [ "sendFrame", "class_fly_camera.html#aa6d06f05c02e0d8aab034a4484342a19", null ],
     [ "setProperty", "class_fly_camera.html#ad9d4102cab167f0d5739b2af808c43ee", null ],
     [ "startAutoCapture", "class_fly_camera.html#aa91c2cd580029a1fb242e2d8dace33b7", null ],
     [ "stopAutoCapture", "class_fly_camera.html#a7d637bd9237fae3ee3cd55b044ec80f1", null ],

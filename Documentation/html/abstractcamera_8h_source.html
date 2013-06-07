@@ -116,28 +116,28 @@ $(document).ready(function(){initNavTree('abstractcamera_8h_source.html','');});
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;cameraproperty.h&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;qvideowidget.h&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="class_abstract_camera.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_abstract_camera.html">AbstractCamera</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="class_abstract_camera.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_abstract_camera.html" title="Class that need to be subclassed for each camera API. It is used to exchange CameraProperty between t...">AbstractCamera</a></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_abstract_camera.html#a8b50d3e4925cfe74ed383376ba02bb5e" title="setProperty set the camera according to that property ">setProperty</a>(<a class="code" href="class_camera_manager_1_1_camera_property.html">CameraManager::CameraProperty</a>* p) = 0;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_abstract_camera.html#a8b50d3e4925cfe74ed383376ba02bb5e" title="(Pure virtual) set the camera according to that property ">setProperty</a>(<a class="code" href="class_camera_manager_1_1_camera_property.html">CameraManager::CameraProperty</a>* p) = 0;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_abstract_camera.html#acb48ab701cd02e78604a3ca1c695b1cf" title="updateProperty get the value of that property for that camera ">updateProperty</a>(<a class="code" href="class_camera_manager_1_1_camera_property.html">CameraManager::CameraProperty</a>* p) = 0;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_abstract_camera.html#acb48ab701cd02e78604a3ca1c695b1cf" title="(Pure virtual) get the value of that property for that camera ">updateProperty</a>(<a class="code" href="class_camera_manager_1_1_camera_property.html">CameraManager::CameraProperty</a>* p) = 0;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_abstract_camera.html#a244917ab081c18caf389473847871dd6" title="equalsTo compare 2 cameras ">equalsTo</a>(<a class="code" href="class_abstract_camera.html">AbstractCamera</a>* c);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_abstract_camera.html#a244917ab081c18caf389473847871dd6" title="compare 2 cameras ">equalsTo</a>(<a class="code" href="class_abstract_camera.html" title="Class that need to be subclassed for each camera API. It is used to exchange CameraProperty between t...">AbstractCamera</a>* c);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">virtual</span> std::string <a class="code" href="class_abstract_camera.html#a75dc6b53d5a8717944d5e8ded9609611" title="getString get the name corresponding to the camera model and id ">getString</a>() = 0;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">virtual</span> std::string <a class="code" href="class_abstract_camera.html#a75dc6b53d5a8717944d5e8ded9609611" title="(Pure virtual) get the name corresponding to the camera model and id ">getString</a>() = 0;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_abstract_camera.html#a2f47d9877c5308856f42c94723faca33" title="startAutoCapture start callback based Liveview ">startAutoCapture</a>() = 0;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_abstract_camera.html#a2f47d9877c5308856f42c94723faca33" title="(Pure virtual) start callback based Liveview ">startAutoCapture</a>() = 0;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_abstract_camera.html#a08bd5e2c3f8a92187f36e1f6322eccb5" title="stopAutoCapture stop callback based Liveview ">stopAutoCapture</a>() = 0;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_abstract_camera.html#a08bd5e2c3f8a92187f36e1f6322eccb5" title="(Pure virtual) stopAutoCapture stop callback based Liveview ">stopAutoCapture</a>() = 0;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">virtual</span> QImage <a class="code" href="class_abstract_camera.html#aec58ab298b618632fd422cadd11bae17" title="retrieveImage get one image from camera ">retrieveImage</a>() = 0;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">virtual</span> QImage <a class="code" href="class_abstract_camera.html#aec58ab298b618632fd422cadd11bae17" title="(Pure virtual) get one image from camera ">retrieveImage</a>() = 0;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_abstract_camera.html#a19c1e4a98de744a5b8567b4764ceabe0" title="startCapture start liveview capture from manager ">startCapture</a>(<a class="code" href="class_q_video_widget.html">QVideoWidget</a>* videoWidget);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_abstract_camera.html#a19c1e4a98de744a5b8567b4764ceabe0" title="start liveview capture from manager ">startCapture</a>(<a class="code" href="class_q_video_widget.html">QVideoWidget</a>* videoWidget);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="class_abstract_camera.html">AbstractCamera</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="class_abstract_camera.html" title="Class that need to be subclassed for each camera API. It is used to exchange CameraProperty between t...">AbstractCamera</a>();</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_abstract_camera.html#a8fa5df9ffe74c0df6e1b8d74b6bf3b9d" title="sendFrame send a new QImage for the view ">sendFrame</a>(QImage img);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
@@ -145,13 +145,13 @@ $(document).ready(function(){initNavTree('abstractcamera_8h_source.html','');});
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="class_q_video_widget.html">QVideoWidget</a>* container;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">class </span>CaptureThread : <span class="keyword">public</span> QThread {</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keyword">public</span> :</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                CaptureThread(<a class="code" href="class_abstract_camera.html">AbstractCamera</a>* cam) : QThread() { c = cam; }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                CaptureThread(<a class="code" href="class_abstract_camera.html" title="Class that need to be subclassed for each camera API. It is used to exchange CameraProperty between t...">AbstractCamera</a>* cam) : QThread() { c = cam; }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordtype">void</span> run(){</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    qDebug() &lt;&lt; <span class="stringliteral">&quot;Thread Started&quot;</span>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    c-&gt;<a class="code" href="class_abstract_camera.html#a2f47d9877c5308856f42c94723faca33" title="startAutoCapture start callback based Liveview ">startAutoCapture</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    c-&gt;<a class="code" href="class_abstract_camera.html#a2f47d9877c5308856f42c94723faca33" title="(Pure virtual) start callback based Liveview ">startAutoCapture</a>();</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                }</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <a class="code" href="class_abstract_camera.html">AbstractCamera</a>* c;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <a class="code" href="class_abstract_camera.html" title="Class that need to be subclassed for each camera API. It is used to exchange CameraProperty between t...">AbstractCamera</a>* c;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        };</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        CaptureThread thread;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
@@ -163,7 +163,7 @@ $(document).ready(function(){initNavTree('abstractcamera_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d574be6e28eec076ea165f965bc369a.html">ProjetNorvege</a></li><li class="navelem"><b>abstractcamera.h</b></li>
-    <li class="footer">Generated on Fri Jun 7 2013 15:34:24 for Camera Manager by
+    <li class="footer">Generated on Fri Jun 7 2013 16:18:10 for Camera Manager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

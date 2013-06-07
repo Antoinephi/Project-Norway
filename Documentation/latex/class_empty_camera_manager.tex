@@ -11,12 +11,12 @@ Inheritance diagram for Empty\-Camera\-Manager\-:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 virtual void \hyperlink{class_empty_camera_manager_ae32a44d1576763cf49d46dba3aef0007}{detect\-New\-Cameras} (std\-::vector$<$ \hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$ $>$ $\ast$)
-\begin{DoxyCompactList}\small\item\em detect\-New\-Cameras (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
 \hypertarget{class_empty_camera_manager_a321c93993d5bdd065f9ea875ee7b7961}{virtual void {\bfseries get\-Cameras\-Properties\-List} () const }\label{class_empty_camera_manager_a321c93993d5bdd065f9ea875ee7b7961}
 
 \item 
 virtual std\-::string \hyperlink{class_empty_camera_manager_acd29e9bb06b9839e5c94b6ffe5ee86a9}{get\-Name} () const 
-\begin{DoxyCompactList}\small\item\em get\-Name (Pure virtual) get the name of the Manager \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the name of the Manager \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
@@ -30,11 +30,11 @@ virtual std\-::string \hyperlink{class_empty_camera_manager_acd29e9bb06b9839e5c9
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_empty_camera_manager_ae32a44d1576763cf49d46dba3aef0007}
 
 
-detect\-New\-Cameras (Pure virtual) detect new cameras 
+(Pure virtual) detect new cameras 
 
 
 \begin{DoxyParams}{Parameters}
-{\em new\-Cameras} & wich will need to be filled with all the camera connected to the computer \\
+{\em new\-Cameras} & (modified by the function) will be filled with all the camera connected to the computer, even ones already connected \\
 \hline
 \end{DoxyParams}
 
@@ -50,7 +50,7 @@ Implements \hyperlink{class_abstract_camera_manager_a8e215b2531fd8c18551382dc8f5
 ) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_empty_camera_manager_acd29e9bb06b9839e5c94b6ffe5ee86a9}
 
 
-get\-Name (Pure virtual) get the name of the Manager 
+(Pure virtual) get the name of the Manager 
 
 \begin{DoxyReturn}{Returns}
 String containing the name manager 

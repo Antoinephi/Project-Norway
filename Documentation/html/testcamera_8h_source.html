@@ -114,12 +114,12 @@ $(document).ready(function(){initNavTree('testcamera_8h_source.html','');});
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using namespace </span>CameraManager;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="class_test_camera.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_test_camera.html">TestCamera</a> : <span class="keyword">public</span> <a class="code" href="class_abstract_camera.html">AbstractCamera</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="class_test_camera.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_test_camera.html">TestCamera</a> : <span class="keyword">public</span> <a class="code" href="class_abstract_camera.html" title="Class that need to be subclassed for each camera API. It is used to exchange CameraProperty between t...">AbstractCamera</a> {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="class_test_camera.html">TestCamera</a>(std::string n);</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">void</span> setProperty(<a class="code" href="class_camera_manager_1_1_camera_property.html">CameraProperty</a>* p);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> updateProperty(<a class="code" href="class_camera_manager_1_1_camera_property.html">CameraProperty</a>* p);</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="class_test_camera.html#a5ddb007a4c0c44e06b24787298f1c97c">   15</a></span>&#160;        std::string <a class="code" href="class_test_camera.html#a5ddb007a4c0c44e06b24787298f1c97c" title="getString get the name corresponding to the camera model and id ">getString</a>(){ <span class="keywordflow">return</span> n; }</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="class_test_camera.html#a5ddb007a4c0c44e06b24787298f1c97c">   15</a></span>&#160;        std::string <a class="code" href="class_test_camera.html#a5ddb007a4c0c44e06b24787298f1c97c" title="(Pure virtual) get the name corresponding to the camera model and id ">getString</a>(){ <span class="keywordflow">return</span> n; }</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        QImage retrieveImage();</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> startAutoCapture();</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> stopAutoCapture();</div>
@@ -140,7 +140,7 @@ $(document).ready(function(){initNavTree('testcamera_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3d574be6e28eec076ea165f965bc369a.html">ProjetNorvege</a></li><li class="navelem"><b>testcamera.h</b></li>
-    <li class="footer">Generated on Fri Jun 7 2013 15:34:24 for Camera Manager by
+    <li class="footer">Generated on Fri Jun 7 2013 16:18:10 for Camera Manager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

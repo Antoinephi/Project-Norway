@@ -11,11 +11,11 @@ Inheritance diagram for Abstract\-Camera\-Manager\-:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 virtual void \hyperlink{class_abstract_camera_manager_a8e215b2531fd8c18551382dc8f571817}{detect\-New\-Cameras} (std\-::vector$<$ \hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$ $>$ $\ast$new\-Cameras)=0
-\begin{DoxyCompactList}\small\item\em detect\-New\-Cameras (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
 virtual std\-::string \hyperlink{class_abstract_camera_manager_a6e4b041842471b9ed42ddd5c9ab260d1}{get\-Name} () const =0
-\begin{DoxyCompactList}\small\item\em get\-Name (Pure virtual) get the name of the Manager \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the name of the Manager \end{DoxyCompactList}\item 
 Q\-Model\-Index \hyperlink{class_abstract_camera_manager_a609f8e3af887c5652ccf9a37d4e133c1}{detect\-New\-Cameras\-And\-Expand} ()
-\begin{DoxyCompactList}\small\item\em detect\-New\-Cameras\-And\-Expand detect new cameras \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em detect new cameras \end{DoxyCompactList}\item 
 \hypertarget{class_abstract_camera_manager_a336e5cf760314194c1baf1234b87b247}{void {\bfseries update\-Images} ()}\label{class_abstract_camera_manager_a336e5cf760314194c1baf1234b87b247}
 
 \item 
@@ -23,34 +23,34 @@ Q\-Model\-Index \hyperlink{class_abstract_camera_manager_a609f8e3af887c5652ccf9a
 
 \item 
 Q\-Model\-Index \hyperlink{class_abstract_camera_manager_a4eaaf63434076e5d53d19a44f434bec9}{add\-Group} ()
-\begin{DoxyCompactList}\small\item\em add\-Group add a empty group of cameras in the model \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em add a empty group of cameras in the model \end{DoxyCompactList}\item 
 void \hyperlink{class_abstract_camera_manager_a5eea7f4d2ab3ea314020b405550b378c}{remove\-Group} (Q\-Model\-Index index)
-\begin{DoxyCompactList}\small\item\em remove\-Group remove a group from the model \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em remove a group from the model \end{DoxyCompactList}\item 
 void \hyperlink{class_abstract_camera_manager_a89cd0d1f9bb47d4abda51ea4f1e08f49}{reset\-Item} (Q\-Model\-Index index)
-\begin{DoxyCompactList}\small\item\em resetitem reset the name of a camera \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em reset the name of a camera \end{DoxyCompactList}\item 
 void \hyperlink{class_abstract_camera_manager_aeafa7b5e2b0eb5bbc105fe6a0ee5e2f2}{activate\-Camera} (\hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$camera, Q\-Standard\-Item $\ast$item, bool active)
-\begin{DoxyCompactList}\small\item\em activate\-Camera check the camera in the model, add it in the active\-Cameras vector and open a subwindow for it \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em check the camera in the model, add it in the active\-Cameras vector and open a subwindow for it \end{DoxyCompactList}\item 
 \hypertarget{class_abstract_camera_manager_a92ed218ecaab3f6a75d3d24e5544d17f}{void \hyperlink{class_abstract_camera_manager_a92ed218ecaab3f6a75d3d24e5544d17f}{desactive\-All\-Cameras} ()}\label{class_abstract_camera_manager_a92ed218ecaab3f6a75d3d24e5544d17f}
 
-\begin{DoxyCompactList}\small\item\em desactive\-All\-Cameras used to close all liveviews from this manager \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em used to close all liveviews from this manager \end{DoxyCompactList}\item 
 void \hyperlink{class_abstract_camera_manager_a10dee0f2e9a5efa1cf8b5775df66fb19}{camera\-Tree\-\_\-item\-Clicked} (const Q\-Model\-Index \&index, Q\-String \&string, int \&icon, bool \&editable, bool \&deleteable)
-\begin{DoxyCompactList}\small\item\em camera\-Tree\-\_\-item\-Clicked select a camera or a group to edit its properties \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em select a camera or a group to edit its properties \end{DoxyCompactList}\item 
 \hypertarget{class_abstract_camera_manager_a01cbc0e517b10e8b1c087138307ab676}{void {\bfseries activate\-Live\-View} (bool active)}\label{class_abstract_camera_manager_a01cbc0e517b10e8b1c087138307ab676}
 
 \item 
 Q\-Standard\-Item\-Model $\ast$ \hyperlink{class_abstract_camera_manager_a02097102061955f0092969a6cf812823}{get\-Model} ()
-\begin{DoxyCompactList}\small\item\em get\-Model get the model ( camera list ) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em get the model ( camera list ) \end{DoxyCompactList}\item 
 Q\-Tree\-Widget $\ast$ \hyperlink{class_abstract_camera_manager_a8cfcc9f2156936f1d8faea55ad97eeab}{get\-Properties\-Widget} ()
-\begin{DoxyCompactList}\small\item\em get\-Properties\-Widget get the model of the properties \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em get the model of the properties \end{DoxyCompactList}\item 
 void \hyperlink{class_abstract_camera_manager_a9369df77518a91e24596d2bbe3436bab}{set\-Main\-Window} (\hyperlink{class_main_window}{Main\-Window} $\ast$window)
-\begin{DoxyCompactList}\small\item\em set\-Main\-Window to set the needed cross reference \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em to set the needed cross reference, called once after construction \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_abstract_camera_manager_a23be9d93959d992c91efcf1416c597ef}{Abstract\-Camera\-Manager} (bool empty=false)
-\begin{DoxyCompactList}\small\item\em \hyperlink{class_abstract_camera_manager}{Abstract\-Camera\-Manager} constructor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
 void \hyperlink{class_abstract_camera_manager_ac5c7ff3b69138df82efafa0400b50ce5}{set\-Properties} (std\-::vector$<$ \hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Manager\-::\-Camera\-Property} $>$ \&properties)
-\begin{DoxyCompactList}\small\item\em set\-Properties add properties tha can be set and retrieved to/from cameras for this A\-P\-I \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em add properties that can be set and retrieved to/from cameras for this A\-P\-I \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -63,7 +63,7 @@ void \hyperlink{class_abstract_camera_manager_ac5c7ff3b69138df82efafa0400b50ce5}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_abstract_camera_manager_a23be9d93959d992c91efcf1416c597ef}
 
 
-\hyperlink{class_abstract_camera_manager}{Abstract\-Camera\-Manager} constructor. 
+constructor 
 
 
 \begin{DoxyParams}{Parameters}
@@ -84,7 +84,7 @@ void \hyperlink{class_abstract_camera_manager_ac5c7ff3b69138df82efafa0400b50ce5}
 )}}\label{class_abstract_camera_manager_aeafa7b5e2b0eb5bbc105fe6a0ee5e2f2}
 
 
-activate\-Camera check the camera in the model, add it in the active\-Cameras vector and open a subwindow for it 
+check the camera in the model, add it in the active\-Cameras vector and open a subwindow for it 
 
 
 \begin{DoxyParams}{Parameters}
@@ -104,7 +104,7 @@ activate\-Camera check the camera in the model, add it in the active\-Cameras ve
 )}}\label{class_abstract_camera_manager_a4eaaf63434076e5d53d19a44f434bec9}
 
 
-add\-Group add a empty group of cameras in the model 
+add a empty group of cameras in the model 
 
 \begin{DoxyReturn}{Returns}
 the index in the model corresponding to this group, in order to select it 
@@ -122,19 +122,19 @@ the index in the model corresponding to this group, in order to select it
 )}}\label{class_abstract_camera_manager_a10dee0f2e9a5efa1cf8b5775df66fb19}
 
 
-camera\-Tree\-\_\-item\-Clicked select a camera or a group to edit its properties 
+select a camera or a group to edit its properties 
 
 
 \begin{DoxyParams}{Parameters}
 {\em index} & index of the item in the model \\
 \hline
-{\em string} & desccritive of the item \\
+{\em string} & (modified by the function) desccritive of the item \\
 \hline
-{\em icon} & corresponding to the type of element selected \\
+{\em icon} & (modified by the function) corresponding to the type of element selected \\
 \hline
-{\em editable} & true if the item is editable \\
+{\em editable} & (modified by the function) true if the item is editable \\
 \hline
-{\em deletable} & true if the item is deletable \\
+{\em deletable} & (modified by the function) true if the item is deletable \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_abstract_camera_manager_a8e215b2531fd8c18551382dc8f571817}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!detect\-New\-Cameras@{detect\-New\-Cameras}}
@@ -146,11 +146,11 @@ camera\-Tree\-\_\-item\-Clicked select a camera or a group to edit its propertie
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_abstract_camera_manager_a8e215b2531fd8c18551382dc8f571817}
 
 
-detect\-New\-Cameras (Pure virtual) detect new cameras 
+(Pure virtual) detect new cameras 
 
 
 \begin{DoxyParams}{Parameters}
-{\em new\-Cameras} & wich will need to be filled with all the camera connected to the computer \\
+{\em new\-Cameras} & (modified by the function) will be filled with all the camera connected to the computer, even ones already connected \\
 \hline
 \end{DoxyParams}
 
@@ -166,7 +166,7 @@ Implemented in \hyperlink{class_fly_camera_manager_aab72966a50baaf966817c7f12653
 )}}\label{class_abstract_camera_manager_a609f8e3af887c5652ccf9a37d4e133c1}
 
 
-detect\-New\-Cameras\-And\-Expand detect new cameras 
+detect new cameras 
 
 \begin{DoxyReturn}{Returns}
 the index in the model corresponding to the \char`\"{}\-Detected Cameras\char`\"{} group, in order to expand it in the view 
@@ -180,7 +180,7 @@ the index in the model corresponding to the \char`\"{}\-Detected Cameras\char`\"
 )}}\label{class_abstract_camera_manager_a02097102061955f0092969a6cf812823}
 
 
-get\-Model get the model ( camera list ) 
+get the model ( camera list ) 
 
 \begin{DoxyReturn}{Returns}
 pointer to the model 
@@ -194,7 +194,7 @@ pointer to the model
 ) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_abstract_camera_manager_a6e4b041842471b9ed42ddd5c9ab260d1}
 
 
-get\-Name (Pure virtual) get the name of the Manager 
+(Pure virtual) get the name of the Manager 
 
 \begin{DoxyReturn}{Returns}
 String containing the name manager 
@@ -212,7 +212,7 @@ Implemented in \hyperlink{class_fly_camera_manager_a1c865e44bde9cc91829c3e875081
 )}}\label{class_abstract_camera_manager_a8cfcc9f2156936f1d8faea55ad97eeab}
 
 
-get\-Properties\-Widget get the model of the properties 
+get the model of the properties 
 
 \begin{DoxyReturn}{Returns}
 pointer to the widget 
@@ -226,7 +226,7 @@ pointer to the widget
 )}}\label{class_abstract_camera_manager_a5eea7f4d2ab3ea314020b405550b378c}
 
 
-remove\-Group remove a group from the model 
+remove a group from the model 
 
 
 \begin{DoxyParams}{Parameters}
@@ -242,7 +242,7 @@ remove\-Group remove a group from the model
 )}}\label{class_abstract_camera_manager_a89cd0d1f9bb47d4abda51ea4f1e08f49}
 
 
-resetitem reset the name of a camera 
+reset the name of a camera 
 
 
 \begin{DoxyParams}{Parameters}
@@ -258,7 +258,7 @@ resetitem reset the name of a camera
 )}}\label{class_abstract_camera_manager_a9369df77518a91e24596d2bbe3436bab}
 
 
-set\-Main\-Window to set the needed cross reference 
+to set the needed cross reference, called once after construction 
 
 
 \begin{DoxyParams}{Parameters}
@@ -274,7 +274,7 @@ set\-Main\-Window to set the needed cross reference
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_abstract_camera_manager_ac5c7ff3b69138df82efafa0400b50ce5}
 
 
-set\-Properties add properties tha can be set and retrieved to/from cameras for this A\-P\-I 
+add properties that can be set and retrieved to/from cameras for this A\-P\-I 
 
 
 \begin{DoxyParams}{Parameters}

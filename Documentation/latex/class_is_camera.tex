@@ -29,24 +29,24 @@ Inheritance diagram for Is\-Camera\-:\begin{figure}[H]
 
 \item 
 void \hyperlink{class_is_camera_a70c90a32bde9fcc3c594a526c7cba33c}{set\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Manager\-::\-Camera\-Property} $\ast$p)
-\begin{DoxyCompactList}\small\item\em set\-Property set the camera according to that property \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) set the camera according to that property \end{DoxyCompactList}\item 
 void \hyperlink{class_is_camera_a5e2c484168c627eb79d61658e880300d}{update\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Manager\-::\-Camera\-Property} $\ast$p)
-\begin{DoxyCompactList}\small\item\em update\-Property get the value of that property for that camera \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the value of that property for that camera \end{DoxyCompactList}\item 
 \hypertarget{class_is_camera_ad272b7a566ab9d226c96b331a0e8b5ab}{void \hyperlink{class_is_camera_ad272b7a566ab9d226c96b331a0e8b5ab}{start\-Auto\-Capture} ()}\label{class_is_camera_ad272b7a566ab9d226c96b331a0e8b5ab}
 
-\begin{DoxyCompactList}\small\item\em start\-Auto\-Capture start callback based Liveview \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) start callback based Liveview \end{DoxyCompactList}\item 
 \hypertarget{class_is_camera_a71a1959c599bb6f296dc59965a41b8c7}{void \hyperlink{class_is_camera_a71a1959c599bb6f296dc59965a41b8c7}{stop\-Auto\-Capture} ()}\label{class_is_camera_a71a1959c599bb6f296dc59965a41b8c7}
 
-\begin{DoxyCompactList}\small\item\em stop\-Auto\-Capture stop callback based Liveview \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) stop\-Auto\-Capture stop callback based Liveview \end{DoxyCompactList}\item 
 \hypertarget{class_is_camera_acc1229819c8d296c6f25cb358f6e1650}{void {\bfseries send\-Frame} (Q\-Image img)}\label{class_is_camera_acc1229819c8d296c6f25cb358f6e1650}
 
 \item 
 Q\-Image \hyperlink{class_is_camera_abd737cee4788d70a4614d8ea6ea883d2}{retrieve\-Image} ()
-\begin{DoxyCompactList}\small\item\em retrieve\-Image get one image from camera \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get one image from camera \end{DoxyCompactList}\item 
 bool \hyperlink{class_is_camera_acb734c645fa0c5e4ffc64001b87daa0d}{equals\-To} (\hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$c)
-\begin{DoxyCompactList}\small\item\em equals\-To compare 2 cameras \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em compare 2 cameras \end{DoxyCompactList}\item 
 std\-::string \hyperlink{class_is_camera_af0791bc3cdb5d552fb6f73285b467408}{get\-String} ()
-\begin{DoxyCompactList}\small\item\em get\-String get the name corresponding to the camera model and id \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em (Pure virtual) get the name corresponding to the camera model and id \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
@@ -63,7 +63,7 @@ The \hyperlink{class_is_camera}{Is\-Camera} class, represent a Image Source Came
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_acb734c645fa0c5e4ffc64001b87daa0d}
 
 
-equals\-To compare 2 cameras 
+compare 2 cameras 
 
 
 \begin{DoxyParams}{Parameters}
@@ -86,7 +86,7 @@ Reimplemented from \hyperlink{class_abstract_camera_a244917ab081c18caf3894738478
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_af0791bc3cdb5d552fb6f73285b467408}
 
 
-get\-String get the name corresponding to the camera model and id 
+(Pure virtual) get the name corresponding to the camera model and id 
 
 \begin{DoxyReturn}{Returns}
 String containing these informations 
@@ -104,7 +104,7 @@ Implements \hyperlink{class_abstract_camera_a75dc6b53d5a8717944d5e8ded9609611}{A
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_abd737cee4788d70a4614d8ea6ea883d2}
 
 
-retrieve\-Image get one image from camera 
+(Pure virtual) get one image from camera 
 
 \begin{DoxyReturn}{Returns}
 Q\-Image image 
@@ -122,7 +122,7 @@ Implements \hyperlink{class_abstract_camera_aec58ab298b618632fd422cadd11bae17}{A
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_a70c90a32bde9fcc3c594a526c7cba33c}
 
 
-set\-Property set the camera according to that property 
+(Pure virtual) set the camera according to that property 
 
 
 \begin{DoxyParams}{Parameters}
@@ -142,7 +142,7 @@ Implements \hyperlink{class_abstract_camera_a8b50d3e4925cfe74ed383376ba02bb5e}{A
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_a5e2c484168c627eb79d61658e880300d}
 
 
-update\-Property get the value of that property for that camera 
+(Pure virtual) get the value of that property for that camera 
 
 
 \begin{DoxyParams}{Parameters}
