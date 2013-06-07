@@ -33,7 +33,7 @@ void FlyCamera::setProperty(CameraManager::CameraProperty* p)
 
         cam->GetTriggerMode(&triggerMode);
 
-        triggerMode.onOff = p->getAuto();
+        triggerMode.onOff = !p->getAuto();
         triggerMode.mode = 0;
         triggerMode.parameter = 0;
         triggerMode.source = 0;
@@ -137,6 +137,14 @@ void FlyCamera::stopAutoCapture(){
 
 QImage FlyCamera::retrieveImage()
 {
+    TriggerMode triggerMode;
+
+    triggerMode.onOff = true;
+    triggerMode.mode = 0;
+    triggerMode.parameter = 0;
+    triggerMode.source = 7;
+    cam->SetTriggerMode(&triggerMode);
+
     Image img;
 	getCamera()->StartCapture();
     getCamera()->RetrieveBuffer(&img);
@@ -151,6 +159,8 @@ QImage FlyCamera::retrieveImage()
 		}
 	}
 	getCamera()->StopCapture();
+    triggerMode.onOff = false;
+    cam->SetTriggerMode(&triggerMode);
 	return image;
 }
 
