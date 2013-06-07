@@ -1,0 +1,289 @@
+\hypertarget{class_abstract_camera_manager}{\section{Abstract\-Camera\-Manager Class Reference}
+\label{class_abstract_camera_manager}\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}}
+}
+Inheritance diagram for Abstract\-Camera\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.592592cm]{class_abstract_camera_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_abstract_camera_manager_a8e215b2531fd8c18551382dc8f571817}{detect\-New\-Cameras} (std\-::vector$<$ \hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$ $>$ $\ast$new\-Cameras)=0
+\begin{DoxyCompactList}\small\item\em detect\-New\-Cameras (Pure virtual) detect new cameras \end{DoxyCompactList}\item 
+virtual std\-::string \hyperlink{class_abstract_camera_manager_a6e4b041842471b9ed42ddd5c9ab260d1}{get\-Name} () const =0
+\begin{DoxyCompactList}\small\item\em get\-Name (Pure virtual) get the name of the Manager \end{DoxyCompactList}\item 
+Q\-Model\-Index \hyperlink{class_abstract_camera_manager_a609f8e3af887c5652ccf9a37d4e133c1}{detect\-New\-Cameras\-And\-Expand} ()
+\begin{DoxyCompactList}\small\item\em detect\-New\-Cameras\-And\-Expand detect new cameras \end{DoxyCompactList}\item 
+\hypertarget{class_abstract_camera_manager_a336e5cf760314194c1baf1234b87b247}{void {\bfseries update\-Images} ()}\label{class_abstract_camera_manager_a336e5cf760314194c1baf1234b87b247}
+
+\item 
+\hypertarget{class_abstract_camera_manager_a518b8dd27c032030ff23930488da0a52}{void {\bfseries update\-Properties} ()}\label{class_abstract_camera_manager_a518b8dd27c032030ff23930488da0a52}
+
+\item 
+Q\-Model\-Index \hyperlink{class_abstract_camera_manager_a4eaaf63434076e5d53d19a44f434bec9}{add\-Group} ()
+\begin{DoxyCompactList}\small\item\em add\-Group add a empty group of cameras in the model \end{DoxyCompactList}\item 
+void \hyperlink{class_abstract_camera_manager_a5eea7f4d2ab3ea314020b405550b378c}{remove\-Group} (Q\-Model\-Index index)
+\begin{DoxyCompactList}\small\item\em remove\-Group remove a group from the model \end{DoxyCompactList}\item 
+void \hyperlink{class_abstract_camera_manager_a89cd0d1f9bb47d4abda51ea4f1e08f49}{reset\-Item} (Q\-Model\-Index index)
+\begin{DoxyCompactList}\small\item\em resetitem reset the name of a camera \end{DoxyCompactList}\item 
+void \hyperlink{class_abstract_camera_manager_aeafa7b5e2b0eb5bbc105fe6a0ee5e2f2}{activate\-Camera} (\hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$camera, Q\-Standard\-Item $\ast$item, bool active)
+\begin{DoxyCompactList}\small\item\em activate\-Camera check the camera in the model, add it in the active\-Cameras vector and open a subwindow for it \end{DoxyCompactList}\item 
+\hypertarget{class_abstract_camera_manager_a92ed218ecaab3f6a75d3d24e5544d17f}{void \hyperlink{class_abstract_camera_manager_a92ed218ecaab3f6a75d3d24e5544d17f}{desactive\-All\-Cameras} ()}\label{class_abstract_camera_manager_a92ed218ecaab3f6a75d3d24e5544d17f}
+
+\begin{DoxyCompactList}\small\item\em desactive\-All\-Cameras used to close all liveviews from this manager \end{DoxyCompactList}\item 
+void \hyperlink{class_abstract_camera_manager_a10dee0f2e9a5efa1cf8b5775df66fb19}{camera\-Tree\-\_\-item\-Clicked} (const Q\-Model\-Index \&index, Q\-String \&string, int \&icon, bool \&editable, bool \&deleteable)
+\begin{DoxyCompactList}\small\item\em camera\-Tree\-\_\-item\-Clicked select a camera or a group to edit its properties \end{DoxyCompactList}\item 
+\hypertarget{class_abstract_camera_manager_a01cbc0e517b10e8b1c087138307ab676}{void {\bfseries activate\-Live\-View} (bool active)}\label{class_abstract_camera_manager_a01cbc0e517b10e8b1c087138307ab676}
+
+\item 
+Q\-Standard\-Item\-Model $\ast$ \hyperlink{class_abstract_camera_manager_a02097102061955f0092969a6cf812823}{get\-Model} ()
+\begin{DoxyCompactList}\small\item\em get\-Model get the model ( camera list ) \end{DoxyCompactList}\item 
+Q\-Tree\-Widget $\ast$ \hyperlink{class_abstract_camera_manager_a8cfcc9f2156936f1d8faea55ad97eeab}{get\-Properties\-Widget} ()
+\begin{DoxyCompactList}\small\item\em get\-Properties\-Widget get the model of the properties \end{DoxyCompactList}\item 
+void \hyperlink{class_abstract_camera_manager_a9369df77518a91e24596d2bbe3436bab}{set\-Main\-Window} (\hyperlink{class_main_window}{Main\-Window} $\ast$window)
+\begin{DoxyCompactList}\small\item\em set\-Main\-Window to set the needed cross reference \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_abstract_camera_manager_a23be9d93959d992c91efcf1416c597ef}{Abstract\-Camera\-Manager} (bool empty=false)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_abstract_camera_manager}{Abstract\-Camera\-Manager} constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_abstract_camera_manager_ac5c7ff3b69138df82efafa0400b50ce5}{set\-Properties} (std\-::vector$<$ \hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Manager\-::\-Camera\-Property} $>$ \&properties)
+\begin{DoxyCompactList}\small\item\em set\-Properties add properties tha can be set and retrieved to/from cameras for this A\-P\-I \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_abstract_camera_manager_a23be9d93959d992c91efcf1416c597ef}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}}
+\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{Abstract\-Camera\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}Abstract\-Camera\-Manager\-::\-Abstract\-Camera\-Manager (
+\begin{DoxyParamCaption}
+\item[{bool}]{empty = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_abstract_camera_manager_a23be9d93959d992c91efcf1416c597ef}
+
+
+\hyperlink{class_abstract_camera_manager}{Abstract\-Camera\-Manager} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em empty} & true if the manager is an emty manager \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_abstract_camera_manager_aeafa7b5e2b0eb5bbc105fe6a0ee5e2f2}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!activate\-Camera@{activate\-Camera}}
+\index{activate\-Camera@{activate\-Camera}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{activate\-Camera}]{\setlength{\rightskip}{0pt plus 5cm}void Abstract\-Camera\-Manager\-::activate\-Camera (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\-Camera} $\ast$}]{camera, }
+\item[{Q\-Standard\-Item $\ast$}]{item, }
+\item[{bool}]{active}
+\end{DoxyParamCaption}
+)}}\label{class_abstract_camera_manager_aeafa7b5e2b0eb5bbc105fe6a0ee5e2f2}
+
+
+activate\-Camera check the camera in the model, add it in the active\-Cameras vector and open a subwindow for it 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & pointer to the camera to add \\
+\hline
+{\em item} & position of the camera in the model \\
+\hline
+{\em active} & true to activate, false to desactivate \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_abstract_camera_manager_a4eaaf63434076e5d53d19a44f434bec9}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!add\-Group@{add\-Group}}
+\index{add\-Group@{add\-Group}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{add\-Group}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Model\-Index Abstract\-Camera\-Manager\-::add\-Group (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_abstract_camera_manager_a4eaaf63434076e5d53d19a44f434bec9}
+
+
+add\-Group add a empty group of cameras in the model 
+
+\begin{DoxyReturn}{Returns}
+the index in the model corresponding to this group, in order to select it 
+\end{DoxyReturn}
+\hypertarget{class_abstract_camera_manager_a10dee0f2e9a5efa1cf8b5775df66fb19}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!camera\-Tree\-\_\-item\-Clicked@{camera\-Tree\-\_\-item\-Clicked}}
+\index{camera\-Tree\-\_\-item\-Clicked@{camera\-Tree\-\_\-item\-Clicked}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{camera\-Tree\-\_\-item\-Clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Abstract\-Camera\-Manager\-::camera\-Tree\-\_\-item\-Clicked (
+\begin{DoxyParamCaption}
+\item[{const Q\-Model\-Index \&}]{index, }
+\item[{Q\-String \&}]{string, }
+\item[{int \&}]{icon, }
+\item[{bool \&}]{editable, }
+\item[{bool \&}]{deleteable}
+\end{DoxyParamCaption}
+)}}\label{class_abstract_camera_manager_a10dee0f2e9a5efa1cf8b5775df66fb19}
+
+
+camera\-Tree\-\_\-item\-Clicked select a camera or a group to edit its properties 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & index of the item in the model \\
+\hline
+{\em string} & desccritive of the item \\
+\hline
+{\em icon} & corresponding to the type of element selected \\
+\hline
+{\em editable} & true if the item is editable \\
+\hline
+{\em deletable} & true if the item is deletable \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_abstract_camera_manager_a8e215b2531fd8c18551382dc8f571817}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!detect\-New\-Cameras@{detect\-New\-Cameras}}
+\index{detect\-New\-Cameras@{detect\-New\-Cameras}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{detect\-New\-Cameras}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Abstract\-Camera\-Manager\-::detect\-New\-Cameras (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ {\bf Abstract\-Camera} $\ast$ $>$ $\ast$}]{new\-Cameras}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_abstract_camera_manager_a8e215b2531fd8c18551382dc8f571817}
+
+
+detect\-New\-Cameras (Pure virtual) detect new cameras 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\-Cameras} & wich will need to be filled with all the camera connected to the computer \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_fly_camera_manager_aab72966a50baaf966817c7f1265341a8}{Fly\-Camera\-Manager}, \hyperlink{class_is_camera_manager_a4b65e770537668dffca47cbf6af34dfb}{Is\-Camera\-Manager}, \hyperlink{class_test_camera_manager_a06c6f51030a289253f2ea214d1475c26}{Test\-Camera\-Manager}, and \hyperlink{class_empty_camera_manager_ae32a44d1576763cf49d46dba3aef0007}{Empty\-Camera\-Manager}.
+
+\hypertarget{class_abstract_camera_manager_a609f8e3af887c5652ccf9a37d4e133c1}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!detect\-New\-Cameras\-And\-Expand@{detect\-New\-Cameras\-And\-Expand}}
+\index{detect\-New\-Cameras\-And\-Expand@{detect\-New\-Cameras\-And\-Expand}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{detect\-New\-Cameras\-And\-Expand}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Model\-Index Abstract\-Camera\-Manager\-::detect\-New\-Cameras\-And\-Expand (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_abstract_camera_manager_a609f8e3af887c5652ccf9a37d4e133c1}
+
+
+detect\-New\-Cameras\-And\-Expand detect new cameras 
+
+\begin{DoxyReturn}{Returns}
+the index in the model corresponding to the \char`\"{}\-Detected Cameras\char`\"{} group, in order to expand it in the view 
+\end{DoxyReturn}
+\hypertarget{class_abstract_camera_manager_a02097102061955f0092969a6cf812823}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!get\-Model@{get\-Model}}
+\index{get\-Model@{get\-Model}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{get\-Model}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Standard\-Item\-Model $\ast$ Abstract\-Camera\-Manager\-::get\-Model (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_abstract_camera_manager_a02097102061955f0092969a6cf812823}
+
+
+get\-Model get the model ( camera list ) 
+
+\begin{DoxyReturn}{Returns}
+pointer to the model 
+\end{DoxyReturn}
+\hypertarget{class_abstract_camera_manager_a6e4b041842471b9ed42ddd5c9ab260d1}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!get\-Name@{get\-Name}}
+\index{get\-Name@{get\-Name}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\-::string Abstract\-Camera\-Manager\-::get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_abstract_camera_manager_a6e4b041842471b9ed42ddd5c9ab260d1}
+
+
+get\-Name (Pure virtual) get the name of the Manager 
+
+\begin{DoxyReturn}{Returns}
+String containing the name manager 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_fly_camera_manager_a1c865e44bde9cc91829c3e875081396d}{Fly\-Camera\-Manager}, \hyperlink{class_is_camera_manager_a86228372c8903914acc3764e9358163b}{Is\-Camera\-Manager}, \hyperlink{class_test_camera_manager_adb2da700417695044c0bf1ba2ab21cf3}{Test\-Camera\-Manager}, and \hyperlink{class_empty_camera_manager_acd29e9bb06b9839e5c94b6ffe5ee86a9}{Empty\-Camera\-Manager}.
+
+\hypertarget{class_abstract_camera_manager_a8cfcc9f2156936f1d8faea55ad97eeab}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!get\-Properties\-Widget@{get\-Properties\-Widget}}
+\index{get\-Properties\-Widget@{get\-Properties\-Widget}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{get\-Properties\-Widget}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Tree\-Widget $\ast$ Abstract\-Camera\-Manager\-::get\-Properties\-Widget (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_abstract_camera_manager_a8cfcc9f2156936f1d8faea55ad97eeab}
+
+
+get\-Properties\-Widget get the model of the properties 
+
+\begin{DoxyReturn}{Returns}
+pointer to the widget 
+\end{DoxyReturn}
+\hypertarget{class_abstract_camera_manager_a5eea7f4d2ab3ea314020b405550b378c}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!remove\-Group@{remove\-Group}}
+\index{remove\-Group@{remove\-Group}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{remove\-Group}]{\setlength{\rightskip}{0pt plus 5cm}void Abstract\-Camera\-Manager\-::remove\-Group (
+\begin{DoxyParamCaption}
+\item[{Q\-Model\-Index}]{index}
+\end{DoxyParamCaption}
+)}}\label{class_abstract_camera_manager_a5eea7f4d2ab3ea314020b405550b378c}
+
+
+remove\-Group remove a group from the model 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & of the item to remove \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_abstract_camera_manager_a89cd0d1f9bb47d4abda51ea4f1e08f49}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!reset\-Item@{reset\-Item}}
+\index{reset\-Item@{reset\-Item}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{reset\-Item}]{\setlength{\rightskip}{0pt plus 5cm}void Abstract\-Camera\-Manager\-::reset\-Item (
+\begin{DoxyParamCaption}
+\item[{Q\-Model\-Index}]{index}
+\end{DoxyParamCaption}
+)}}\label{class_abstract_camera_manager_a89cd0d1f9bb47d4abda51ea4f1e08f49}
+
+
+resetitem reset the name of a camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & of the camera \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_abstract_camera_manager_a9369df77518a91e24596d2bbe3436bab}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!set\-Main\-Window@{set\-Main\-Window}}
+\index{set\-Main\-Window@{set\-Main\-Window}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{set\-Main\-Window}]{\setlength{\rightskip}{0pt plus 5cm}void Abstract\-Camera\-Manager\-::set\-Main\-Window (
+\begin{DoxyParamCaption}
+\item[{{\bf Main\-Window} $\ast$}]{window}
+\end{DoxyParamCaption}
+)}}\label{class_abstract_camera_manager_a9369df77518a91e24596d2bbe3436bab}
+
+
+set\-Main\-Window to set the needed cross reference 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & pointer to the main window \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_abstract_camera_manager_ac5c7ff3b69138df82efafa0400b50ce5}{\index{Abstract\-Camera\-Manager@{Abstract\-Camera\-Manager}!set\-Properties@{set\-Properties}}
+\index{set\-Properties@{set\-Properties}!AbstractCameraManager@{Abstract\-Camera\-Manager}}
+\subsubsection[{set\-Properties}]{\setlength{\rightskip}{0pt plus 5cm}void Abstract\-Camera\-Manager\-::set\-Properties (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ {\bf Camera\-Manager\-::\-Camera\-Property} $>$ \&}]{properties}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_abstract_camera_manager_ac5c7ff3b69138df82efafa0400b50ce5}
+
+
+set\-Properties add properties tha can be set and retrieved to/from cameras for this A\-P\-I 
+
+
+\begin{DoxyParams}{Parameters}
+{\em properties} & vector of Camera\-Property \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/abstractcameramanager.\-h\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/abstractcameramanager.\-cpp\end{DoxyCompactItemize}

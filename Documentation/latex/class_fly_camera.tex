@@ -1,0 +1,161 @@
+\hypertarget{class_fly_camera}{\section{Fly\-Camera Class Reference}
+\label{class_fly_camera}\index{Fly\-Camera@{Fly\-Camera}}
+}
+
+
+The \hyperlink{class_fly_camera}{Fly\-Camera} class, represent a Fly\-Capture Camera with all its settings.  
+
+
+
+
+{\ttfamily \#include $<$flycamera.\-h$>$}
+
+Inheritance diagram for Fly\-Camera\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_fly_camera}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_fly_camera_a3176768aac0905151237c2e9633c8c47}{Camera $\ast$ {\bfseries get\-Camera} ()}\label{class_fly_camera_a3176768aac0905151237c2e9633c8c47}
+
+\item 
+\hypertarget{class_fly_camera_ae5b32f2f930f8903fde35a5aeeb059b6}{P\-G\-R\-Guid $\ast$ {\bfseries get\-Guid} ()}\label{class_fly_camera_ae5b32f2f930f8903fde35a5aeeb059b6}
+
+\item 
+\hypertarget{class_fly_camera_abfba126bfff4fee7042710451b198286}{Camera\-Info $\ast$ {\bfseries get\-Camera\-Info} ()}\label{class_fly_camera_abfba126bfff4fee7042710451b198286}
+
+\item 
+void \hyperlink{class_fly_camera_ad9d4102cab167f0d5739b2af808c43ee}{set\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Manager\-::\-Camera\-Property} $\ast$p)
+\begin{DoxyCompactList}\small\item\em set\-Property set the camera according to that property \end{DoxyCompactList}\item 
+void \hyperlink{class_fly_camera_a8f87a0d8ccbee558e629189e2c8ab271}{update\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Manager\-::\-Camera\-Property} $\ast$p)
+\begin{DoxyCompactList}\small\item\em update\-Property get the value of that property for that camera \end{DoxyCompactList}\item 
+\hypertarget{class_fly_camera_aa91c2cd580029a1fb242e2d8dace33b7}{void \hyperlink{class_fly_camera_aa91c2cd580029a1fb242e2d8dace33b7}{start\-Auto\-Capture} ()}\label{class_fly_camera_aa91c2cd580029a1fb242e2d8dace33b7}
+
+\begin{DoxyCompactList}\small\item\em start\-Auto\-Capture start callback based Liveview \end{DoxyCompactList}\item 
+\hypertarget{class_fly_camera_a7d637bd9237fae3ee3cd55b044ec80f1}{void \hyperlink{class_fly_camera_a7d637bd9237fae3ee3cd55b044ec80f1}{stop\-Auto\-Capture} ()}\label{class_fly_camera_a7d637bd9237fae3ee3cd55b044ec80f1}
+
+\begin{DoxyCompactList}\small\item\em stop\-Auto\-Capture stop callback based Liveview \end{DoxyCompactList}\item 
+\hypertarget{class_fly_camera_aa6d06f05c02e0d8aab034a4484342a19}{void {\bfseries send\-Frame} (Q\-Image img)}\label{class_fly_camera_aa6d06f05c02e0d8aab034a4484342a19}
+
+\item 
+Q\-Image \hyperlink{class_fly_camera_a0e935d2f7d21e31e470670ff5b6740e1}{retrieve\-Image} ()
+\begin{DoxyCompactList}\small\item\em retrieve\-Image get one image from camera \end{DoxyCompactList}\item 
+bool \hyperlink{class_fly_camera_a8121735229105485f73289a36bd41042}{equals\-To} (\hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$c)
+\begin{DoxyCompactList}\small\item\em equals\-To compare 2 cameras \end{DoxyCompactList}\item 
+std\-::string \hyperlink{class_fly_camera_a97938fec7396d02574383f7db50d9e58}{get\-String} ()
+\begin{DoxyCompactList}\small\item\em get\-String get the name corresponding to the camera model and id \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_fly_camera}{Fly\-Camera} class, represent a Fly\-Capture Camera with all its settings. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_fly_camera_a8121735229105485f73289a36bd41042}{\index{Fly\-Camera@{Fly\-Camera}!equals\-To@{equals\-To}}
+\index{equals\-To@{equals\-To}!FlyCamera@{Fly\-Camera}}
+\subsubsection[{equals\-To}]{\setlength{\rightskip}{0pt plus 5cm}bool Fly\-Camera\-::equals\-To (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\-Camera} $\ast$}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_fly_camera_a8121735229105485f73289a36bd41042}
+
+
+equals\-To compare 2 cameras 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & camera to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the cameras are physically the same 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_abstract_camera_a244917ab081c18caf389473847871dd6}{Abstract\-Camera}.
+
+\hypertarget{class_fly_camera_a97938fec7396d02574383f7db50d9e58}{\index{Fly\-Camera@{Fly\-Camera}!get\-String@{get\-String}}
+\index{get\-String@{get\-String}!FlyCamera@{Fly\-Camera}}
+\subsubsection[{get\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Fly\-Camera\-::get\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_fly_camera_a97938fec7396d02574383f7db50d9e58}
+
+
+get\-String get the name corresponding to the camera model and id 
+
+\begin{DoxyReturn}{Returns}
+String containing these informations 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_abstract_camera_a75dc6b53d5a8717944d5e8ded9609611}{Abstract\-Camera}.
+
+\hypertarget{class_fly_camera_a0e935d2f7d21e31e470670ff5b6740e1}{\index{Fly\-Camera@{Fly\-Camera}!retrieve\-Image@{retrieve\-Image}}
+\index{retrieve\-Image@{retrieve\-Image}!FlyCamera@{Fly\-Camera}}
+\subsubsection[{retrieve\-Image}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Image Fly\-Camera\-::retrieve\-Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_fly_camera_a0e935d2f7d21e31e470670ff5b6740e1}
+
+
+retrieve\-Image get one image from camera 
+
+\begin{DoxyReturn}{Returns}
+Q\-Image image 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_abstract_camera_aec58ab298b618632fd422cadd11bae17}{Abstract\-Camera}.
+
+\hypertarget{class_fly_camera_ad9d4102cab167f0d5739b2af808c43ee}{\index{Fly\-Camera@{Fly\-Camera}!set\-Property@{set\-Property}}
+\index{set\-Property@{set\-Property}!FlyCamera@{Fly\-Camera}}
+\subsubsection[{set\-Property}]{\setlength{\rightskip}{0pt plus 5cm}void Fly\-Camera\-::set\-Property (
+\begin{DoxyParamCaption}
+\item[{{\bf Camera\-Manager\-::\-Camera\-Property} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_fly_camera_ad9d4102cab167f0d5739b2af808c43ee}
+
+
+set\-Property set the camera according to that property 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & property to set \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_abstract_camera_a8b50d3e4925cfe74ed383376ba02bb5e}{Abstract\-Camera}.
+
+\hypertarget{class_fly_camera_a8f87a0d8ccbee558e629189e2c8ab271}{\index{Fly\-Camera@{Fly\-Camera}!update\-Property@{update\-Property}}
+\index{update\-Property@{update\-Property}!FlyCamera@{Fly\-Camera}}
+\subsubsection[{update\-Property}]{\setlength{\rightskip}{0pt plus 5cm}void Fly\-Camera\-::update\-Property (
+\begin{DoxyParamCaption}
+\item[{{\bf Camera\-Manager\-::\-Camera\-Property} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_fly_camera_a8f87a0d8ccbee558e629189e2c8ab271}
+
+
+update\-Property get the value of that property for that camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & property to update \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_abstract_camera_acb48ab701cd02e78604a3ca1c695b1cf}{Abstract\-Camera}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/flycamera.\-h\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/flycamera.\-cpp\end{DoxyCompactItemize}

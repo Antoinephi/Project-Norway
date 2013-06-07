@@ -1,0 +1,115 @@
+\hypertarget{class_test_camera}{\section{Test\-Camera Class Reference}
+\label{class_test_camera}\index{Test\-Camera@{Test\-Camera}}
+}
+Inheritance diagram for Test\-Camera\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_test_camera}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_test_camera_a46fb8a67d24675886760e6fc0058edb3}{{\bfseries Test\-Camera} (std\-::string n)}\label{class_test_camera_a46fb8a67d24675886760e6fc0058edb3}
+
+\item 
+void \hyperlink{class_test_camera_a92507f0e4601f93912b06297e4b59d99}{set\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Property} $\ast$p)
+\begin{DoxyCompactList}\small\item\em set\-Property set the camera according to that property \end{DoxyCompactList}\item 
+void \hyperlink{class_test_camera_a6b0c9e25baafe0a8d211b32851cb67b3}{update\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Property} $\ast$p)
+\begin{DoxyCompactList}\small\item\em update\-Property get the value of that property for that camera \end{DoxyCompactList}\item 
+std\-::string \hyperlink{class_test_camera_a5ddb007a4c0c44e06b24787298f1c97c}{get\-String} ()
+\begin{DoxyCompactList}\small\item\em get\-String get the name corresponding to the camera model and id \end{DoxyCompactList}\item 
+Q\-Image \hyperlink{class_test_camera_a283bd75f1b9500e35ba7aa252c2df14e}{retrieve\-Image} ()
+\begin{DoxyCompactList}\small\item\em retrieve\-Image get one image from camera \end{DoxyCompactList}\item 
+\hypertarget{class_test_camera_a095498b65800c150009292e73f765621}{void \hyperlink{class_test_camera_a095498b65800c150009292e73f765621}{start\-Auto\-Capture} ()}\label{class_test_camera_a095498b65800c150009292e73f765621}
+
+\begin{DoxyCompactList}\small\item\em start\-Auto\-Capture start callback based Liveview \end{DoxyCompactList}\item 
+\hypertarget{class_test_camera_a52f8f0ee49d83d927878cc2dd64a0af1}{void \hyperlink{class_test_camera_a52f8f0ee49d83d927878cc2dd64a0af1}{stop\-Auto\-Capture} ()}\label{class_test_camera_a52f8f0ee49d83d927878cc2dd64a0af1}
+
+\begin{DoxyCompactList}\small\item\em stop\-Auto\-Capture stop callback based Liveview \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_test_camera_a5ddb007a4c0c44e06b24787298f1c97c}{\index{Test\-Camera@{Test\-Camera}!get\-String@{get\-String}}
+\index{get\-String@{get\-String}!TestCamera@{Test\-Camera}}
+\subsubsection[{get\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Test\-Camera\-::get\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_test_camera_a5ddb007a4c0c44e06b24787298f1c97c}
+
+
+get\-String get the name corresponding to the camera model and id 
+
+\begin{DoxyReturn}{Returns}
+String containing these informations 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_abstract_camera_a75dc6b53d5a8717944d5e8ded9609611}{Abstract\-Camera}.
+
+\hypertarget{class_test_camera_a283bd75f1b9500e35ba7aa252c2df14e}{\index{Test\-Camera@{Test\-Camera}!retrieve\-Image@{retrieve\-Image}}
+\index{retrieve\-Image@{retrieve\-Image}!TestCamera@{Test\-Camera}}
+\subsubsection[{retrieve\-Image}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Image Test\-Camera\-::retrieve\-Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_test_camera_a283bd75f1b9500e35ba7aa252c2df14e}
+
+
+retrieve\-Image get one image from camera 
+
+\begin{DoxyReturn}{Returns}
+Q\-Image image 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_abstract_camera_aec58ab298b618632fd422cadd11bae17}{Abstract\-Camera}.
+
+\hypertarget{class_test_camera_a92507f0e4601f93912b06297e4b59d99}{\index{Test\-Camera@{Test\-Camera}!set\-Property@{set\-Property}}
+\index{set\-Property@{set\-Property}!TestCamera@{Test\-Camera}}
+\subsubsection[{set\-Property}]{\setlength{\rightskip}{0pt plus 5cm}void Test\-Camera\-::set\-Property (
+\begin{DoxyParamCaption}
+\item[{{\bf Camera\-Property} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_test_camera_a92507f0e4601f93912b06297e4b59d99}
+
+
+set\-Property set the camera according to that property 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & property to set \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_abstract_camera_a8b50d3e4925cfe74ed383376ba02bb5e}{Abstract\-Camera}.
+
+\hypertarget{class_test_camera_a6b0c9e25baafe0a8d211b32851cb67b3}{\index{Test\-Camera@{Test\-Camera}!update\-Property@{update\-Property}}
+\index{update\-Property@{update\-Property}!TestCamera@{Test\-Camera}}
+\subsubsection[{update\-Property}]{\setlength{\rightskip}{0pt plus 5cm}void Test\-Camera\-::update\-Property (
+\begin{DoxyParamCaption}
+\item[{{\bf Camera\-Property} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_test_camera_a6b0c9e25baafe0a8d211b32851cb67b3}
+
+
+update\-Property get the value of that property for that camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & property to update \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_abstract_camera_acb48ab701cd02e78604a3ca1c695b1cf}{Abstract\-Camera}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/testcamera.\-h\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/testcamera.\-cpp\end{DoxyCompactItemize}

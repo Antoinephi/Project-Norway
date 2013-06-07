@@ -1,0 +1,161 @@
+\hypertarget{class_is_camera}{\section{Is\-Camera Class Reference}
+\label{class_is_camera}\index{Is\-Camera@{Is\-Camera}}
+}
+
+
+The \hyperlink{class_is_camera}{Is\-Camera} class, represent a Image Source Camera with all its settings.  
+
+
+
+
+{\ttfamily \#include $<$iscamera.\-h$>$}
+
+Inheritance diagram for Is\-Camera\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_is_camera}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_is_camera_ab1f39bed7530f03cf07c3ae6c53d045e}{Camera $\ast$ {\bfseries get\-Camera} ()}\label{class_is_camera_ab1f39bed7530f03cf07c3ae6c53d045e}
+
+\item 
+\hypertarget{class_is_camera_a08a1845f52db3f52fae52aa2ce63783b}{P\-G\-R\-Guid $\ast$ {\bfseries get\-Guid} ()}\label{class_is_camera_a08a1845f52db3f52fae52aa2ce63783b}
+
+\item 
+\hypertarget{class_is_camera_acfd929b7612162a9897f0be21b2bea4f}{Camera\-Info $\ast$ {\bfseries get\-Camera\-Info} ()}\label{class_is_camera_acfd929b7612162a9897f0be21b2bea4f}
+
+\item 
+void \hyperlink{class_is_camera_a70c90a32bde9fcc3c594a526c7cba33c}{set\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Manager\-::\-Camera\-Property} $\ast$p)
+\begin{DoxyCompactList}\small\item\em set\-Property set the camera according to that property \end{DoxyCompactList}\item 
+void \hyperlink{class_is_camera_a5e2c484168c627eb79d61658e880300d}{update\-Property} (\hyperlink{class_camera_manager_1_1_camera_property}{Camera\-Manager\-::\-Camera\-Property} $\ast$p)
+\begin{DoxyCompactList}\small\item\em update\-Property get the value of that property for that camera \end{DoxyCompactList}\item 
+\hypertarget{class_is_camera_ad272b7a566ab9d226c96b331a0e8b5ab}{void \hyperlink{class_is_camera_ad272b7a566ab9d226c96b331a0e8b5ab}{start\-Auto\-Capture} ()}\label{class_is_camera_ad272b7a566ab9d226c96b331a0e8b5ab}
+
+\begin{DoxyCompactList}\small\item\em start\-Auto\-Capture start callback based Liveview \end{DoxyCompactList}\item 
+\hypertarget{class_is_camera_a71a1959c599bb6f296dc59965a41b8c7}{void \hyperlink{class_is_camera_a71a1959c599bb6f296dc59965a41b8c7}{stop\-Auto\-Capture} ()}\label{class_is_camera_a71a1959c599bb6f296dc59965a41b8c7}
+
+\begin{DoxyCompactList}\small\item\em stop\-Auto\-Capture stop callback based Liveview \end{DoxyCompactList}\item 
+\hypertarget{class_is_camera_acc1229819c8d296c6f25cb358f6e1650}{void {\bfseries send\-Frame} (Q\-Image img)}\label{class_is_camera_acc1229819c8d296c6f25cb358f6e1650}
+
+\item 
+Q\-Image \hyperlink{class_is_camera_abd737cee4788d70a4614d8ea6ea883d2}{retrieve\-Image} ()
+\begin{DoxyCompactList}\small\item\em retrieve\-Image get one image from camera \end{DoxyCompactList}\item 
+bool \hyperlink{class_is_camera_acb734c645fa0c5e4ffc64001b87daa0d}{equals\-To} (\hyperlink{class_abstract_camera}{Abstract\-Camera} $\ast$c)
+\begin{DoxyCompactList}\small\item\em equals\-To compare 2 cameras \end{DoxyCompactList}\item 
+std\-::string \hyperlink{class_is_camera_af0791bc3cdb5d552fb6f73285b467408}{get\-String} ()
+\begin{DoxyCompactList}\small\item\em get\-String get the name corresponding to the camera model and id \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_is_camera}{Is\-Camera} class, represent a Image Source Camera with all its settings. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_is_camera_acb734c645fa0c5e4ffc64001b87daa0d}{\index{Is\-Camera@{Is\-Camera}!equals\-To@{equals\-To}}
+\index{equals\-To@{equals\-To}!IsCamera@{Is\-Camera}}
+\subsubsection[{equals\-To}]{\setlength{\rightskip}{0pt plus 5cm}bool Is\-Camera\-::equals\-To (
+\begin{DoxyParamCaption}
+\item[{{\bf Abstract\-Camera} $\ast$}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_acb734c645fa0c5e4ffc64001b87daa0d}
+
+
+equals\-To compare 2 cameras 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & camera to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the cameras are physically the same 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{class_abstract_camera_a244917ab081c18caf389473847871dd6}{Abstract\-Camera}.
+
+\hypertarget{class_is_camera_af0791bc3cdb5d552fb6f73285b467408}{\index{Is\-Camera@{Is\-Camera}!get\-String@{get\-String}}
+\index{get\-String@{get\-String}!IsCamera@{Is\-Camera}}
+\subsubsection[{get\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Is\-Camera\-::get\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_af0791bc3cdb5d552fb6f73285b467408}
+
+
+get\-String get the name corresponding to the camera model and id 
+
+\begin{DoxyReturn}{Returns}
+String containing these informations 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_abstract_camera_a75dc6b53d5a8717944d5e8ded9609611}{Abstract\-Camera}.
+
+\hypertarget{class_is_camera_abd737cee4788d70a4614d8ea6ea883d2}{\index{Is\-Camera@{Is\-Camera}!retrieve\-Image@{retrieve\-Image}}
+\index{retrieve\-Image@{retrieve\-Image}!IsCamera@{Is\-Camera}}
+\subsubsection[{retrieve\-Image}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Image Is\-Camera\-::retrieve\-Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_abd737cee4788d70a4614d8ea6ea883d2}
+
+
+retrieve\-Image get one image from camera 
+
+\begin{DoxyReturn}{Returns}
+Q\-Image image 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_abstract_camera_aec58ab298b618632fd422cadd11bae17}{Abstract\-Camera}.
+
+\hypertarget{class_is_camera_a70c90a32bde9fcc3c594a526c7cba33c}{\index{Is\-Camera@{Is\-Camera}!set\-Property@{set\-Property}}
+\index{set\-Property@{set\-Property}!IsCamera@{Is\-Camera}}
+\subsubsection[{set\-Property}]{\setlength{\rightskip}{0pt plus 5cm}void Is\-Camera\-::set\-Property (
+\begin{DoxyParamCaption}
+\item[{{\bf Camera\-Manager\-::\-Camera\-Property} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_a70c90a32bde9fcc3c594a526c7cba33c}
+
+
+set\-Property set the camera according to that property 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & property to set \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_abstract_camera_a8b50d3e4925cfe74ed383376ba02bb5e}{Abstract\-Camera}.
+
+\hypertarget{class_is_camera_a5e2c484168c627eb79d61658e880300d}{\index{Is\-Camera@{Is\-Camera}!update\-Property@{update\-Property}}
+\index{update\-Property@{update\-Property}!IsCamera@{Is\-Camera}}
+\subsubsection[{update\-Property}]{\setlength{\rightskip}{0pt plus 5cm}void Is\-Camera\-::update\-Property (
+\begin{DoxyParamCaption}
+\item[{{\bf Camera\-Manager\-::\-Camera\-Property} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_is_camera_a5e2c484168c627eb79d61658e880300d}
+
+
+update\-Property get the value of that property for that camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & property to update \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_abstract_camera_acb48ab701cd02e78604a3ca1c695b1cf}{Abstract\-Camera}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/iscamera.\-h\item 
+C\-:/\-Users/\-V1rgul/\-Git\-Hub/\-Project-\/\-Norway/\-Projet\-Norvege/iscamera.\-cpp\end{DoxyCompactItemize}
