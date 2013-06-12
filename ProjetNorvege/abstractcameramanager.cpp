@@ -15,7 +15,7 @@ Q_DECLARE_METATYPE(CameraManager::CameraProperty *)
 using namespace CameraManager;
 
 AbstractCameraManager::AbstractCameraManager(bool empty)
-    : liveView(false), cameraTree() , newCameraList("Detected Cameras"), propertiesList(), selectedItem(NULL), selectedCamera(NULL), folderIcon(":/icons/folder.png"), activeCameras(), cameraProperties() {
+    : liveView(false), cameraTree() , newCameraList("Detected Cameras"), propertiesList(), selectedItem(NULL), selectedCamera(NULL), folderIcon(":/icons/folder"), activeCameras(), cameraProperties() {
 
     propertiesList.setRootIsDecorated(false);
     propertiesList.setColumnCount(4);
@@ -26,7 +26,7 @@ AbstractCameraManager::AbstractCameraManager(bool empty)
     QObject::connect(&cameraTree, SIGNAL(itemChanged(QStandardItem*)),
             this, SLOT(on_CameraTree_itemChanged(QStandardItem*)));
     cameraTree.appendRow(&newCameraList);
-    newCameraList.setIcon( QIcon(":/icons/folder_home.png") );
+    newCameraList.setIcon( QIcon(":/icons/folder_home") );
     newCameraList.setCheckable(true);
     newCameraList.setDragEnabled(false);
     //newCameraList.setCheckState(Qt::Checked);
@@ -246,7 +246,7 @@ void AbstractCameraManager::cameraTree_itemClicked(const QModelIndex & index, QS
             icon = 1;
         else{
             icon = 2;
-            string = clicked->text() + " ("+ first->text() + ")";
+            string = clicked->text() + " <br /> ("+ first->text() + ")";
         }
     }
     selectedCamera = (first == NULL) ? NULL : reinterpret_cast<AbstractCamera *>( first->data(CameraRole).value<quintptr>() );

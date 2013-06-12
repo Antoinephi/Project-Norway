@@ -312,7 +312,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>40</width>
+           <width>0</width>
            <height>20</height>
           </size>
          </property>
@@ -331,7 +331,7 @@
           <enum>Qt::LeftToRight</enum>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>No selection</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -345,7 +345,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>40</width>
+           <width>0</width>
            <height>20</height>
           </size>
          </property>

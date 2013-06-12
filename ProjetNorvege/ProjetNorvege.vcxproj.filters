@@ -97,12 +97,6 @@
     <ClCompile Include="GeneratedFiles\qrc_Ressources.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="iscameramanager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="iscamera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Release\moc_qvideowidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
@@ -144,12 +138,6 @@
     <ClInclude Include="flycamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="iscamera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="iscameramanager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.ui">
@@ -163,37 +151,58 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="mosaic.png">
+    <None Include="img\liveview.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="liveview.png">
+    <None Include="img\liveview_on.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="quit.png">
+    <None Include="img\mosaic.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="one.png">
+    <None Include="img\one.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="one_disabled.png">
+    <None Include="img\one_disabled.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="add.png">
+    <None Include="img\quality_high.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="folder_delete.png">
+    <None Include="img\quality_low.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="folder_add.png">
+    <None Include="img\quit.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="edit.png">
+    <None Include="img\reset.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="folder_home.png">
+    <None Include="img\add.png">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="folder.png">
+    <None Include="img\camera.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\crosshair.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\edit.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\folder.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\folder_add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\folder_camera.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\folder_delete.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="img\folder_home.png">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
