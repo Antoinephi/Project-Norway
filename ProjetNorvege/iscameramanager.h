@@ -1,17 +1,15 @@
 #ifndef ISCAMERAMANAGER_H
 #define ISAMERAMANAGER_H
 
-#include "flycamera.h"
+#include "iscamera.h"
 #include <vector>
 #include <iostream>
 #include <stdlib.h>
 #include "abstractcamera.h"
 #include "abstractcameramanager.h"
 
-using namespace FlyCapture2;
-
 /**
- * @brief The FlyCameraManager class deals with all the Fly Capture Cameras
+ * @brief The IsCameraManager class deals with all the Imaging Source Cameras
  */
 
 class IsCameraManager
