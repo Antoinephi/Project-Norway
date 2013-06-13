@@ -96,7 +96,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\include;C:\Program Files\Point Grey Research\FlyCapture2\include;C:\Program Files %28x86%29\Point Grey Research\FlyCapture2\include;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;debug;.;$(QTDIR)\mkspecs\win32-msvc2010;.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\include";C:\Program Files\Point Grey Research\FlyCapture2\include;C:\Program Files %28x86%29\Point Grey Research\FlyCapture2\include;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;debug;.;$(QTDIR)\mkspecs\win32-msvc2010;.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>debug\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -115,7 +115,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>FlyCapture2d_v100.lib;qtmaind.lib;Qt5Widgets.lib;Qt5Gui.lib;Qt5Core.lib;libEGLd.lib;libGLESv2d.lib;gdi32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>A:\Users\demod_000\Documents\IC Imaging Control 3.2\classlib\win32\debug;C:\Program Files\Point Grey Research\FlyCapture2\lib;C:\Program Files %28x86%29\Point Grey Research\FlyCapture2\lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>"$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\win32\debug";C:\Program Files\Point Grey Research\FlyCapture2\lib;C:\Program Files %28x86%29\Point Grey Research\FlyCapture2\lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>true</GenerateDebugInformation>

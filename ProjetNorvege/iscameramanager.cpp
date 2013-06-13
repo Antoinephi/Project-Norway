@@ -5,6 +5,7 @@
 #include <QProcess>
 
 using namespace std;
+using namespace DShowLib;
 
 
 IsCameraManager::IsCameraManager()
@@ -23,18 +24,19 @@ IsCameraManager::IsCameraManager()
 
 IsCameraManager::~IsCameraManager()
 {
-    //dtor
+    atexit(ExitLibrary);
 }
 
 
 void IsCameraManager::detectNewCameras(std::vector<AbstractCamera*> *newCameras)
 {
-    if( ! DShowLib::InitLibrary() )
+    if(InitLibrary())
 	{
-		return FALSE;
+		Grabber *grb = new Grabber();
+		Grabber::tVidCapDevListPtr list = grb->getAvailableVideoCaptureDevices();
+		
+		cout << list->size() << endl;
 	}
- 
-	atexit( DShowLib::ExitLibrary );
 }
 
 void IsCameraManager::getCamerasPropertiesList() const
