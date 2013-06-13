@@ -12,6 +12,7 @@
 #include "testcameramanager.h"
 #include "emptycameramanager.h"
 #include "flycameramanager.h"
+#include "iscameramanager.h"
 
 bool Ui::crosshair = false, Ui::crosshairReal = false, Ui::forceHighQuality = false;
 
@@ -30,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
 	cameraManagers.push_back(new EmptyCameraManager());
 	cameraManagers.push_back(new TestCameraManager());
     cameraManagers.push_back(new FlyCameraManager());
-    //cameraManagers.push_back(new IsCameraManager());
+    cameraManagers.push_back(new IsCameraManager());
 
 
 	for (unsigned int i=0 ; i < cameraManagers.size(); ++i){

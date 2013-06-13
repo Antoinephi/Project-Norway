@@ -56,7 +56,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;release;.;$(QTDIR)\mkspecs\win32-msvc2010;.\GeneratedFiles;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\Qt5.0.2\5.0.2\msvc2010\include;C:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtWidgets;C:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtGui;C:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtCore;release;.;C:\Qt\Qt5.0.2\5.0.2\msvc2010\mkspecs\win32-msvc2010;.\GeneratedFiles;C:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtCore;C:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtGui;C:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>release\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -73,8 +73,8 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>qtmain.lib;Qt5Widgets.lib;Qt5Gui.lib;Qt5Core.lib;libEGL.lib;libGLESv2.lib;gdi32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>C:\Qt\Qt5.0.2\5.0.2\msvc2010\lib\qtmain.lib;C:\Qt\Qt5.0.2\5.0.2\msvc2010\lib\Qt5Widgets.lib;C:\Qt\Qt5.0.2\5.0.2\msvc2010\lib\Qt5Gui.lib;C:\Qt\Qt5.0.2\5.0.2\msvc2010\lib\Qt5Core.lib;libEGL.lib;libGLESv2.lib;gdi32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Qt\Qt5.0.2\5.0.2\msvc2010\lib;C:\Qt\Qt5.0.2\5.0.2\msvc2010\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -96,7 +96,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>"$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\include";C:\Program Files\Point Grey Research\FlyCapture2\include;C:\Program Files %28x86%29\Point Grey Research\FlyCapture2\include;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;debug;.;$(QTDIR)\mkspecs\win32-msvc2010;.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\include";C:\Program Files\Point Grey Research\FlyCapture2\include;C:\Program Files (x86)\Point Grey Research\FlyCapture2\include;C:\Qt\Qt5.0.2\5.0.2\msvc2010\include;C:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtWidgets;C:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtGui;C:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtCore;debug;.;C:\Qt\Qt5.0.2\5.0.2\msvc2010\mkspecs\win32-msvc2010;.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>debug\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -114,8 +114,8 @@
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>FlyCapture2d_v100.lib;qtmaind.lib;Qt5Widgets.lib;Qt5Gui.lib;Qt5Core.lib;libEGLd.lib;libGLESv2d.lib;gdi32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>"$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\win32\debug";C:\Program Files\Point Grey Research\FlyCapture2\lib;C:\Program Files %28x86%29\Point Grey Research\FlyCapture2\lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FlyCapture2d_v100.lib;C:\Qt\Qt5.0.2\5.0.2\msvc2010\lib\qtmaind.lib;C:\Qt\Qt5.0.2\5.0.2\msvc2010\lib\Qt5Widgets.lib;C:\Qt\Qt5.0.2\5.0.2\msvc2010\lib\Qt5Gui.lib;C:\Qt\Qt5.0.2\5.0.2\msvc2010\lib\Qt5Core.lib;libEGLd.lib;libGLESv2d.lib;gdi32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>"$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\win32\debug";C:\Program Files\Point Grey Research\FlyCapture2\lib;C:\Program Files (x86)\Point Grey Research\FlyCapture2\lib;C:\Qt\Qt5.0.2\5.0.2\msvc2010\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -184,24 +184,24 @@
   <ItemGroup>
     <ClInclude Include="abstractcamera.h" />
     <CustomBuild Include="abstractcameramanager.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DNDEBUG -DQT_DLL  "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I." "-I$(QTDIR)\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DNDEBUG -DQT_DLL  "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtWidgets" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtGui" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtCore" "-I.\release" "-I." "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing abstractcameramanager.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DQT_DLL  "-I$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\include" "-IC:\Program Files\Point Grey Research\FlyCapture2\include" "-IC:\Program Files (x86)\Point Grey Research\FlyCapture2\include" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtCore" "-I.\debug" "-I." "-I$(QTDIR)\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DQT_DLL  "-I$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\include" "-IC:\Program Files\Point Grey Research\FlyCapture2\include" "-IC:\Program Files (x86)\Point Grey Research\FlyCapture2\include" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtWidgets" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtGui" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtCore" "-I.\debug" "-I." "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing abstractcameramanager.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <ClInclude Include="cameraproperty.h" />
     <ClInclude Include="emptycameramanager.h" />
     <CustomBuild Include="mainwindow.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DNDEBUG -DQT_DLL  "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I." "-I$(QTDIR)\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DNDEBUG -DQT_DLL  "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtWidgets" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtGui" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtCore" "-I.\release" "-I." "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing mainwindow.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DQT_DLL  "-I$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\include" "-IC:\Program Files\Point Grey Research\FlyCapture2\include" "-IC:\Program Files (x86)\Point Grey Research\FlyCapture2\include" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtCore" "-I.\debug" "-I." "-I$(QTDIR)\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe;%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DQT_DLL  "-I$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\include" "-IC:\Program Files\Point Grey Research\FlyCapture2\include" "-IC:\Program Files (x86)\Point Grey Research\FlyCapture2\include" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtWidgets" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtGui" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtCore" "-I.\debug" "-I." "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing mainwindow.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ConfigurationName)\moc_%(Filename).cpp;%(Outputs)</Outputs>
     </CustomBuild>
@@ -211,14 +211,14 @@
     <ClInclude Include="iscamera.h" />
     <ClInclude Include="iscameramanager.h" />
     <CustomBuild Include="qvideowidget.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing qvideowidget.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DNDEBUG -DQT_DLL "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I." "-I$(QTDIR)\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DNDEBUG -DQT_DLL "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtWidgets" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtGui" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtCore" "-I.\release" "-I." "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing qvideowidget.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DQT_DLL  "-I$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\include" "-IC:\Program Files\Point Grey Research\FlyCapture2\include" "-IC:\Program Files (x86)\Point Grey Research\FlyCapture2\include" "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtCore" "-I.\debug" "-I." "-I$(QTDIR)\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DQT_DLL  "-I$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\include" "-IC:\Program Files\Point Grey Research\FlyCapture2\include" "-IC:\Program Files (x86)\Point Grey Research\FlyCapture2\include" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtWidgets" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtGui" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtCore" "-I.\debug" "-I." "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
     </CustomBuild>
     <ClInclude Include="testcamera.h" />
     <ClInclude Include="testcameramanager.h" />
@@ -226,12 +226,12 @@
   <ItemGroup>
     <CustomBuild Include="mainwindow.ui">
       <FileType>Document</FileType>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
     </CustomBuild>
@@ -242,11 +242,11 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(FullPath);.\mosaic.png;.\liveview.png;.\quit.png;.\one.png;.\one_disabled.png;.\add.png;.\folder_delete.png;.\folder_add.png;.\edit.png;.\folder_home.png;.\folder.png;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Rcc%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\GeneratedFiles\qrc_%(Filename).cpp</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\GeneratedFiles\qrc_%(Filename).cpp</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(FullPath);.\mosaic.png;.\liveview.png;.\quit.png;.\one.png;.\one_disabled.png;.\add.png;.\folder_delete.png;.\folder_add.png;.\edit.png;.\folder_home.png;.\folder.png;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Rcc%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\GeneratedFiles\qrc_%(Filename).cpp</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\GeneratedFiles\qrc_%(Filename).cpp</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -299,7 +299,7 @@
   <ImportGroup Label="ExtensionTargets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" Qt5Version_x0020_Win32="$(DefaultQtVersion)" />
+      <UserProperties UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

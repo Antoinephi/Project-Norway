@@ -46,7 +46,7 @@ void IsCameraManager::getCamerasPropertiesList() const
 
 string IsCameraManager::getName() const
 {
-    return "FlyCapture Camera Manager";
+    return "Imaging Source Camera Manager";
 }
 
 
