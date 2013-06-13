@@ -7,6 +7,8 @@
 #include "tisudshl.h"
 #include <algorithm>
 
+using namespace DShowLib;
+
 /**
  * @brief The IsCamera class, represent a Image Source Camera with all its settings
  */
@@ -14,7 +16,7 @@
 class IsCamera : public AbstractCamera
 {
     public:
-        IsCamera();
+        IsCamera(Grabber*, VideoCaptureDeviceItem);
         virtual ~IsCamera();
 
 
@@ -35,7 +37,9 @@ class IsCamera : public AbstractCamera
 
     private:		
         bool capturing;
-
+		VideoCaptureDeviceItem device;
+		Grabber *grabber;
+		long long serialNum;
 };
 
 #endif // FLYCAMERA_H

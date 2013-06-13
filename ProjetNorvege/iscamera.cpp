@@ -1,13 +1,14 @@
 #include "iscamera.h"
 #include <QDebug>
 #include <QPainter>
+#include <QString>
 #include <QRgb>
 
 
-IsCamera::IsCamera()
-	: AbstractCamera(), capturing(false)
+IsCamera::IsCamera(Grabber *grb, VideoCaptureDeviceItem deviceItem)
+	: AbstractCamera(), grabber(grb), device(deviceItem), capturing(false)
 {
-    
+	device.getSerialNumber(serialNum);
 }
 
 void IsCamera::setProperty(CameraManager::CameraProperty*)
@@ -34,8 +35,8 @@ QImage IsCamera::retrieveImage()
 }
 
 
-bool IsCamera::equalsTo(AbstractCamera *){
-    return true; // TODO
+bool IsCamera::equalsTo(AbstractCamera *c){
+	return this->serialNum == ((IsCamera*)c)->serialNum;
 }
 
 
@@ -43,7 +44,7 @@ bool IsCamera::equalsTo(AbstractCamera *){
 
 
 std::string IsCamera::getString(){
-	return "Imaging Source Camera";
+	return QString("Imaging Source Camera - %1").arg(serialNum).toLocal8Bit().constData();
 }
 
 IsCamera::~IsCamera()

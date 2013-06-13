@@ -3,6 +3,7 @@
 #include <sstream>
 #include <QImage>
 #include <QProcess>
+#include <QDebug>
 
 using namespace std;
 using namespace DShowLib;
@@ -35,18 +36,17 @@ void IsCameraManager::detectNewCameras(std::vector<AbstractCamera*> *newCameras)
 		Grabber *grb = new Grabber();
 		Grabber::tVidCapDevListPtr list = grb->getAvailableVideoCaptureDevices();
 		
-		cout << list->size() << endl;
+		for(int i = list->size()-1; i >= 0; i--){
+			long long serialNum;
+			IsCamera *cam = new IsCamera(grb, list->at(i));
+			newCameras->push_back(cam);
+		}
 	}
-}
-
-void IsCameraManager::getCamerasPropertiesList() const
-{
-    //Nothing here
 }
 
 string IsCameraManager::getName() const
 {
-    return "Imaging Source Camera Manager";
+    return "ImagingSource Camera Manager";
 }
 
 
