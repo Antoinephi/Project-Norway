@@ -3,7 +3,9 @@
 #include <sstream>
 #include <QImage>
 #include <QProcess>
+
 using namespace std;
+
 
 IsCameraManager::IsCameraManager()
 	: AbstractCameraManager()
@@ -27,15 +29,12 @@ IsCameraManager::~IsCameraManager()
 
 void IsCameraManager::detectNewCameras(std::vector<AbstractCamera*> *newCameras)
 {
-    busMgr.GetNumOfCameras(&numCameras);
-    for(unsigned int i = 0; i<numCameras; i++){
-        FlyCamera* flyCam = new FlyCamera();
-        busMgr.GetCameraFromIndex(i, flyCam->getGuid());
-        flyCam->getCamera()->Connect(flyCam->getGuid());
-        flyCam->getCamera()->GetCameraInfo(flyCam->getCameraInfo());
-		
-		newCameras->push_back(flyCam);
-    }
+    if( ! DShowLib::InitLibrary() )
+	{
+		return FALSE;
+	}
+ 
+	atexit( DShowLib::ExitLibrary );
 }
 
 void IsCameraManager::getCamerasPropertiesList() const

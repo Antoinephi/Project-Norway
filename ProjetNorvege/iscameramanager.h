@@ -25,8 +25,6 @@ class IsCameraManager
         unsigned int numCameras;
 
     private:
-    BusManager busMgr;
-    Error error;
 };
 
 #endif // ISCAMERAMANAGER_H
