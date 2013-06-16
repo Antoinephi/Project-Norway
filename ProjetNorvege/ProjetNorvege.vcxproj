@@ -164,6 +164,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="iscamera.cpp" />
+    <ClCompile Include="iscameramanager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="qvideowidget.cpp" />
@@ -217,6 +219,8 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"C:\Qt\Qt5.0.2\5.0.2\msvc2010\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -DQT_DLL  "-I$(USERPROFILE)\Documents\IC Imaging Control 3.2\classlib\include" "-IC:\Program Files\Point Grey Research\FlyCapture2\include" "-IC:\Program Files (x86)\Point Grey Research\FlyCapture2\include" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtWidgets" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtGui" "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\include\QtCore" "-I.\debug" "-I." "-IC:\Qt\Qt5.0.2\5.0.2\msvc2010\mkspecs\win32-msvc2010" "-I.\GeneratedFiles"</Command>
     </CustomBuild>
+    <ClInclude Include="iscamera.h" />
+    <ClInclude Include="iscameramanager.h" />
     <ClInclude Include="SimplePropertyAccess.h" />
     <ClInclude Include="testcamera.h" />
     <ClInclude Include="testcameramanager.h" />
