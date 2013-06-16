@@ -85,28 +85,20 @@ FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProper
 	switch(p->getType()){
 	case CameraManager::BRIGHTNESS:
 		return BRIGHTNESS;
-		break;
 	case CameraManager::EXPOSURE:
 		return AUTO_EXPOSURE;
-		break;
 	case CameraManager::GAIN:
 		return GAIN;
-		break;
 	case CameraManager::GAMMA:
 		return GAMMA;
-		break;
 	case CameraManager::SHUTTER:
 		return SHUTTER;
-		break;
     case CameraManager::PAN:
         return PAN;
-        break;
     case CameraManager::FRAMERATE:
         return FRAME_RATE;
-        break;
     case CameraManager::AUTOTRIGGER:
         return TRIGGER_MODE;
-        break;
 	}
 
 	return BRIGHTNESS;

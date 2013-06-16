@@ -25,11 +25,14 @@ class IsCamera : public AbstractCamera
 
         void updateProperty(CameraManager::CameraProperty *p);
 
+		GUID getPropertyType(CameraManager::CameraProperty* p);
+
 		void startAutoCapture();
         void stopAutoCapture();
 		void sendFrame(QImage img);
 
         QImage retrieveImage();
+		MemBufferCollection::tMemBufferPtr getSingleFrame(Grabber&, tColorformatEnum);
         
         bool equalsTo(AbstractCamera *c);
         

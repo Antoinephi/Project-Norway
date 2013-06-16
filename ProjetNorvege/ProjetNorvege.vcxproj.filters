@@ -112,6 +112,9 @@
     <ClCompile Include="qvideowidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SimplePropertyAccess.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstractcamera.h">
@@ -148,6 +151,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="iscameramanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimplePropertyAccess.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

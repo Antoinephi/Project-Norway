@@ -12,7 +12,9 @@ std::string CameraProperty::getName(){
     //qDebug() << type;
     switch (type){
         case CameraManager::BRIGHTNESS : return "brightness";
+        case CameraManager::CONTRAST : return "contrast";
         case CameraManager::GAIN : return "gain";
+        case CameraManager::SATURATION : return "saturation";
         case CameraManager::EXPOSURE : return "exposure";
         case CameraManager::GAMMA : return "gamma";
         case CameraManager::SHUTTER : return "shutter";
