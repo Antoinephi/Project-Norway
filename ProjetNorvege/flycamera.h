@@ -59,6 +59,12 @@ class FlyCamera : public AbstractCamera
          */
 		FlyCapture2::PropertyType getPropertyType(CameraManager::CameraProperty *p);
 
+        /**
+         * @brief captureImage : get an image from the camera and convert it in QImage type
+         * @return a QImage object
+         */
+        QImage captureImage();
+
 		
         bool capturing;
 

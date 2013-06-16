@@ -65,7 +65,7 @@ void FlyCamera::updateProperty(CameraManager::CameraProperty* p)
     {
         TriggerMode triggerMode;
         cam->GetTriggerMode(&triggerMode);
-        p->setAuto(triggerMode.onOff ? true:false);
+        p->setAuto(triggerMode.onOff ? false:true);
 
     }else
     {
@@ -105,26 +105,29 @@ FlyCapture2::PropertyType FlyCamera::getPropertyType(CameraManager::CameraProper
 }
 
 
+QImage FlyCamera::captureImage()
+{
+    Image img;
+    unsigned int x = img.GetCols();
+    unsigned int y = img.GetRows();
+    getCamera()->RetrieveBuffer(&img);
+    unsigned char* picData = img.GetData();
+    QImage image(x, y, QImage::Format_RGB32);
+    for(unsigned int i = 0; i <y; i++){
+        for(unsigned int j = 0; j <x; j++) {
+            unsigned char data = picData[i*x+j];
+            image.setPixel(j, i, qRgb(data, data, data));
+        }
+    }
+    return image;
+}
+
 void FlyCamera::startAutoCapture(){
     capturing = true;
     qDebug() << "Starting autoCapture";
 	getCamera()->StartCapture();
-
-	Image img;
-
     while(capturing){
-		getCamera()->RetrieveBuffer(&img);
-		unsigned char* picData = img.GetData();
-		unsigned int x = img.GetCols();
-		unsigned int y = img.GetRows();
-		QImage image(x, y, QImage::Format_RGB32);
-		for(unsigned int i = 0; i <y; i++){
-			for(unsigned int j = 0; j <x; j++) {
-				unsigned char data = picData[i*x+j];
-				image.setPixel(j, i, qRgb(data, data, data));
-			}
-		}
-
+        QImage image = captureImage();
 		AbstractCamera::sendFrame(image);
     }
     qDebug() << "Stoped autoCapture !";
@@ -136,62 +139,25 @@ void FlyCamera::stopAutoCapture(){
 	getCamera()->StopCapture();
 }
 
-bool FireSoftwareTrigger( Camera* pCam )
-{
-    const unsigned int k_softwareTrigger = 0x62C;
-    const unsigned int k_fireVal = 0x80000000;
-    Error error;
-
-    error = pCam->WriteRegister( k_softwareTrigger, k_fireVal );
-    if (error != PGRERROR_OK)
-    {
-        return false;
-    }
-
-    return true;
-}
-
-
 QImage FlyCamera::retrieveImage()
 {
     TriggerMode triggerMode;
     TriggerMode oldTrigger;
 
     cam->GetTriggerMode(&oldTrigger);
-    triggerMode.onOff = true;
-    triggerMode.mode = 0;
-    triggerMode.parameter = 0;
-    triggerMode.source = 7;
-    cam->SetTriggerMode(&triggerMode);
-
-    Image img;
-    getCamera()->StartCapture();
-    FireSoftwareTrigger(cam);
-    getCamera()->RetrieveBuffer(&img);
-    unsigned char* picData = img.GetData();
-    unsigned int x = img.GetCols();
-    unsigned int y = img.GetRows();
-    QImage image(x, y, QImage::Format_RGB32);
-    for(unsigned int i = 0; i <y; i++){
-        for(unsigned int j = 0; j <x; j++) {
-            unsigned char data = picData[i*x+j];
-            image.setPixel(j, i, qRgb(data, data, data));
-		}
-	}
     triggerMode.onOff = false;
     cam->SetTriggerMode(&triggerMode);
+
+    getCamera()->StartCapture();
+    QImage image = captureImage();
+    cam->SetTriggerMode(&oldTrigger);
 	getCamera()->StopCapture();  
 	return image;
 }
 
-
 bool FlyCamera::equalsTo(AbstractCamera *c){
     return guid == *((FlyCamera *)c)->getGuid();
 }
-
-
-
-
 
 std::string FlyCamera::getString(){
 	string name = FlyCamera::getCameraInfo()->modelName;
